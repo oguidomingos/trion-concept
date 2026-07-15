@@ -318,6 +318,16 @@ footer{border-top:1px solid var(--line-soft);padding:64px 0 44px;color:var(--dim
   transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none}
 
+/* abertura da hero: espera o filme rodar 1.5s (body.ready) */
+.hseq{opacity:0;transform:translateY(26px);
+  transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+body.ready .hseq{opacity:1;transform:none}
+body.ready .hseq.h2{transition-delay:.18s}
+body.ready .hseq.h3{transition-delay:.36s}
+body.ready .hseq.h4{transition-delay:.54s}
+body.ready .hseq.h5{transition-delay:.78s}
+nav.hseq{transform:translateY(-14px)}
+
 @media(prefers-reduced-motion:reduce){
   .rv,.float,.beam,.node .bar i{animation:none;transition:none;opacity:1;transform:none}
   html{scroll-behavior:auto}
@@ -333,7 +343,7 @@ footer{border-top:1px solid var(--line-soft);padding:64px 0 44px;color:var(--dim
   <div class="gridlines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
 
   <!-- 0 · NAV + CTA -->
-  <nav class="inner">
+  <nav class="inner hseq">
     <a class="logo" href="#"><span class="mark">t</span> trion</a>
     <div class="pillnav gb" style="border-radius:999px">
       <a class="on" href="#solucoes">Soluções</a>
@@ -350,19 +360,19 @@ footer{border-top:1px solid var(--line-soft);padding:64px 0 44px;color:var(--dim
   <!-- 1 · HERO STATEMENT -->
   <div class="inner hero">
     <div>
-      <span class="badge gb" style="border-radius:999px">⚡ <b>Desde 2023 gerando receita</b> · estrutura no ar em 14 dias</span>
-      <h1 class="serif">Trion é tráfego.<br>Tráfego é <span class="em">venda</span>.</h1>
-      <p class="sub">Unimos Dados (IA), Estratégia (Funis) e Execução (Tráfego) numa única força — um sistema de crescimento que atrai, qualifica e converte leads em receita previsível.</p>
-      <div class="cta-row">
+      <span class="badge gb hseq" style="border-radius:999px">⚡ <b>Desde 2023 gerando receita</b> · estrutura no ar em 14 dias</span>
+      <h1 class="serif hseq h2">Trion é tráfego.<br>Tráfego é <span class="em">venda</span>.</h1>
+      <p class="sub hseq h3">Unimos Dados (IA), Estratégia (Funis) e Execução (Tráfego) numa única força — um sistema de crescimento que atrai, qualifica e converte leads em receita previsível.</p>
+      <div class="cta-row hseq h4">
         <a class="btn" href="#diagnostico">Fazer diagnóstico gratuito <span class="arr">→</span></a>
         <a class="btn ghost" href="#passos">Ver metodologia</a>
       </div>
-      <div class="trust">
+      <div class="trust hseq h5">
         <div class="lab">Empresas que já usaram inteligência Trion</div>
         <div class="logos"><span>Fruto da Videira</span><span>Clínica Vitalis</span><span>Nordeste Log</span><span>Casa&amp;Cor Imob</span></div>
       </div>
     </div>
-    <div class="viz rv" aria-hidden="true">
+    <div class="viz rv hseq h5" aria-hidden="true">
       <svg class="noodles" viewBox="0 0 500 520" fill="none" preserveAspectRatio="none">
         <path d="M120 90 C 60 160, 60 260, 130 320" stroke="rgba(255,255,255,.07)" stroke-width="2"/>
         <path d="M120 90 C 60 160, 60 260, 130 320" class="beam" stroke="url(#g1)" stroke-width="2"/>
@@ -671,53 +681,68 @@ const cio=new IntersectionObserver(es=>es.forEach(e=>{
 }),{threshold:.5});
 document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
 
-/* ===== filme de fundo: scrub bidirecional por scroll =====
-   Cada seção é um keyframe do vídeo. O tempo do filme interpola
-   entre keyframes conforme a pessoa desliza — pra frente E pra trás. */
+/* ===== filme de fundo: segmentos em loop por seção =====
+   Cada seção "possui" um trecho do filme e fica em loop nele.
+   Rolar até a próxima seção libera a viagem (o filme toca o meio
+   do caminho) até cair no loop do novo trecho. Voltar também volta. */
 const bgv=document.getElementById('bgv');
 (function(){
   if(!bgv) return;
-  const KEYS=[            // [seletor, tempo do vídeo em s]
-    ['.hero',0],
-    ['#passos',6],['#solucoes',10],['#modelos',14],
-    ['#setores',18],['#numeros',21],['#cases',24],
-    ['#conteudo',28],['#faq',31],['#diagnostico',34.8]
+  const SEGS=[            // [seletor, início do loop, fim do loop]
+    ['.hero',0,3],
+    ['#passos',6,9],['#solucoes',10,13],['#modelos',14,17],
+    ['#setores',18,20.5],['#numeros',21,23.5],['#cases',24,27],
+    ['#conteudo',28,30.5],['#faq',31,33],['#diagnostico',33.5,35.0]
   ];
-  let map=[];             // [{y, t}] posição de scroll → tempo do vídeo
+  let map=[];             // [{y, a, b}] scroll → segmento
   function build(){
-    map=KEYS.map(([sel,t])=>{
+    map=SEGS.map(([sel,a,b])=>{
       const el=document.querySelector(sel);
-      return el?{y:el.getBoundingClientRect().top+scrollY,t}:null;
-    }).filter(Boolean).sort((a,b)=>a.y-b.y);
+      return el?{y:el.getBoundingClientRect().top+scrollY,a,b}:null;
+    }).filter(Boolean).sort((x,y)=>x.y-y.y);
   }
-  function targetTime(){
-    const y=scrollY+innerHeight*.45;   // ponto de leitura na tela
-    if(!map.length) return 0;
-    if(y<=map[0].y) return map[0].t;
-    for(let i=0;i<map.length-1;i++){
-      const a=map[i],b=map[i+1];
-      if(y<b.y) return a.t+(b.t-a.t)*((y-a.y)/(b.y-a.y));
+  function activeSeg(){
+    const y=scrollY+innerHeight*.45;
+    let s=map[0];
+    for(const m of map) if(y>=m.y-innerHeight*.25) s=m;
+    return s||{a:0,b:3};
+  }
+  function drive(){
+    const s=activeSeg(), t=bgv.currentTime;
+    if(t<s.a-.05){
+      // viagem pra frente: toca acelerado até a entrada do segmento
+      bgv.playbackRate=Math.min(2.5,1+(s.a-t)*.35);
+      if(bgv.paused)bgv.play().catch(()=>{});
+    }else if(t>s.b+.05){
+      // voltou de seção: recua direto pro início do loop
+      try{bgv.currentTime=s.a;}catch(e){}
+      bgv.playbackRate=1;
+    }else{
+      // dentro do segmento: roda em loop
+      bgv.playbackRate=1;
+      if(bgv.paused)bgv.play().catch(()=>{});
+      if(t>=s.b-.06){try{bgv.currentTime=s.a;}catch(e){}}
     }
-    return map[map.length-1].t;
+    bgv.classList.toggle('boost',s.a>=33);
+    requestAnimationFrame(drive);
   }
-  let cur=0,intro=true;
-  function loop(){
-    const tg=targetTime();
-    // abertura roda mais lenta; depois o scrub segue o dedo
-    cur+=(tg-cur)*(intro?.035:.10);
-    if(intro&&Math.abs(tg-cur)<.15) intro=false;
-    if(Math.abs(cur-bgv.currentTime)>.033){try{bgv.currentTime=cur;}catch(e){}}
-    // clímax no CTA final
-    bgv.classList.toggle('boost',cur>32.5);
-    requestAnimationFrame(loop);
-  }
+  /* abertura: 1.5s de filme no escuro → hero monta */
+  function heroIn(){document.body.classList.add('ready');}
+  const heroFallback=setTimeout(heroIn,2600);   // se o vídeo não carregar
   function ignite(){
-    bgv.pause();build();bgv.classList.add('on');
-    if(reduced){bgv.currentTime=targetTime();
-      addEventListener('scroll',()=>bgv.currentTime=targetTime(),{passive:true});return;}
-    requestAnimationFrame(loop);
+    build();bgv.classList.add('on');
+    if(reduced){clearTimeout(heroFallback);heroIn();
+      bgv.pause();bgv.currentTime=activeSeg().a;
+      addEventListener('scroll',()=>{const s=activeSeg();bgv.currentTime=s.a;},{passive:true});
+      return;}
+    bgv.currentTime=0;bgv.play().catch(()=>{clearTimeout(heroFallback);heroIn();});
+    const gate=()=>{if(bgv.currentTime>=1.5){clearTimeout(heroFallback);heroIn();
+      bgv.removeEventListener('timeupdate',gate);}};
+    bgv.addEventListener('timeupdate',gate);
+    requestAnimationFrame(drive);
   }
   if(bgv.readyState>=2) ignite(); else bgv.addEventListener('loadeddata',ignite,{once:true});
+  bgv.addEventListener('error',()=>{clearTimeout(heroFallback);heroIn();},{once:true});
   addEventListener('resize',build);
   addEventListener('load',build);
 })();
