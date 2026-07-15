@@ -710,21 +710,28 @@ const bgv=document.getElementById('bgv');
     for(const m of map) if(y>=m.y-innerHeight*.25) s=m;
     return s||{a:0,b:3};
   }
-  function drive(){
+  let dir=1, lastTs=0;              // 1 = frente, -1 = ré (ping-pong)
+  function drive(ts){
+    const dt=Math.min(.05,(ts-lastTs)/1000||.016); lastTs=ts;
     const s=activeSeg(), t=bgv.currentTime;
     if(t<s.a-.05){
       // viagem pra frente: toca acelerado até a entrada do segmento
-      bgv.playbackRate=Math.min(2.5,1+(s.a-t)*.35);
+      dir=1;bgv.playbackRate=Math.min(2.5,1+(s.a-t)*.35);
       if(bgv.paused)bgv.play().catch(()=>{});
     }else if(t>s.b+.05){
-      // voltou de seção: recua direto pro início do loop
-      try{bgv.currentTime=s.a;}catch(e){}
-      bgv.playbackRate=1;
-    }else{
-      // dentro do segmento: roda em loop
+      // voltou de seção: dá ré no filme até o trecho anterior
+      if(!bgv.paused)bgv.pause();
+      try{bgv.currentTime=Math.max(s.b,t-dt*3);}catch(e){}
+    }else if(dir===1){
+      // dentro do segmento, indo: toca normal até a borda
       bgv.playbackRate=1;
       if(bgv.paused)bgv.play().catch(()=>{});
-      if(t>=s.b-.06){try{bgv.currentTime=s.a;}catch(e){}}
+      if(t>=s.b-.06)dir=-1;
+    }else{
+      // ping-pong: volta de ré quadro a quadro (all-intra deixa liso)
+      if(!bgv.paused)bgv.pause();
+      try{bgv.currentTime=Math.max(s.a,t-dt);}catch(e){}
+      if(t<=s.a+.06)dir=1;
     }
     bgv.classList.toggle('boost',s.a>=33);
     requestAnimationFrame(drive);
