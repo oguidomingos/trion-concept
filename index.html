@@ -1,0 +1,718 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<title>Trion — Tráfego, Inteligência e Growth</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"></head><body>
+<style>
+/* ============ TOKENS — roxo Trion (#7B2CBF) ============ */
+:root{
+  --bg:#050208; --panel:rgba(0,0,0,.25); --card:rgba(255,255,255,.04);
+  --line:rgba(255,255,255,.10); --line-soft:rgba(255,255,255,.05);
+  --ink:#fff; --muted:#a5a1ad; --dim:#75717e;
+  --acc:#A855F7; --acc2:#8B5CF6; --acc-deep:#7B2CBF; --acc-hi:#C084FC;
+  --glow:rgba(123,44,191,.45);
+  --serif:"New York","Iowan Old Style",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);
+  -webkit-font-smoothing:antialiased;padding:0;min-height:100vh}
+@media(min-width:1024px){body{padding:32px;display:flex;justify-content:center}}
+::selection{background:rgba(168,85,247,.35);color:#EDDCFF}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+
+.bg-ambient{position:fixed;inset:0;z-index:-2;background:
+  radial-gradient(55% 45% at 70% 8%,rgba(123,44,191,.26),transparent 60%),
+  radial-gradient(40% 40% at 15% 30%,rgba(139,92,246,.12),transparent 60%),
+  radial-gradient(50% 40% at 50% 100%,rgba(39,39,87,.35),transparent 70%),
+  #050208}
+/* filme de fundo — plasma */
+#bgv{position:fixed;inset:0;z-index:-1;width:100vw;height:100vh;object-fit:cover;
+  opacity:0;transition:opacity 2.4s ease;filter:saturate(1.15)}
+#bgv.on{opacity:.42}
+#bgv.boost{opacity:.62}
+.bg-veil{position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+  radial-gradient(80% 70% at 50% 45%,transparent 30%,rgba(5,2,8,.82) 100%),
+  linear-gradient(rgba(5,2,8,.35),rgba(5,2,8,.55))}
+
+.frame{width:100%;max-width:1400px;position:relative;overflow:hidden;
+  background:rgba(3,1,6,.30)}
+@media(min-width:1024px){.frame{border-radius:2.5rem;border:1px solid var(--line);
+  box-shadow:0 25px 80px -20px #000}}
+.gridlines{position:absolute;inset:0;pointer-events:none;z-index:0;
+  display:flex;justify-content:space-between;padding:0 24px;opacity:.5}
+@media(min-width:768px){.gridlines{padding:0 48px;opacity:1}}
+.gridlines i{width:1px;height:100%;background:var(--line-soft)}
+.gridlines i:nth-child(n+2):nth-child(-n+5){display:none}
+@media(min-width:640px){.gridlines i:nth-child(2){display:block}}
+@media(min-width:768px){.gridlines i:nth-child(3){display:block}}
+@media(min-width:1024px){.gridlines i:nth-child(4){display:block}}
+@media(min-width:1280px){.gridlines i:nth-child(5){display:block}}
+.inner{position:relative;z-index:1;padding:0 24px}
+@media(min-width:768px){.inner{padding:0 48px}}
+
+/* ============ type ============ */
+.serif{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;text-wrap:balance}
+h1.serif{font-size:clamp(44px,7vw,88px);line-height:.95}
+h2.serif{font-size:clamp(32px,4.6vw,58px);line-height:1.02;margin-bottom:20px}
+h3.serif{font-size:clamp(24px,3vw,34px);line-height:1.05}
+.em{font-style:italic;background:linear-gradient(120deg,var(--acc),#DDBDFC);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);font-size:17px;max-width:56ch}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--acc-hi);margin-bottom:20px}
+.kicker::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--acc);
+  box-shadow:0 0 12px var(--acc)}
+
+/* ============ glass primitives ============ */
+.gb{position:relative}
+.gb::before{content:"";position:absolute;inset:0;padding:1px;border-radius:inherit;
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;
+  background:linear-gradient(135deg,rgba(255,255,255,.2),rgba(255,255,255,0))}
+.card{background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  border-radius:24px;backdrop-filter:blur(12px)}
+
+/* ============ nav ============ */
+nav{position:relative;z-index:50;display:flex;align-items:center;
+  justify-content:space-between;padding:24px;gap:12px}
+@media(min-width:768px){nav{padding:32px 48px}}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:.02em}
+.logo .mark{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--acc),var(--acc-deep));
+  box-shadow:0 0 15px var(--glow);font-family:var(--serif);font-style:italic;font-size:17px}
+.pillnav{display:none;border-radius:999px;padding:4px;gap:4px;align-items:center;
+  background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,0));
+  backdrop-filter:blur(12px);box-shadow:0 10px 30px rgba(0,0,0,.2)}
+@media(min-width:1000px){.pillnav{display:flex}}
+.pillnav a{font-size:14px;font-weight:500;color:var(--muted);padding:6px 15px;
+  border-radius:999px;transition:color .2s}
+.pillnav a:hover,.pillnav a:focus-visible{color:#fff}
+.pillnav a.on{color:#fff;background:rgba(255,255,255,.1);box-shadow:0 1px 2px rgba(0,0,0,.3)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;
+  border-radius:999px;padding:10px 22px;border:0;cursor:pointer;color:#fff;
+  background:linear-gradient(180deg,var(--acc2),var(--acc-deep));
+  box-shadow:0 0 0 1px var(--acc-deep),inset 0 1px 0 rgba(255,255,255,.22);
+  transition:box-shadow .3s,transform .2s}
+.btn:hover,.btn:focus-visible{box-shadow:0 0 30px var(--glow),0 0 0 1px var(--acc2);transform:translateY(-1px)}
+.btn.ghost{background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px var(--line)}
+.btn.ghost:hover{background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.btn .arr{transition:transform .2s}
+.btn:hover .arr{transform:translateX(3px)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+
+/* ============ hero ============ */
+.hero{display:grid;gap:56px;padding:56px 0 96px;align-items:center}
+@media(min-width:1024px){.hero{grid-template-columns:1.05fr .95fr;padding:72px 0 120px}}
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:#E3CCFB;
+  border-radius:999px;padding:6px 14px;background:rgba(123,44,191,.14);margin-bottom:26px}
+.badge b{color:#fff;font-weight:600}
+.hero .sub{margin:26px 0 34px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+.trust{margin-top:52px}
+.trust .lab{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:16px}
+.trust .logos{display:flex;gap:28px;flex-wrap:wrap;align-items:center;
+  font-family:var(--serif);font-style:italic;font-size:17px;color:#5d5866}
+
+.viz{position:relative;min-height:420px}
+.viz svg.noodles{position:absolute;inset:0;width:100%;height:100%}
+@keyframes dash-flow{to{stroke-dashoffset:-1000}}
+.beam{stroke-dasharray:40 400;animation:dash-flow 9s linear infinite}
+.beam.b2{animation-duration:12s;animation-delay:-4s}
+.beam.b3{animation-duration:10s;animation-delay:-7s}
+@keyframes float-subtle{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.float{animation:float-subtle 6s ease-in-out infinite}
+.float.d2{animation-delay:-2s}.float.d4{animation-delay:-4s}
+.node{position:absolute;width:min(300px,78%);padding:18px 20px;border-radius:18px}
+.node .nh{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.node .tt{font-size:13.5px;font-weight:600}
+.node .tag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc-hi);
+  background:rgba(123,44,191,.18);border-radius:999px;padding:3px 9px}
+.node .tx{font-size:12.5px;color:var(--muted);line-height:1.5}
+.node .bar{height:5px;border-radius:99px;background:rgba(255,255,255,.08);margin-top:12px;overflow:hidden}
+.node .bar i{display:block;height:100%;border-radius:99px;width:0;
+  background:linear-gradient(90deg,var(--acc),var(--acc2));transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+.in .node .bar i{width:var(--w,70%)}
+.n1{top:2%;right:4%}.n2{top:34%;left:0}.n3{bottom:4%;right:10%}
+@media(max-width:1023px){.viz{min-height:520px}.n2{top:36%}}
+
+/* ============ sections ============ */
+section{padding:104px 0;position:relative}
+section.tight{padding:72px 0}
+.sec-head{max-width:720px;margin-bottom:64px}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-head.center .kicker{justify-content:center}
+.sec-head.center .sub{margin-inline:auto}
+.hr{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+.stepmark{display:inline-flex;align-items:center;gap:12px;margin-bottom:18px}
+.stepmark .chip{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--acc-hi);
+  border-radius:999px;padding:5px 16px;background:rgba(123,44,191,.14)}
+.stepmark .ln{width:60px;height:1px;background:linear-gradient(90deg,var(--acc),transparent)}
+
+/* soluções (passo 01) */
+.sol-grid{display:grid;gap:16px}
+@media(min-width:700px){.sol-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.sol-grid{grid-template-columns:repeat(3,1fr)}}
+.sol{padding:26px 24px;border-radius:20px;display:flex;flex-direction:column;gap:10px;
+  transition:transform .3s,background .3s}
+.sol:hover{transform:translateY(-4px)}
+.sol .ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;
+  background:rgba(123,44,191,.16);color:var(--acc-hi);font-size:17px}
+.sol h4{font-size:15.5px;font-weight:600}
+.sol p{font-size:13.5px;color:var(--muted)}
+.sol .verb{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc-hi)}
+
+/* modelos (passo 02) */
+.models{display:grid;gap:20px}
+@media(min-width:900px){.models{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:700px) and (max-width:899px){.models{grid-template-columns:repeat(2,1fr)}}
+.model{padding:30px 26px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden}
+.model.hot::after{content:"MAIS ESCOLHIDO";position:absolute;top:18px;right:-34px;transform:rotate(38deg);
+  font-size:9px;letter-spacing:.14em;padding:4px 36px;color:#fff;
+  background:linear-gradient(90deg,var(--acc2),var(--acc-deep))}
+.model h4{font-size:17px;font-weight:600}
+.model .for{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc-hi)}
+.model p{font-size:13.5px;color:var(--muted)}
+.model ul{list-style:none;padding:0;margin-top:auto;font-size:13px;color:var(--muted)}
+.model li{padding:6px 0;border-top:1px dashed var(--line-soft)}
+.model li::before{content:"✓ ";color:var(--acc)}
+
+/* combinação (passo 03) */
+.combo{text-align:center;padding:64px 24px;border-radius:28px;position:relative;overflow:hidden}
+.combo::before{z-index:1}
+.combo .formula{font-family:var(--serif);font-size:clamp(30px,5vw,56px);font-style:italic;line-height:1.1}
+.combo .formula b{font-style:normal;font-weight:400;color:var(--acc-hi)}
+.combo .sub{margin:20px auto 32px}
+.combo .glowbg{position:absolute;inset:0;background:
+  radial-gradient(60% 100% at 50% 120%,rgba(123,44,191,.3),transparent 70%);pointer-events:none}
+
+/* steps mini-cards (metodologia) */
+.steps{display:grid;gap:20px}
+@media(min-width:900px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{padding:34px 30px;display:flex;flex-direction:column;gap:14px;transition:transform .3s}
+.step:hover{transform:translateY(-4px)}
+.step .num{font-family:var(--serif);font-style:italic;font-size:44px;line-height:1;
+  background:linear-gradient(160deg,#F0E4FD,var(--acc));-webkit-background-clip:text;
+  background-clip:text;color:transparent}
+.step h3{font-size:20px;font-weight:600;letter-spacing:-.01em}
+.step p{font-size:14.5px;color:var(--muted)}
+.step .mini{margin-top:auto;border-radius:14px;padding:14px 16px;background:rgba(0,0,0,.35);
+  border:1px solid var(--line-soft);font-size:12px;color:var(--muted)}
+.step .mini .row{display:flex;justify-content:space-between;padding:5px 0;
+  border-bottom:1px dashed var(--line-soft)}
+.step .mini .row:last-child{border:0}
+.step .mini .ok{color:var(--acc-hi)}
+
+/* sectors */
+.sectors{display:grid;gap:14px}
+@media(min-width:700px){.sectors{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.sectors{grid-template-columns:repeat(4,1fr)}}
+.sector{padding:26px 24px;border-radius:20px}
+.sector h4{font-size:16px;font-weight:600;margin-bottom:8px}
+.sector p{font-size:13.5px;color:var(--muted)}
+.sector .ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;
+  margin-bottom:16px;background:rgba(123,44,191,.16);color:var(--acc-hi);font-size:17px}
+
+/* numbers */
+.numbers{display:grid;gap:1px;background:var(--line-soft);border-radius:24px;overflow:hidden;
+  border:1px solid var(--line-soft)}
+@media(min-width:800px){.numbers{grid-template-columns:repeat(4,1fr)}}
+.numb{background:rgba(0,0,0,.4);padding:40px 30px;text-align:center}
+.numb .v{font-family:var(--serif);font-size:clamp(38px,4.5vw,54px);line-height:1;
+  font-variant-numeric:tabular-nums}
+.numb .v small{font-size:.5em;color:var(--acc);font-style:italic}
+.numb .l{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:12px}
+
+/* cases */
+.cases{display:grid;gap:20px}
+@media(min-width:900px){.cases{grid-template-columns:repeat(3,1fr)}}
+.case{padding:32px 30px;position:relative;overflow:hidden}
+.case::after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;
+  right:-80px;top:-80px;background:radial-gradient(circle,rgba(168,85,247,.16),transparent 70%);
+  pointer-events:none}
+.case .pct{font-family:var(--serif);font-style:italic;font-size:46px;line-height:1;
+  color:var(--acc-hi);margin-bottom:14px}
+.case h4{font-size:16px;font-weight:600;margin-bottom:6px}
+.case p{font-size:13.5px;color:var(--muted)}
+.case .sec-tag{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:18px;display:block}
+
+/* people */
+.people{display:grid;gap:20px}
+@media(min-width:800px){.people{grid-template-columns:repeat(3,1fr)}}
+.person{padding:32px 30px;text-align:center}
+.person .avatar{width:76px;height:76px;border-radius:50%;margin:0 auto 18px;
+  display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:28px;
+  background:linear-gradient(135deg,rgba(168,85,247,.35),rgba(123,44,191,.15));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.15),0 0 24px rgba(123,44,191,.3)}
+.person h4{font-size:16.5px;font-weight:600}
+.person .role{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc-hi);margin:6px 0 12px}
+.person p{font-size:13.5px;color:var(--muted)}
+
+/* certs */
+.certs{display:grid;gap:20px;max-width:960px;margin:0 auto}
+@media(min-width:760px){.certs{grid-template-columns:1fr 1fr}}
+.cert{display:flex;gap:18px;padding:28px;align-items:flex-start}
+.cert .ic{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--acc),var(--acc-deep));box-shadow:0 0 18px var(--glow);
+  font-family:var(--serif);font-style:italic;font-size:20px}
+.cert h4{font-size:16px;font-weight:600;margin-bottom:6px}
+.cert p{font-size:13.5px;color:var(--muted)}
+.cert .rare{display:inline-block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--acc-hi);background:rgba(123,44,191,.18);border-radius:999px;padding:3px 10px;margin-bottom:8px}
+
+/* momentum */
+.momentum{display:grid;gap:20px}
+@media(min-width:900px){.momentum{grid-template-columns:repeat(3,1fr)}}
+.mom{padding:30px 28px}
+.mom .big{font-family:var(--serif);font-style:italic;font-size:34px;color:var(--acc-hi);margin-bottom:12px}
+.mom h4{font-size:16px;font-weight:600;margin-bottom:8px}
+.mom p{font-size:13.5px;color:var(--muted)}
+
+/* media própria */
+.media-grid{display:grid;gap:20px}
+@media(min-width:900px){.media-grid{grid-template-columns:1.2fr 1fr 1fr}}
+.med{padding:30px 28px;display:flex;flex-direction:column;gap:10px}
+.med .mtag{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc-hi)}
+.med h4{font-size:18px;font-weight:600}
+.med p{font-size:13.5px;color:var(--muted)}
+.med .fake-player{margin-top:auto;display:flex;align-items:center;gap:14px;border-radius:14px;
+  padding:14px 16px;background:rgba(0,0,0,.35);border:1px solid var(--line-soft)}
+.med .play{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--acc),var(--acc-deep));font-size:13px;box-shadow:0 0 14px var(--glow)}
+.med .wave{flex:1;height:22px;display:flex;align-items:center;gap:3px}
+.med .wave i{flex:1;background:rgba(168,85,247,.5);border-radius:2px;height:calc(6px + var(--h)*14px)}
+
+/* FAQ */
+.faq{max-width:760px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line-soft)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;
+  align-items:center;gap:20px;padding:22px 4px;font-weight:500;font-size:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--serif);font-size:22px;color:var(--acc);
+  transition:transform .3s;flex:none}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{padding:0 4px 24px;color:var(--muted);font-size:14.5px;max-width:62ch}
+
+/* CTA final */
+.cta-final{text-align:center;padding:120px 0 140px;position:relative}
+.cta-final::before{content:"";position:absolute;inset:auto 0 0;height:70%;
+  background:radial-gradient(55% 90% at 50% 110%,rgba(123,44,191,.34),transparent 70%);pointer-events:none}
+.cta-final h2{font-size:clamp(38px,5.6vw,72px)}
+.cta-final .sub{margin:24px auto 40px}
+
+/* footer completo */
+footer{border-top:1px solid var(--line-soft);padding:64px 0 44px;color:var(--dim);font-size:13.5px}
+.foot-grid{display:grid;gap:40px;margin-bottom:48px}
+@media(min-width:900px){.foot-grid{grid-template-columns:1.4fr 1fr 1fr 1fr 1fr}}
+.foot-grid h5{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.foot-grid ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
+.foot-grid a{color:var(--dim);transition:color .2s}
+.foot-grid a:hover{color:#fff}
+.foot-brand p{margin-top:14px;max-width:30ch;line-height:1.6}
+.foot-base{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
+  padding-top:28px;border-top:1px solid var(--line-soft)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(30px);
+  transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  .rv,.float,.beam,.node .bar i{animation:none;transition:none;opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+
+<div class="bg-ambient"></div>
+<video id="bgv" muted playsinline preload="auto" aria-hidden="true">
+  <source src="trion-bg.mp4" type="video/mp4">
+</video>
+<div class="bg-veil" aria-hidden="true"></div>
+<div class="frame">
+  <div class="gridlines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+  <!-- 0 · NAV + CTA -->
+  <nav class="inner">
+    <a class="logo" href="#"><span class="mark">t</span> trion</a>
+    <div class="pillnav gb" style="border-radius:999px">
+      <a class="on" href="#solucoes">Soluções</a>
+      <a href="#modelos">Modelos</a>
+      <a href="#setores">Setores</a>
+      <a href="#numeros">Resultados</a>
+      <a href="#cases">Cases</a>
+      <a href="#conteudo">Conteúdo</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="btn" href="#diagnostico">Diagnóstico gratuito <span class="arr">→</span></a>
+  </nav>
+
+  <!-- 1 · HERO STATEMENT -->
+  <div class="inner hero">
+    <div>
+      <span class="badge gb" style="border-radius:999px">⚡ <b>Desde 2023 gerando receita</b> · estrutura no ar em 14 dias</span>
+      <h1 class="serif">Trion é tráfego.<br>Tráfego é <span class="em">venda</span>.</h1>
+      <p class="sub">Unimos Dados (IA), Estratégia (Funis) e Execução (Tráfego) numa única força — um sistema de crescimento que atrai, qualifica e converte leads em receita previsível.</p>
+      <div class="cta-row">
+        <a class="btn" href="#diagnostico">Fazer diagnóstico gratuito <span class="arr">→</span></a>
+        <a class="btn ghost" href="#passos">Ver metodologia</a>
+      </div>
+      <div class="trust">
+        <div class="lab">Empresas que já usaram inteligência Trion</div>
+        <div class="logos"><span>Fruto da Videira</span><span>Clínica Vitalis</span><span>Nordeste Log</span><span>Casa&amp;Cor Imob</span></div>
+      </div>
+    </div>
+    <div class="viz rv" aria-hidden="true">
+      <svg class="noodles" viewBox="0 0 500 520" fill="none" preserveAspectRatio="none">
+        <path d="M120 90 C 60 160, 60 260, 130 320" stroke="rgba(255,255,255,.07)" stroke-width="2"/>
+        <path d="M120 90 C 60 160, 60 260, 130 320" class="beam" stroke="url(#g1)" stroke-width="2"/>
+        <path d="M180 350 C 260 420, 330 430, 380 470" stroke="rgba(255,255,255,.07)" stroke-width="2"/>
+        <path d="M180 350 C 260 420, 330 430, 380 470" class="beam b2" stroke="url(#g1)" stroke-width="2"/>
+        <path d="M380 60 C 430 150, 430 240, 390 300" stroke="rgba(255,255,255,.07)" stroke-width="2"/>
+        <path d="M380 60 C 430 150, 430 240, 390 300" class="beam b3" stroke="url(#g1)" stroke-width="2"/>
+        <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+          <stop stop-color="#A855F7"/><stop offset="1" stop-color="#7B2CBF"/>
+        </linearGradient></defs>
+      </svg>
+      <div class="node card gb float n1">
+        <div class="nh"><span class="tt">01 · Atração</span><span class="tag">Tráfego</span></div>
+        <div class="tx">Meta · Google · YouTube com engenharia de funil. 5.2k visitas qualificadas.</div>
+        <div class="bar"><i style="--w:78%"></i></div>
+      </div>
+      <div class="node card gb float d2 n2">
+        <div class="nh"><span class="tt">02 · Conversão</span><span class="tag">SDR AI</span></div>
+        <div class="tx">Resposta em 2s no WhatsApp, qualificação automática, agenda direto no CRM. 1.8k conversas.</div>
+        <div class="bar"><i style="--w:64%"></i></div>
+      </div>
+      <div class="node card gb float d4 n3">
+        <div class="nh"><span class="tt">03 · Aceleração</span><span class="tag">Growth</span></div>
+        <div class="tx">Otimização contínua por dados. 567 vendas · pipeline +320%.</div>
+        <div class="bar"><i style="--w:88%"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inner"><div class="hr"></div></div>
+
+  <!-- 2 · FRAMEWORK 3 PASSOS (intro) -->
+  <section class="inner tight" id="passos">
+    <div class="sec-head center rv">
+      <span class="kicker">Como comprar crescimento</span>
+      <h2 class="serif">Transforme o seu marketing em <span class="em">apenas 3 passos</span></h2>
+      <p class="sub">A decisão inteira reduzida a um caminho numerado: o que fazemos, como entregamos e como você começa.</p>
+    </div>
+    <div class="steps">
+      <div class="step card gb rv">
+        <span class="num">01</span>
+        <h3>Escolha as soluções</h3>
+        <p>Nove soluções ancoradas num único verbo — <em>vender</em>. Vender o seu produto, para mais pessoas, mais vezes, pelo maior valor.</p>
+        <div class="mini"><div class="row"><span>O que fazemos</span><span class="ok">↓ abaixo</span></div></div>
+      </div>
+      <div class="step card gb rv">
+        <span class="num">02</span>
+        <h3>Escolha o modelo de entrega</h3>
+        <p>Do sistema completo gerido por nós ao projeto pontual — um formato para cada momento e porte de empresa. Ninguém fica de fora.</p>
+        <div class="mini"><div class="row"><span>Como fazemos</span><span class="ok">↓ abaixo</span></div></div>
+      </div>
+      <div class="step card gb rv">
+        <span class="num">03</span>
+        <h3>Combine e comece</h3>
+        <p>Preencha o formulário de diagnóstico e receba uma ligação em até 12 horas com o plano de ativação de 14 dias.</p>
+        <div class="mini"><div class="row"><span>Próximo passo</span><span class="ok">ligação em 12h</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2.1 · PASSO 01: SOLUÇÕES -->
+  <section class="inner tight" id="solucoes">
+    <div class="sec-head rv">
+      <div class="stepmark"><span class="chip">Passo 01</span><span class="ln"></span></div>
+      <h2 class="serif">O que fazemos: <span class="em">tudo para vender</span></h2>
+      <p class="sub">Oferta descrita por resultado, não por entregável. Cada solução existe para uma coisa só.</p>
+    </div>
+    <div class="sol-grid">
+      <div class="sol card gb rv"><div class="ic">▤</div><span class="verb">Vender mais por clique</span><h4>Landing pages que convertem</h4><p>Design e performance unidos por dados reais para maximizar cada clique e reduzir o custo por lead.</p></div>
+      <div class="sol card gb rv"><div class="ic">◎</div><span class="verb">Vender enquanto você dorme</span><h4>Agente SDR com IA</h4><p>Resposta automática em 2s, qualificação via WhatsApp e agendamento direto no CRM, 24/7.</p></div>
+      <div class="sol card gb rv"><div class="ic">▦</div><span class="verb">Vender com certeza</span><h4>Tracking &amp; analytics</h4><p>GA4, GTM e pixels para rastreabilidade total do funil — do primeiro clique à venda.</p></div>
+      <div class="sol card gb rv"><div class="ic">▲</div><span class="verb">Vender para mais pessoas</span><h4>Tráfego pago inteligente</h4><p>Meta, Google e YouTube com engenharia de funil para leads qualificados ao menor custo.</p></div>
+      <div class="sol card gb rv"><div class="ic">⟳</div><span class="verb">Vender mais vezes</span><h4>Funis automatizados</h4><p>Anúncio → conversa → follow-up → fechamento, com nutrição automática e jornada guiada.</p></div>
+      <div class="sol card gb rv"><div class="ic">✎</div><span class="verb">Vender com autoridade</span><h4>Conteúdo &amp; social selling</h4><p>Reels, scripts e copy orientados a vendas que constroem posicionamento e engajamento escalável.</p></div>
+      <div class="sol card gb rv"><div class="ic">✧</div><span class="verb">Vender pelo maior valor</span><h4>Identidade visual &amp; design</h4><p>Sistemas visuais prontos para vender: clareza total e foco em conversão.</p></div>
+      <div class="sol card gb rv"><div class="ic">✉</div><span class="verb">Vender de novo</span><h4>E-mail &amp; WhatsApp marketing</h4><p>Retenção, reativação e nutrição que transformam leads frios em oportunidades quentes.</p></div>
+      <div class="sol card gb rv"><div class="ic">⚙</div><span class="verb">Vender com processo</span><h4>CRM, SLAs &amp; estrutura comercial</h4><p>Implantação de CRM e processos que transformam marketing em vendas reais.</p></div>
+    </div>
+  </section>
+
+  <!-- 2.2 · PASSO 02: MODELOS DE ENTREGA -->
+  <section class="inner tight" id="modelos">
+    <div class="sec-head rv">
+      <div class="stepmark"><span class="chip">Passo 02</span><span class="ln"></span></div>
+      <h2 class="serif">Como entregamos: <span class="em">um modelo para cada momento</span></h2>
+      <p class="sub">Segmentado por porte e fase do negócio — ninguém fica de fora.</p>
+    </div>
+    <div class="models">
+      <div class="model card gb rv"><span class="for">Para começar</span><h4>Projeto pontual</h4><p>Uma dor, uma entrega: LP, tracking, auditoria de funil ou implantação de CRM.</p>
+        <ul><li>Escopo fechado</li><li>Entrega em até 14 dias</li><li>Sem mensalidade</li></ul></div>
+      <div class="model card gb hot rv"><span class="for">Para crescer</span><h4>Sistema Trion completo</h4><p>A triangulação inteira gerida por nós: tráfego + IA/funis + growth contínuo.</p>
+        <ul><li>Squad dedicado</li><li>Dashboard em tempo real</li><li>Otimização semanal</li></ul></div>
+      <div class="model card gb rv"><span class="for">Para quem já tem time</span><h4>Squad de performance</h4><p>Nossos especialistas acoplados à sua equipe, com SLAs entre marketing e vendas.</p>
+        <ul><li>Especialistas sob demanda</li><li>Playbooks Trion</li><li>Treinamento do time</li></ul></div>
+      <div class="model card gb rv"><span class="for">Para escalar alto</span><h4>Growth Partner</h4><p>Parceria de longo prazo com remuneração atrelada a resultado — crescemos juntos.</p>
+        <ul><li>Fee + variável por meta</li><li>Roadmap trimestral</li><li>Conselho de growth</li></ul></div>
+    </div>
+  </section>
+
+  <!-- 2.3 · PASSO 03: COMBINAÇÃO -->
+  <section class="inner tight">
+    <div class="combo card gb rv">
+      <div class="glowbg"></div>
+      <div class="stepmark" style="justify-content:center;width:100%"><span class="chip">Passo 03</span></div>
+      <div class="formula">9 soluções × 4 modelos<br>= <b>36 combinações</b> de crescimento</div>
+      <p class="sub">Você não precisa escolher sozinho: preencha o formulário e receba uma ligação em até 12 horas com a combinação certa para o seu momento.</p>
+      <a class="btn" href="#diagnostico">Montar minha combinação <span class="arr">→</span></a>
+    </div>
+  </section>
+
+  <div class="inner"><div class="hr"></div></div>
+
+  <!-- 3 · PROVA POR AMPLITUDE -->
+  <section class="inner" id="setores">
+    <div class="sec-head center rv">
+      <span class="kicker">Prova por amplitude</span>
+      <h2 class="serif">Temos mais histórias de sucesso do que <span class="em">nichos para contar</span></h2>
+      <p class="sub">Negócios de tamanhos e setores diferentes, o mesmo sistema: atrair, qualificar, converter.</p>
+    </div>
+    <div class="sectors">
+      <div class="sector card gb rv"><div class="ic">✚</div><h4>Clínicas &amp; Saúde</h4><p>Agenda cheia com SDR AI qualificando pacientes no WhatsApp antes da recepção atender.</p></div>
+      <div class="sector card gb rv"><div class="ic">⌂</div><h4>Imobiliário</h4><p>Leads de alto ticket filtrados por intenção real de compra, direto no CRM do corretor.</p></div>
+      <div class="sector card gb rv"><div class="ic">◈</div><h4>E-commerce &amp; Varejo</h4><p>Funis de recompra e recuperação de carrinho com automação de WhatsApp e e-mail.</p></div>
+      <div class="sector card gb rv"><div class="ic">⚙</div><h4>Serviços B2B</h4><p>Prospecção estruturada com SLAs entre marketing e vendas — pipeline previsível.</p></div>
+      <div class="sector card gb rv"><div class="ic">✦</div><h4>Educação &amp; Cursos</h4><p>Funis de lançamento e perpétuo com nutrição automática do lead ao aluno.</p></div>
+      <div class="sector card gb rv"><div class="ic">✈</div><h4>Turismo &amp; Eventos</h4><p>Campanhas sazonais com resposta imediata — o lead quente não espera.</p></div>
+      <div class="sector card gb rv"><div class="ic">⚖</div><h4>Advocacia &amp; Consultorias</h4><p>Autoridade + captação qualificada dentro das regras do setor.</p></div>
+      <div class="sector card gb rv"><div class="ic">▣</div><h4>Indústria &amp; Distribuição</h4><p>Geração de demanda B2B com ciclo longo mapeado ponta a ponta no CRM.</p></div>
+    </div>
+  </section>
+
+  <div class="inner"><div class="hr"></div></div>
+
+  <!-- 4 · NÚMEROS ABSOLUTOS -->
+  <section class="inner" id="numeros">
+    <div class="sec-head center rv">
+      <span class="kicker">Autoridade em números</span>
+      <h2 class="serif">Resultados medidos, <span class="em">não prometidos</span></h2>
+    </div>
+    <div class="numbers rv">
+      <div class="numb"><div class="v"><span data-count="10" data-suffix="M+">0</span></div><div class="l">Reais geridos em mídia</div></div>
+      <div class="numb"><div class="v"><span data-count="3.5" data-dec="1" data-suffix="×">0</span></div><div class="l">ROI médio</div></div>
+      <div class="numb"><div class="v"><span data-count="5" data-suffix="M+">0</span></div><div class="l">Interações mensais</div></div>
+      <div class="numb"><div class="v"><span data-count="98" data-suffix="%">0</span></div><div class="l">Satisfação dos clientes</div></div>
+    </div>
+  </section>
+
+  <div class="inner"><div class="hr"></div></div>
+
+  <!-- 5 · CASES PREMIUM -->
+  <section class="inner" id="cases">
+    <div class="sec-head rv">
+      <span class="kicker">Cases</span>
+      <h2 class="serif">O método Trion em <span class="em">números específicos</span></h2>
+    </div>
+    <div class="cases">
+      <div class="case card gb rv"><span class="sec-tag">Saúde · Clínica</span><div class="pct">+230%</div><h4>Potencialização de carga</h4><p>Do tráfego reativo ao sistema completo em 14 dias — agenda lotada com custo por lead 40% menor.</p></div>
+      <div class="case card gb rv"><span class="sec-tag">B2B · Serviços</span><div class="pct">+320%</div><h4>Crescimento de pipeline</h4><p>Fluxo Landing → SDR AI → CRM interconectado: 5.2k visitas viraram 567 vendas.</p></div>
+      <div class="case card gb rv"><span class="sec-tag">Varejo · E-commerce</span><div class="pct">+85%</div><h4>Mais leads qualificados</h4><p>Segmentação avançada e follow-ups automáticos: CPC caiu R$ 0,45 com CTR de 3,42%.</p></div>
+      <div class="case card gb rv"><span class="sec-tag">Imobiliário</span><div class="pct">+249%</div><h4>Faturamento em 6 meses</h4><p>Leads de alto ticket qualificados por IA antes de chegarem ao corretor — taxa de visita 3× maior.</p></div>
+      <div class="case card gb rv"><span class="sec-tag">Educação · Cursos</span><div class="pct">+67%</div><h4>Receita recorrente</h4><p>Funil perpétuo com nutrição automática: matrículas todos os dias, não só em lançamento.</p></div>
+      <div class="case card gb rv"><span class="sec-tag">Serviços locais</span><div class="pct">−40%</div><h4>Custo por lead</h4><p>Tracking limpo + criativos testados semanalmente: mesmo orçamento, quase o dobro de leads.</p></div>
+    </div>
+  </section>
+
+  <div class="inner"><div class="hr"></div></div>
+
+  <!-- 6 · AUTORIDADE POR PESSOAS -->
+  <section class="inner">
+    <div class="sec-head center rv">
+      <span class="kicker">Quem está por trás</span>
+      <h2 class="serif">Gente que já operou <span class="em">na escala que você quer</span></h2>
+    </div>
+    <div class="people">
+      <div class="person card gb rv"><div class="avatar">g</div><h4>Guilherme Domingos</h4><div class="role">Founder · Estratégia &amp; IA</div><p>Arquiteto da triangulação Trion: engenharia de funis, agentes de IA e sistemas de aquisição ponta a ponta.</p></div>
+      <div class="person card gb rv"><div class="avatar">p</div><h4>Head de Performance</h4><div class="role">Tráfego &amp; Mídia</div><p>Mais de R$ 10M geridos em Meta e Google Ads, com playbooks próprios de segmentação e criativo.</p></div>
+      <div class="person card gb rv"><div class="avatar">c</div><h4>Head de Conversão</h4><div class="role">CRM &amp; Vendas</div><p>Implantação de CRM, SLAs e processos comerciais que transformam lead qualificado em receita.</p></div>
+    </div>
+  </section>
+
+  <div class="inner"><div class="hr"></div></div>
+
+  <!-- 7 · CERTIFICAÇÕES RARAS -->
+  <section class="inner">
+    <div class="sec-head center rv">
+      <span class="kicker">Certificações</span>
+      <h2 class="serif">No grupo de <span class="em">poucos por cento</span></h2>
+    </div>
+    <div class="certs">
+      <div class="cert card gb rv"><div class="ic">G</div><div><span class="rare">Stack oficial</span><h4>Google Ads &amp; Analytics</h4><p>Operação dentro das melhores práticas Google: GA4, GTM e mensuração auditável de ponta a ponta.</p></div></div>
+      <div class="cert card gb rv"><div class="ic">M</div><div><span class="rare">Stack oficial</span><h4>Meta Ads</h4><p>Campanhas com API de conversões, eventos server-side e criativos testados em ciclo semanal.</p></div></div>
+      <div class="cert card gb rv"><div class="ic">◎</div><div><span class="rare">Tecnologia própria</span><h4>IA proprietária de qualificação</h4><p>Agentes treinados com dados reais do seu negócio — não chatbot genérico. Resposta em 2s, 24/7.</p></div></div>
+      <div class="cert card gb rv"><div class="ic">▦</div><div><span class="rare">Transparência radical</span><h4>Dashboard em tempo real</h4><p>Leads, conversões e ROI de cada campanha visíveis a qualquer momento, sem pedir relatório.</p></div></div>
+    </div>
+  </section>
+
+  <div class="inner"><div class="hr"></div></div>
+
+  <!-- 8 · INSTITUCIONAL / MOMENTUM -->
+  <section class="inner">
+    <div class="sec-head rv">
+      <span class="kicker">Momentum</span>
+      <h2 class="serif">Uma operação que <span class="em">cresce com você</span></h2>
+    </div>
+    <div class="momentum">
+      <div class="mom card gb rv"><div class="big">14 dias</div><h4>Da assinatura à ignição</h4><p>Metodologia ágil com sprints semanais: estrutura completa no ar em duas semanas, não em dois trimestres.</p></div>
+      <div class="mom card gb rv"><div class="big">100% dados</div><h4>Nenhuma decisão por achismo</h4><p>Cada real investido é rastreado do clique à venda. O sistema neural aprende com cada interação e melhora sozinho.</p></div>
+      <div class="mom card gb rv"><div class="big">∞ evolução</div><h4>Roadmap contínuo de produto</h4><p>Novos agentes, integrações e automações entram no seu sistema sem custo de reimplantação.</p></div>
+    </div>
+  </section>
+
+  <div class="inner"><div class="hr"></div></div>
+
+  <!-- 9 · MÍDIA PRÓPRIA -->
+  <section class="inner" id="conteudo">
+    <div class="sec-head rv">
+      <span class="kicker">Mídia própria</span>
+      <h2 class="serif">Conteúdo que vende <span class="em">antes da primeira reunião</span></h2>
+      <p class="sub">Para quem ainda não vai converter agora: autoridade, método e bastidores em canal aberto.</p>
+    </div>
+    <div class="media-grid">
+      <div class="med card gb rv"><span class="mtag">Podcast</span><h4>Carga Máxima</h4><p>Conversas com operadores de growth sobre tráfego, IA e vendas — sem guru, só número.</p>
+        <div class="fake-player"><span class="play">▶</span><span class="wave" aria-hidden="true"><i style="--h:.3"></i><i style="--h:.8"></i><i style="--h:.5"></i><i style="--h:1"></i><i style="--h:.4"></i><i style="--h:.7"></i><i style="--h:.2"></i><i style="--h:.9"></i><i style="--h:.5"></i><i style="--h:.6"></i><i style="--h:.3"></i><i style="--h:.8"></i></span><span style="font-size:11px;color:var(--dim)">EP 12 · 48 min</span></div></div>
+      <div class="med card gb rv"><span class="mtag">Blog &amp; playbooks</span><h4>Engenharia de vendas</h4><p>Guias práticos: teto de CAC, estrutura de funil, prompts de agente SDR, auditoria de tracking.</p></div>
+      <div class="med card gb rv"><span class="mtag">Social</span><h4>Bastidores em Reels</h4><p>Scripts, testes de criativo e resultados abertos — o método Trion documentado em público.</p></div>
+    </div>
+  </section>
+
+  <div class="inner"><div class="hr"></div></div>
+
+  <!-- 10 · FAQ EXTENSO -->
+  <section class="inner" id="faq">
+    <div class="sec-head center rv">
+      <span class="kicker">Perguntas frequentes</span>
+      <h2 class="serif">Transparência <span class="em">radical</span></h2>
+    </div>
+    <div class="faq rv">
+      <details open><summary>Em quanto tempo vejo resultado?</summary><div class="a">A estrutura completa entra no ar em até 14 dias. Os primeiros leads qualificados costumam chegar na primeira semana de campanha ativa; previsibilidade real de pipeline se consolida entre 60 e 90 dias.</div></details>
+      <details><summary>Já tenho equipe de marketing. A Trion substitui?</summary><div class="a">Não — somamos. No modelo Squad de Performance, nossos especialistas acoplam à sua equipe com playbooks e SLAs claros entre marketing e vendas.</div></details>
+      <details><summary>Existe multa de cancelamento?</summary><div class="a">Não trabalhamos com fidelidade forçada. Se o sistema não gera valor, você encerra. Nossa retenção vem de resultado, não de contrato.</div></details>
+      <details><summary>Qual a diferença entre a Trion e uma agência?</summary><div class="a">Agência entrega peças; a Trion entrega um sistema: tracking, funis, IA, CRM e mídia operando juntos, com meta de receita — não de impressões.</div></details>
+      <details><summary>O agente de IA parece robô?</summary><div class="a">Não. Ele é treinado com dados e tom de voz do seu negócio, responde em ~2 segundos e sabe quando escalar para um humano. Você audita todas as conversas.</div></details>
+      <details><summary>Quanto preciso investir em mídia?</summary><div class="a">Depende do setor e da meta — é exatamente o que o diagnóstico gratuito calcula: teto de CAC, verba mínima viável e projeção de retorno antes de você gastar R$ 1.</div></details>
+      <details><summary>Vocês atendem meu nicho?</summary><div class="a">O sistema é o mesmo em qualquer setor: atrair, qualificar, converter. Já operamos em saúde, imobiliário, e-commerce, educação, B2B e serviços locais — veja a seção de setores.</div></details>
+      <details><summary>Quem é o dono dos dados e das contas?</summary><div class="a">Você. Contas de anúncio, pixels, CRM e históricos ficam na sua propriedade desde o dia 1. Se sairmos, tudo continua funcionando — e documentado.</div></details>
+      <details><summary>Como funciona o diagnóstico gratuito?</summary><div class="a">Você preenche o formulário, recebe uma ligação em até 12 horas e, em seguida, um raio-X do funil: onde vaza, quanto custa e o plano de 14 dias para consertar. Sem compromisso.</div></details>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="inner cta-final" id="diagnostico">
+    <span class="kicker rv" style="justify-content:center">Próximo passo</span>
+    <h2 class="serif rv">Preencha. Receba uma ligação<br>em até <span class="em">12 horas</span>.</h2>
+    <p class="sub rv">Diagnóstico gratuito do seu funil: onde vaza, quanto custa e o plano de 14 dias para consertar.</p>
+    <a class="btn rv" style="font-size:16px;padding:14px 32px" href="https://trion.marketing/#contato">Solicitar diagnóstico gratuito <span class="arr">→</span></a>
+  </section>
+
+  <!-- 11 · FOOTER COMPLETO -->
+  <div class="inner">
+    <footer>
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="logo" href="#"><span class="mark">t</span> trion</a>
+          <p>Tráfego, Inteligência e Growth em uma única força. A ciência por trás da sua escala.</p>
+        </div>
+        <div><h5>Soluções</h5><ul>
+          <li><a href="#solucoes">Tráfego pago</a></li><li><a href="#solucoes">Agente SDR com IA</a></li>
+          <li><a href="#solucoes">Funis automatizados</a></li><li><a href="#solucoes">Tracking &amp; analytics</a></li>
+          <li><a href="#solucoes">CRM &amp; estrutura comercial</a></li></ul></div>
+        <div><h5>Modelos</h5><ul>
+          <li><a href="#modelos">Projeto pontual</a></li><li><a href="#modelos">Sistema completo</a></li>
+          <li><a href="#modelos">Squad de performance</a></li><li><a href="#modelos">Growth Partner</a></li></ul></div>
+        <div><h5>Empresa</h5><ul>
+          <li><a href="#numeros">Resultados</a></li><li><a href="#cases">Cases</a></li>
+          <li><a href="#conteudo">Conteúdo</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+        <div><h5>Contato</h5><ul>
+          <li><a href="#diagnostico">Diagnóstico gratuito</a></li>
+          <li><a href="https://trion.marketing">trion.marketing</a></li>
+          <li><a href="#">WhatsApp</a></li><li><a href="#">Instagram</a></li></ul></div>
+      </div>
+      <div class="foot-base">
+        <span>© 2026 Trion · Tráfego, Inteligência e Growth</span>
+        <span>Feito com dados, não achismo.</span>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<script>
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.12});
+document.querySelectorAll('.rv,.viz').forEach(el=>io.observe(el));
+
+const cio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;cio.unobserve(e.target);
+  const el=e.target,end=parseFloat(el.dataset.count),dec=+(el.dataset.dec||0),suf=el.dataset.suffix||'';
+  if(reduced){el.innerHTML=end.toFixed(dec)+'<small>'+suf+'</small>';return;}
+  const t0=performance.now();
+  (function tick(t){
+    const p=Math.min(1,(t-t0)/1500),v=end*(1-Math.pow(1-p,3));
+    el.innerHTML=v.toFixed(dec)+'<small>'+suf+'</small>';
+    if(p<1)requestAnimationFrame(tick);
+  })(t0);
+}),{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+/* ===== filme de fundo: key moments por seção =====
+   O vídeo (35s de plasma) avança em trechos; cada seção que entra
+   na tela "gatilha" o próximo movimento até o keyframe dela. */
+const bgv=document.getElementById('bgv');
+(function(){
+  if(!bgv) return;
+  const KEYS=[            // [seletor, tempo-alvo em s]
+    ['.hero',5.5],
+    ['#passos',9],['#solucoes',13],['#modelos',16.5],
+    ['#setores',20],['#numeros',22.5],['#cases',25.5],
+    ['#conteudo',29],['#faq',31.5],['#diagnostico',34.8]
+  ];
+  let target=0, raf=null;
+  function driveTo(t){
+    target=Math.max(target,t);          // só avança, nunca volta
+    if(reduced){bgv.currentTime=target;return;}
+    if(bgv.paused) bgv.play().catch(()=>{});
+    cancelAnimationFrame(raf);
+    (function watch(){
+      if(bgv.currentTime>=target-.05){bgv.pause();return;}
+      raf=requestAnimationFrame(watch);
+    })();
+  }
+  const vio=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const k=KEYS.find(k=>e.target.matches(k[0]));
+    if(k) driveTo(k[1]);
+    // clímax visual no CTA final
+    bgv.classList.toggle('boost', e.target.matches('#diagnostico'));
+  }),{threshold:.3});
+  KEYS.forEach(([sel])=>{const el=document.querySelector(sel);el&&vio.observe(el);});
+  // abertura: do escuro, o filme acende e roda o primeiro movimento
+  function ignite(){bgv.classList.add('on');driveTo(5.5);}
+  if(bgv.readyState>=2) ignite(); else bgv.addEventListener('canplay',ignite,{once:true});
+})();
+
+const links=[...document.querySelectorAll('.pillnav a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+addEventListener('scroll',()=>{
+  let cur=secs[0];
+  for(const s of secs) if(s.getBoundingClientRect().top<200) cur=s;
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur.id));
+},{passive:true});
+</script>
+</body></html>
