@@ -37,17 +37,8 @@ img{max-width:100%}
   radial-gradient(80% 70% at 50% 45%,transparent 30%,rgba(5,2,8,.82) 100%),
   linear-gradient(rgba(5,2,8,.35),rgba(5,2,8,.55))}
 
-.frame{width:100%;position:relative;overflow:hidden;background:rgba(3,1,6,.30)}
+.frame{width:100%;max-width:1400px;position:relative;overflow:hidden;background:rgba(3,1,6,.30)}
 
-.gridlines{position:absolute;inset:0;pointer-events:none;z-index:0;
-  display:flex;justify-content:space-between;padding:0 24px;opacity:.5}
-@media(min-width:768px){.gridlines{padding:0 48px;opacity:1}}
-.gridlines i{width:1px;height:100%;background:var(--line-soft)}
-.gridlines i:nth-child(n+2):nth-child(-n+5){display:none}
-@media(min-width:640px){.gridlines i:nth-child(2){display:block}}
-@media(min-width:768px){.gridlines i:nth-child(3){display:block}}
-@media(min-width:1024px){.gridlines i:nth-child(4){display:block}}
-@media(min-width:1280px){.gridlines i:nth-child(5){display:block}}
 .inner{position:relative;z-index:1;padding:0 24px}
 @media(min-width:768px){.inner{padding:0 48px}}
 
@@ -341,8 +332,7 @@ nav.hseq{transform:translateY(-14px)}
 </video>
 <div class="bg-veil" aria-hidden="true"></div>
 <div class="frame">
-  <div class="gridlines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-
+  
   <!-- 0 · NAV + CTA -->
   <nav class="inner hseq">
     <a class="logo" href="#"><span class="mark">t</span> trion</a>
