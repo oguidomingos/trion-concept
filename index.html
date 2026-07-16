@@ -154,6 +154,75 @@ section.tight{padding:96px 0}
 .sol p{font-size:13.5px;color:var(--muted)}
 .sol .verb{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc-hi)}
 
+
+/* soluções — carrossel */
+.caro{position:relative}
+.caro-stage{display:grid;gap:36px;align-items:center;overflow:hidden;
+  padding:48px 40px;border-radius:32px;min-height:460px}
+@media(min-width:960px){.caro-stage{grid-template-columns:1fr 1.05fr;padding:56px 56px}}
+.caro-slide{display:none;grid-column:1/-1;grid-row:1;
+  grid-template-columns:subgrid;gap:inherit;align-items:center}
+.caro-slide.on{display:grid;animation:slidein .55s cubic-bezier(.2,.7,.2,1)}
+@keyframes slidein{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+.caro-txt .verb{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc-hi)}
+.caro-txt h3{font-family:var(--serif);font-weight:200;letter-spacing:-.03em;
+  font-size:clamp(28px,3.4vw,44px);line-height:1.06;margin:14px 0 16px}
+.caro-txt p{color:var(--muted);font-weight:300;font-size:16px;line-height:1.7;max-width:46ch}
+.caro-txt ul{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-direction:column;gap:9px}
+.caro-txt li{font-size:14px;color:var(--muted)}
+.caro-txt li::before{content:"✓  ";color:var(--acc)}
+.caro-nav{display:flex;align-items:center;justify-content:space-between;margin-top:26px;gap:16px}
+.caro-dots{display:flex;gap:8px;flex-wrap:wrap}
+.caro-dots button{width:26px;height:4px;border-radius:99px;border:0;cursor:pointer;
+  background:rgba(255,255,255,.14);transition:background .3s,width .3s;padding:0}
+.caro-dots button.on{background:var(--acc);width:40px}
+.caro-arrows{display:flex;gap:10px}
+.caro-arrows button{width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;
+  color:#fff;font-size:17px;background:rgba(255,255,255,.07);
+  box-shadow:inset 0 0 0 1px var(--line);transition:background .25s}
+.caro-arrows button:hover{background:rgba(255,255,255,.15)}
+/* mockups */
+.mock{border-radius:20px;background:rgba(0,0,0,.45);border:1px solid var(--line-soft);
+  overflow:hidden;box-shadow:0 30px 60px -30px #000;min-height:300px;display:flex;flex-direction:column}
+.mock .bar{display:flex;gap:6px;align-items:center;padding:12px 16px;
+  border-bottom:1px solid var(--line-soft);background:rgba(255,255,255,.03)}
+.mock .bar i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.14)}
+.mock .bar span{font-size:11px;color:var(--dim);margin-left:8px}
+.mock .body{padding:20px;display:flex;flex-direction:column;gap:12px;flex:1}
+.mrow{display:flex;justify-content:space-between;align-items:center;gap:10px;
+  padding:11px 14px;border-radius:12px;background:rgba(255,255,255,.045);font-size:12.5px}
+.mrow b{font-weight:500;color:#fff}
+.mrow .up{color:#7ef0b0}.mrow .pill{font-size:10px;padding:3px 9px;border-radius:99px;
+  background:rgba(123,44,191,.22);color:var(--acc-hi)}
+.skel{height:10px;border-radius:6px;background:rgba(255,255,255,.09)}
+.skel.w60{width:60%}.skel.w40{width:40%}.skel.w80{width:80%}
+.mcta{align-self:flex-start;font-size:12px;padding:9px 20px;border-radius:99px;color:#fff;
+  background:linear-gradient(180deg,var(--acc2),var(--acc-deep))}
+.chat{display:flex;flex-direction:column;gap:10px}
+.msg{max-width:80%;padding:10px 14px;border-radius:14px;font-size:12.5px;line-height:1.5}
+.msg.in{background:rgba(255,255,255,.07);border-bottom-left-radius:4px;align-self:flex-start}
+.msg.out{background:linear-gradient(160deg,rgba(139,92,246,.4),rgba(123,44,191,.28));
+  border-bottom-right-radius:4px;align-self:flex-end}
+.msg small{display:block;opacity:.5;font-size:9.5px;margin-top:4px}
+.mchart{flex:1;display:flex;align-items:flex-end;gap:7px;padding:6px 2px 0;min-height:110px}
+.mchart i{flex:1;border-radius:5px 5px 0 0;background:linear-gradient(180deg,var(--acc),rgba(123,44,191,.25));
+  height:calc(var(--h)*100%)}
+.kan{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;flex:1}
+.kan .col{background:rgba(255,255,255,.035);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:8px}
+.kan .col h6{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin:0 0 2px}
+.kan .tick{background:rgba(255,255,255,.07);border-radius:8px;padding:8px;font-size:10.5px;color:var(--muted)}
+.kan .tick.hot{background:rgba(123,44,191,.25);color:#E3CCFB}
+.flow{display:flex;flex-direction:column;gap:0;align-items:center;justify-content:center;flex:1}
+.flow .fstep{width:78%;text-align:center;padding:11px;border-radius:12px;font-size:12px;
+  background:rgba(255,255,255,.05);border:1px solid var(--line-soft)}
+.flow .fstep.hot{background:rgba(123,44,191,.22);border-color:rgba(168,85,247,.3);color:#E3CCFB}
+.flow .fdown{width:1px;height:18px;background:linear-gradient(var(--acc),transparent)}
+.grid9{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;flex:1}
+.grid9 .ph{border-radius:12px;background:linear-gradient(160deg,rgba(168,85,247,.30),rgba(255,255,255,.04));
+  aspect-ratio:3/4;display:grid;place-items:end start;padding:8px;font-size:9px;color:#E3CCFB}
+.sw{display:flex;gap:10px}
+.sw i{flex:1;height:52px;border-radius:12px}
+
 /* modelos (passo 02) */
 .models{display:grid;gap:24px}
 @media(min-width:900px){.models{grid-template-columns:repeat(4,1fr)}}
@@ -431,16 +500,90 @@ nav.hseq{transform:translateY(-14px)}
       <h2 class="serif">O que fazemos: <span class="em">tudo para vender</span></h2>
       <p class="sub">Oferta descrita por resultado, não por entregável. Cada solução existe para uma coisa só.</p>
     </div>
-    <div class="sol-grid">
-      <div class="sol card gb rv"><div class="ic">▤</div><span class="verb">Vender mais por clique</span><h4>Landing pages que convertem</h4><p>Design e performance unidos por dados reais para maximizar cada clique e reduzir o custo por lead.</p></div>
-      <div class="sol card gb rv"><div class="ic">◎</div><span class="verb">Vender enquanto você dorme</span><h4>Agente SDR com IA</h4><p>Resposta automática em 2s, qualificação via WhatsApp e agendamento direto no CRM, 24/7.</p></div>
-      <div class="sol card gb rv"><div class="ic">▦</div><span class="verb">Vender com certeza</span><h4>Tracking &amp; analytics</h4><p>GA4, GTM e pixels para rastreabilidade total do funil — do primeiro clique à venda.</p></div>
-      <div class="sol card gb rv"><div class="ic">▲</div><span class="verb">Vender para mais pessoas</span><h4>Tráfego pago inteligente</h4><p>Meta, Google e YouTube com engenharia de funil para leads qualificados ao menor custo.</p></div>
-      <div class="sol card gb rv"><div class="ic">⟳</div><span class="verb">Vender mais vezes</span><h4>Funis automatizados</h4><p>Anúncio → conversa → follow-up → fechamento, com nutrição automática e jornada guiada.</p></div>
-      <div class="sol card gb rv"><div class="ic">✎</div><span class="verb">Vender com autoridade</span><h4>Conteúdo &amp; social selling</h4><p>Reels, scripts e copy orientados a vendas que constroem posicionamento e engajamento escalável.</p></div>
-      <div class="sol card gb rv"><div class="ic">✧</div><span class="verb">Vender pelo maior valor</span><h4>Identidade visual &amp; design</h4><p>Sistemas visuais prontos para vender: clareza total e foco em conversão.</p></div>
-      <div class="sol card gb rv"><div class="ic">✉</div><span class="verb">Vender de novo</span><h4>E-mail &amp; WhatsApp marketing</h4><p>Retenção, reativação e nutrição que transformam leads frios em oportunidades quentes.</p></div>
-      <div class="sol card gb rv"><div class="ic">⚙</div><span class="verb">Vender com processo</span><h4>CRM, SLAs &amp; estrutura comercial</h4><p>Implantação de CRM e processos que transformam marketing em vendas reais.</p></div>
+    <div class="caro card gb" >
+      <div class="caro-stage">
+      <div class="caro-slide on">
+        <div class="caro-txt"><span class="verb">Vender mais por clique</span><h3>Landing pages que convertem</h3><p>Projetadas com dados reais: design e performance juntos para maximizar cada clique e derrubar o custo por lead.</p><ul><li>Alta velocidade de carregamento</li><li>Conversão validada por teste A/B</li><li>Copy orientada a ação</li></ul></div>
+        <div class="mock"><div class="bar"><i></i><i></i><i></i><span>suaempresa.com.br</span></div>
+     <div class="body"><div class="skel w60"></div><div class="skel w80"></div><div class="skel w40"></div>
+     <span class="mcta">Quero meu diagnóstico →</span>
+     <div class="mrow"><b>Taxa de conversão</b><span class="up">▲ 9,4%</span></div>
+     <div class="mrow"><b>Custo por lead</b><span class="up">▼ R$ 12,80</span></div></div></div>
+      </div>
+      <div class="caro-slide">
+        <div class="caro-txt"><span class="verb">Vender enquanto você dorme</span><h3>Agente SDR com IA</h3><p>Responde em 2 segundos no WhatsApp, qualifica com perguntas certas e agenda direto no seu CRM — 24/7, com o tom da sua marca.</p><ul><li>Resposta automática em 2s</li><li>Qualificação inteligente</li><li>Agendamento direto no CRM</li></ul></div>
+        <div class="mock"><div class="bar"><i></i><i></i><i></i><span>WhatsApp · Agente Trion</span></div>
+     <div class="body chat">
+     <div class="msg in">Oi! Vi o anúncio de vocês, como funciona?<small>19:42</small></div>
+     <div class="msg out">Oi, Marina! 👋 Te explico em 1 min. Hoje você já investe em tráfego ou está começando?<small>19:42 · IA</small></div>
+     <div class="msg in">Já invisto, mas o lead chega frio…<small>19:43</small></div>
+     <div class="msg out">Perfeito, é exatamente o que resolvemos. Consigo te encaixar com um especialista amanhã às 10h. Confirmo? ✅<small>19:43 · IA</small></div>
+     <div class="mrow"><b>Reunião agendada</b><span class="pill">CRM ✓</span></div></div></div>
+      </div>
+      <div class="caro-slide">
+        <div class="caro-txt"><span class="verb">Vender com certeza</span><h3>Tracking & analytics</h3><p>GA4, GTM e pixels configurados para rastreabilidade total — cada real de mídia auditável do primeiro clique à venda.</p><ul><li>Auditoria completa de dados</li><li>Eventos server-side</li><li>Zero perda de métricas</li></ul></div>
+        <div class="mock"><div class="bar"><i></i><i></i><i></i><span>Painel · Funil em tempo real</span></div>
+     <div class="body"><div class="mchart"><i style="--h:.35"></i><i style="--h:.5"></i><i style="--h:.42"></i><i style="--h:.66"></i><i style="--h:.58"></i><i style="--h:.8"></i><i style="--h:.94"></i></div>
+     <div class="mrow"><b>Cliques → Leads</b><span class="up">3,42% CTR</span></div>
+     <div class="mrow"><b>Leads → Vendas</b><span class="up">▲ 12,1%</span></div></div></div>
+      </div>
+      <div class="caro-slide">
+        <div class="caro-txt"><span class="verb">Vender para mais pessoas</span><h3>Tráfego pago inteligente</h3><p>Meta, Google e YouTube com engenharia de funil: criativo testado toda semana e verba onde o dado mandar.</p><ul><li>Otimização contínua</li><li>Segmentação avançada</li><li>CPC médio R$ 2,14</li></ul></div>
+        <div class="mock"><div class="bar"><i></i><i></i><i></i><span>Gerenciador de campanhas</span></div>
+     <div class="body">
+     <div class="mrow"><b>[Frio] Vídeo — Prova social</b><span class="up">CPL ▼ 38%</span></div>
+     <div class="mrow"><b>[Morno] Remarketing 7d</b><span class="up">ROAS 5,2×</span></div>
+     <div class="mrow"><b>[Quente] Oferta direta</b><span class="pill">escalando</span></div>
+     <div class="mrow"><b>Orçamento hoje</b><b>R$ 1.240 / dia</b></div></div></div>
+      </div>
+      <div class="caro-slide">
+        <div class="caro-txt"><span class="verb">Vender mais vezes</span><h3>Funis automatizados</h3><p>Do anúncio ao fechamento sem buraco: cada lead entra numa jornada guiada com nutrição e follow-up automáticos.</p><ul><li>Nutrição automática</li><li>Follow-up sem esquecimento</li><li>Jornada guiada até a venda</li></ul></div>
+        <div class="mock"><div class="bar"><i></i><i></i><i></i><span>Fluxo · Jornada do lead</span></div>
+     <div class="body flow">
+     <div class="fstep">Anúncio</div><div class="fdown"></div>
+     <div class="fstep">Conversa (SDR AI)</div><div class="fdown"></div>
+     <div class="fstep hot">Follow-up automático</div><div class="fdown"></div>
+     <div class="fstep">Fechamento 🤝</div></div></div>
+      </div>
+      <div class="caro-slide">
+        <div class="caro-txt"><span class="verb">Vender com autoridade</span><h3>Conteúdo & social selling</h3><p>Reels, scripts e copy orientados a venda: autoridade que aquece o lead antes do primeiro contato comercial.</p><ul><li>Posicionamento claro</li><li>Roteiros prontos para gravar</li><li>Engajamento escalável</li></ul></div>
+        <div class="mock"><div class="bar"><i></i><i></i><i></i><span>Feed · seu perfil</span></div>
+     <div class="body grid9">
+     <div class="ph">▶ 48k</div><div class="ph">▶ 12k</div><div class="ph">▶ 96k</div>
+     <div class="ph">▶ 31k</div><div class="ph">▶ 22k</div><div class="ph">▶ 57k</div></div></div>
+      </div>
+      <div class="caro-slide">
+        <div class="caro-txt"><span class="verb">Vender pelo maior valor</span><h3>Identidade visual & design</h3><p>Sistema visual pronto para vender: clareza, consistência e percepção de valor que sustenta preço maior.</p><ul><li>Clareza visual total</li><li>Kit completo de marca</li><li>Design focado em ação</li></ul></div>
+        <div class="mock"><div class="bar"><i></i><i></i><i></i><span>Brandbook</span></div>
+     <div class="body"><div class="sw"><i style="background:#7B2CBF"></i><i style="background:#A855F7"></i><i style="background:#120326"></i><i style="background:#E0E1DD"></i></div>
+     <div class="skel w60"></div><div class="skel w80"></div>
+     <div class="mrow"><b>Aa · Inter Thin / Medium</b><span class="pill">tipografia</span></div>
+     <div class="mrow"><b>Logo, ícones, templates</b><span class="pill">entregáveis</span></div></div></div>
+      </div>
+      <div class="caro-slide">
+        <div class="caro-txt"><span class="verb">Vender de novo</span><h3>E-mail & WhatsApp marketing</h3><p>Retenção, reativação e nutrição automáticas: o lead frio de hoje vira a oportunidade quente do mês que vem.</p><ul><li>Sequências automáticas</li><li>Alta taxa de abertura</li><li>Reativação de base parada</li></ul></div>
+        <div class="mock"><div class="bar"><i></i><i></i><i></i><span>Sequência · Reativação</span></div>
+     <div class="body">
+     <div class="mrow"><b>D+0 · "Sentimos sua falta"</b><span class="up">62% abertura</span></div>
+     <div class="mrow"><b>D+3 · Prova social</b><span class="up">41% cliques</span></div>
+     <div class="mrow"><b>D+7 · Oferta + WhatsApp</b><span class="pill">12 vendas</span></div></div></div>
+      </div>
+      <div class="caro-slide">
+        <div class="caro-txt"><span class="verb">Vender com processo</span><h3>CRM, SLAs & estrutura comercial</h3><p>Pipeline organizado, SLAs entre marketing e vendas e processo que transforma lead qualificado em receita.</p><ul><li>Implantação de CRM</li><li>SLAs marketing ↔ vendas</li><li>Previsibilidade de pipeline</li></ul></div>
+        <div class="mock"><div class="bar"><i></i><i></i><i></i><span>CRM · Pipeline</span></div>
+     <div class="body kan">
+     <div class="col"><h6>Novo</h6><div class="tick">Marina — Clínica</div><div class="tick">Paulo — Imob</div></div>
+     <div class="col"><h6>Qualificado</h6><div class="tick hot">TechLog B2B</div><div class="tick">E-shop Brasil</div></div>
+     <div class="col"><h6>Fechamento</h6><div class="tick hot">R$ 48.000 🤝</div></div></div></div>
+      </div>
+      </div>
+      <div class="caro-nav inner" style="padding:0 40px 36px">
+        <div class="caro-dots" role="tablist" aria-label="Soluções"></div>
+        <div class="caro-arrows">
+          <button type="button" aria-label="Anterior" data-caro="-1">←</button>
+          <button type="button" aria-label="Próxima" data-caro="1">→</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -743,6 +886,33 @@ const bgv=document.getElementById('bgv');
   bgv.addEventListener('error',()=>{clearTimeout(heroFallback);heroIn();},{once:true});
   addEventListener('resize',build);
   addEventListener('load',build);
+})();
+
+
+/* carrossel de soluções */
+(function(){
+  const caro=document.querySelector('.caro');if(!caro)return;
+  const slides=[...caro.querySelectorAll('.caro-slide')];
+  const dots=caro.querySelector('.caro-dots');
+  slides.forEach((_,i)=>{const b=document.createElement('button');
+    b.setAttribute('aria-label','Solução '+(i+1));
+    b.addEventListener('click',()=>go(i,true));dots.appendChild(b);});
+  let cur=0,timer;
+  function paint(){slides.forEach((s,i)=>s.classList.toggle('on',i===cur));
+    [...dots.children].forEach((d,i)=>d.classList.toggle('on',i===cur));}
+  function go(i,user){cur=(i+slides.length)%slides.length;paint();if(user)restart();}
+  function restart(){clearInterval(timer);
+    if(!reduced)timer=setInterval(()=>go(cur+1),6000);}
+  caro.querySelectorAll('[data-caro]').forEach(b=>
+    b.addEventListener('click',()=>go(cur+ +b.dataset.caro,true)));
+  caro.addEventListener('pointerenter',()=>clearInterval(timer));
+  caro.addEventListener('pointerleave',restart);
+  let x0=null;
+  caro.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
+  caro.addEventListener('touchend',e=>{if(x0==null)return;
+    const dx=e.changedTouches[0].clientX-x0;
+    if(Math.abs(dx)>40)go(cur+(dx<0?1:-1),true);x0=null;},{passive:true});
+  paint();restart();
 })();
 
 const links=[...document.querySelectorAll('.pillnav a')];
