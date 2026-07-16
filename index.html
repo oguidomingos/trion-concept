@@ -251,7 +251,7 @@ section.tight{padding:96px 0}
 .hbar .tr i.ok{background:#37c98b}.hbar .tr i.warn{background:#e3b341}.hbar .tr i.bad{background:#e35d6a}
 .hbar b{color:#fff;text-align:right;font-weight:500}
 /* órbita tráfego pago */
-.orbit-wrap{position:relative;display:grid;place-items:center;flex:1;min-height:320px}
+.orbit-wrap{position:relative;display:grid;place-items:center;flex:1;min-height:420px}
 .phone{width:150px;aspect-ratio:9/16;border-radius:22px;position:relative;z-index:2;
   background:linear-gradient(160deg,#1a0b28,#0a0512);border:1px solid rgba(255,255,255,.14);
   box-shadow:0 24px 60px -18px rgba(123,44,191,.55);overflow:hidden;display:flex;flex-direction:column}
@@ -261,8 +261,8 @@ section.tight{padding:96px 0}
   background:rgba(255,255,255,.12);backdrop-filter:blur(6px);font-size:15px}
 .phone .rfoot{padding:9px 11px;font-size:8.5px;color:var(--muted);border-top:1px solid var(--line-soft)}
 .phone .rfoot b{color:#fff;display:block;font-size:9.5px}
-.orbit{position:absolute;inset:0;margin:auto;width:300px;height:300px;animation:spin 22s linear infinite}
-.orbit.o2{width:210px;height:210px;animation-duration:14s;animation-direction:reverse}
+.orbit{position:absolute;inset:0;margin:auto;width:400px;height:400px;animation:spin 22s linear infinite}
+.orbit.o2{width:300px;height:300px;animation-duration:14s;animation-direction:reverse}
 @keyframes spin{to{transform:rotate(360deg)}}
 .orb{position:absolute;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
   background:rgba(10,5,18,.85);border:1px solid var(--line);backdrop-filter:blur(8px);
@@ -285,13 +285,41 @@ section.tight{padding:96px 0}
 .msg{backdrop-filter:blur(14px);box-shadow:0 12px 30px -14px rgba(0,0,0,.6)}
 /* LP: screenshot solto em rotação */
 .lp-tabs{display:none}
-.lp-shot{position:relative;flex:1;min-height:380px;overflow:visible;background:transparent}
-.lp-shot img{position:absolute;inset:0;margin:auto;width:min(92%,360px);height:auto;max-height:100%;
+.lp-shot{position:relative;flex:1;min-height:340px;overflow:visible;background:transparent}
+.lp-shot img{position:absolute;inset:0;margin:auto;width:min(100%,480px);aspect-ratio:1440/1000;height:auto;max-height:100%;
   object-fit:cover;object-position:top;border-radius:18px;border:1px solid var(--line);
   box-shadow:0 40px 80px -30px rgba(0,0,0,.85),0 0 60px -20px rgba(123,44,191,.4);
   opacity:0;transform:translateY(14px) scale(.98);
   transition:opacity .8s ease,transform .8s ease}
 .lp-shot img.on{opacity:1;transform:none}
+
+
+/* gmail mock */
+.gmail{border-radius:16px;overflow:hidden;background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.03));
+  border:1px solid var(--line-soft);backdrop-filter:blur(18px);box-shadow:0 16px 40px -18px rgba(0,0,0,.7)}
+.gm-head{display:flex;align-items:center;gap:10px;padding:11px 14px;font-size:11.5px;color:var(--muted);
+  border-bottom:1px solid var(--line-soft)}
+.gm-logo{width:20px;height:20px;border-radius:5px;display:grid;place-items:center;font-size:11px;font-weight:700;
+  background:linear-gradient(135deg,#EA4335,#FBBC05,#34A853,#4285F4);color:#fff}
+.gm-count{margin-left:auto;font-size:9.5px;padding:3px 9px;border-radius:99px;background:rgba(123,44,191,.22);color:var(--acc-hi)}
+.gm-row{display:flex;gap:11px;align-items:center;padding:11px 14px;border-bottom:1px solid var(--line-soft)}
+.gm-row:last-child{border:0}
+.gm-row.unread{background:rgba(123,44,191,.08)}
+.gm-av{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:13px;color:#fff;font-weight:600}
+.gm-tx{min-width:0;display:flex;flex-direction:column;gap:2px}
+.gm-tx b{font-size:12px;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gm-tx span{font-size:11px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gm-time{margin-left:auto;font-size:9.5px;color:var(--dim);flex:none}
+/* whatsapp mock */
+.wa-card{border-radius:16px;overflow:hidden;background:linear-gradient(160deg,rgba(18,40,32,.75),rgba(8,20,16,.7));
+  border:1px solid rgba(37,211,102,.25);backdrop-filter:blur(18px);box-shadow:0 16px 40px -18px rgba(0,0,0,.7);padding-bottom:12px}
+.wa-head{display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(37,211,102,.12);
+  border-bottom:1px solid rgba(37,211,102,.15);margin-bottom:12px}
+.wa-head b{font-size:12.5px;display:block}
+.wa-head small{font-size:9.5px;color:#7ef0b0}
+.wa-av{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:600;
+  background:linear-gradient(135deg,#25D366,#128C7E);color:#fff}
+.wa-in{margin:0 14px;background:rgba(255,255,255,.09)!important;max-width:88%}
 
 /* modelos (passo 02) */
 .models{display:grid;gap:24px}
@@ -661,11 +689,22 @@ nav.hseq{transform:translateY(-14px)}
       </div>
       <div class="caro-slide">
         <div class="caro-txt"><span class="verb">Vender de novo</span><h3>E-mail & WhatsApp marketing</h3><p>Retenção, reativação e nutrição automáticas: o lead frio de hoje vira a oportunidade quente do mês que vem.</p><ul><li>Sequências automáticas</li><li>Alta taxa de abertura</li><li>Reativação de base parada</li></ul></div>
-        <div class="mock"><div class="bar"><i></i><i></i><i></i><span>Sequência · Reativação</span></div>
+        <div class="mock"><div class="bar"></div>
      <div class="body">
-     <div class="mrow"><b>D+0 · "Sentimos sua falta"</b><span class="up">62% abertura</span></div>
-     <div class="mrow"><b>D+3 · Prova social</b><span class="up">41% cliques</span></div>
-     <div class="mrow"><b>D+7 · Oferta + WhatsApp</b><span class="pill">12 vendas</span></div></div></div>
+       <div class="gmail">
+         <div class="gm-head"><span class="gm-logo">M</span><span>Caixa de entrada</span><span class="gm-count">3 novas</span></div>
+         <div class="gm-row unread"><span class="gm-av" style="background:#7B2CBF">T</span>
+           <div class="gm-tx"><b>Trion · Sentimos sua falta 💜</b><span>Marina, separamos uma condição especial pra você voltar…</span></div>
+           <span class="gm-time">09:12</span></div>
+         <div class="gm-row"><span class="gm-av" style="background:#8B5CF6">T</span>
+           <div class="gm-tx"><b>Como a Clínica Vitalis dobrou a agenda</b><span>Case completo: de 40 para 92 consultas/mês com o mesmo orçamento…</span></div>
+           <span class="gm-time">seg</span></div>
+       </div>
+       <div class="wa-card">
+         <div class="wa-head"><span class="wa-av">T</span><div><b>Trion</b><small>online</small></div></div>
+         <div class="msg in wa-in">Oi Marina! Vi que você abriu nosso e-mail 👀 A condição especial vale até sexta. Quer que eu já reserve seu horário?<small>09:14 ✓✓</small></div>
+       </div>
+     </div></div>
       </div>
       <div class="caro-slide">
         <div class="caro-txt"><span class="verb">Vender com processo</span><h3>CRM, SLAs & estrutura comercial</h3><p>Pipeline organizado, SLAs entre marketing e vendas e processo que transforma lead qualificado em receita.</p><ul><li>Implantação de CRM</li><li>SLAs marketing ↔ vendas</li><li>Previsibilidade de pipeline</li></ul></div>
