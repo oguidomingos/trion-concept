@@ -223,6 +223,58 @@ section.tight{padding:96px 0}
 .sw{display:flex;gap:10px}
 .sw i{flex:1;height:52px;border-radius:12px}
 
+
+/* fix: display dos mockups vence o flex do .body */
+.mock .body.grid9,.mock .body.kan{display:grid}
+.grid9 .ph{aspect-ratio:3/4;max-height:120px}
+/* LP tabs + screenshot */
+.lp-tabs{display:flex;gap:6px;padding:10px 12px 0}
+.lp-tabs button{border:0;cursor:pointer;font-size:10.5px;padding:7px 13px;color:var(--muted);
+  background:rgba(255,255,255,.05);border-radius:9px 9px 0 0;transition:.25s}
+.lp-tabs button.on{background:rgba(123,44,191,.28);color:#E3CCFB}
+.lp-shot{position:relative;flex:1;overflow:hidden;background:#000;min-height:230px}
+.lp-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;
+  opacity:0;transition:opacity .5s}
+.lp-shot img.on{opacity:1}
+/* dash jarvis-like */
+.dash{display:flex;flex-direction:column;gap:12px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.kpi{background:rgba(255,255,255,.05);border:1px solid var(--line-soft);border-radius:12px;padding:10px 12px}
+.kpi .kl{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.kpi .kv{font-size:17px;font-weight:600;color:#fff;margin-top:3px;font-variant-numeric:tabular-nums}
+.kpi .kv small{font-size:10px;color:#7ef0b0;font-weight:500;margin-left:4px}
+.dash .panel{background:rgba(255,255,255,.04);border:1px solid var(--line-soft);border-radius:12px;padding:12px 14px}
+.dash .panel h6{margin:0 0 10px;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.hbar{display:grid;grid-template-columns:86px 1fr 26px;gap:10px;align-items:center;
+  font-size:11px;color:var(--muted);padding:4px 0}
+.hbar .tr{height:7px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden}
+.hbar .tr i{display:block;height:100%;border-radius:99px;width:var(--w);
+  background:linear-gradient(90deg,var(--acc),var(--acc2))}
+.hbar .tr i.ok{background:#37c98b}.hbar .tr i.warn{background:#e3b341}.hbar .tr i.bad{background:#e35d6a}
+.hbar b{color:#fff;text-align:right;font-weight:500}
+/* órbita tráfego pago */
+.orbit-wrap{position:relative;display:grid;place-items:center;flex:1;min-height:320px}
+.phone{width:150px;aspect-ratio:9/16;border-radius:22px;position:relative;z-index:2;
+  background:linear-gradient(160deg,#1a0b28,#0a0512);border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 24px 60px -18px rgba(123,44,191,.55);overflow:hidden;display:flex;flex-direction:column}
+.phone .reel{flex:1;display:grid;place-items:center;background:
+  radial-gradient(70% 60% at 50% 40%,rgba(168,85,247,.35),transparent 70%)}
+.phone .reel .play-o{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(255,255,255,.12);backdrop-filter:blur(6px);font-size:15px}
+.phone .rfoot{padding:9px 11px;font-size:8.5px;color:var(--muted);border-top:1px solid var(--line-soft)}
+.phone .rfoot b{color:#fff;display:block;font-size:9.5px}
+.orbit{position:absolute;inset:0;margin:auto;width:300px;height:300px;animation:spin 22s linear infinite}
+.orbit.o2{width:210px;height:210px;animation-duration:14s;animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.orb{position:absolute;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(10,5,18,.85);border:1px solid var(--line);backdrop-filter:blur(8px);
+  box-shadow:0 0 20px rgba(123,44,191,.35);animation:spin 22s linear infinite reverse}
+.orbit.o2 .orb{animation-duration:14s;animation-direction:normal}
+.orb svg{width:22px;height:22px}
+.orb.p1{top:-23px;left:calc(50% - 23px)}.orb.p2{bottom:-23px;left:calc(50% - 23px)}
+.orb.p3{left:-23px;top:calc(50% - 23px)}.orb.p4{right:-23px;top:calc(50% - 23px)}
+@media(prefers-reduced-motion:reduce){.orbit,.orb{animation:none}}
+
 /* modelos (passo 02) */
 .models{display:grid;gap:24px}
 @media(min-width:900px){.models{grid-template-columns:repeat(4,1fr)}}
@@ -504,11 +556,17 @@ nav.hseq{transform:translateY(-14px)}
       <div class="caro-stage">
       <div class="caro-slide on">
         <div class="caro-txt"><span class="verb">Vender mais por clique</span><h3>Landing pages que convertem</h3><p>Projetadas com dados reais: design e performance juntos para maximizar cada clique e derrubar o custo por lead.</p><ul><li>Alta velocidade de carregamento</li><li>Conversão validada por teste A/B</li><li>Copy orientada a ação</li></ul></div>
-        <div class="mock"><div class="bar"><i></i><i></i><i></i><span>suaempresa.com.br</span></div>
-     <div class="body"><div class="skel w60"></div><div class="skel w80"></div><div class="skel w40"></div>
-     <span class="mcta">Quero meu diagnóstico →</span>
-     <div class="mrow"><b>Taxa de conversão</b><span class="up">▲ 9,4%</span></div>
-     <div class="mrow"><b>Custo por lead</b><span class="up">▼ R$ 12,80</span></div></div></div>
+        <div class="mock"><div class="bar"><i></i><i></i><i></i><span class="lp-url">hannatattoo.com.br</span></div>
+     <div class="lp-tabs">
+       <button type="button" class="on" data-lp="0">Hanna Tattoo</button>
+       <button type="button" data-lp="1">Neo Fisioterapia</button>
+       <button type="button" data-lp="2">Fruto da Videira</button>
+     </div>
+     <div class="lp-shot">
+       <img class="on" src="lp-hanna.jpg" alt="Landing page Hanna Tattoo" data-url="hannatattoo.com.br">
+       <img src="lp-neo.jpg" alt="Landing page Neo Fisioterapia" data-url="neofisioterapia.com.br" loading="lazy">
+       <img src="lp-fruto.jpg" alt="Landing page Fruto da Videira" data-url="frutodavide.com.br" loading="lazy">
+     </div></div>
       </div>
       <div class="caro-slide">
         <div class="caro-txt"><span class="verb">Vender enquanto você dorme</span><h3>Agente SDR com IA</h3><p>Responde em 2 segundos no WhatsApp, qualifica com perguntas certas e agenda direto no seu CRM — 24/7, com o tom da sua marca.</p><ul><li>Resposta automática em 2s</li><li>Qualificação inteligente</li><li>Agendamento direto no CRM</li></ul></div>
@@ -522,19 +580,42 @@ nav.hseq{transform:translateY(-14px)}
       </div>
       <div class="caro-slide">
         <div class="caro-txt"><span class="verb">Vender com certeza</span><h3>Tracking & analytics</h3><p>GA4, GTM e pixels configurados para rastreabilidade total — cada real de mídia auditável do primeiro clique à venda.</p><ul><li>Auditoria completa de dados</li><li>Eventos server-side</li><li>Zero perda de métricas</li></ul></div>
-        <div class="mock"><div class="bar"><i></i><i></i><i></i><span>Painel · Funil em tempo real</span></div>
-     <div class="body"><div class="mchart"><i style="--h:.35"></i><i style="--h:.5"></i><i style="--h:.42"></i><i style="--h:.66"></i><i style="--h:.58"></i><i style="--h:.8"></i><i style="--h:.94"></i></div>
-     <div class="mrow"><b>Cliques → Leads</b><span class="up">3,42% CTR</span></div>
-     <div class="mrow"><b>Leads → Vendas</b><span class="up">▲ 12,1%</span></div></div></div>
+        <div class="mock"><div class="bar"><i></i><i></i><i></i><span>Dashboard de performance · 7d</span></div>
+     <div class="body dash">
+       <div class="kpis">
+         <div class="kpi"><div class="kl">Leads</div><div class="kv">114<small>▲18%</small></div></div>
+         <div class="kpi"><div class="kl">CPA médio</div><div class="kv">R$ 18,31</div></div>
+         <div class="kpi"><div class="kl">Investido</div><div class="kv">R$ 5.02k</div></div>
+         <div class="kpi"><div class="kl">Sessões</div><div class="kv">7.6k<small>▲9%</small></div></div>
+       </div>
+       <div class="panel"><h6>Leads por origem</h6>
+         <div class="hbar"><span>google</span><span class="tr"><i style="--w:88%"></i></span><b>64</b></div>
+         <div class="hbar"><span>meta</span><span class="tr"><i style="--w:60%"></i></span><b>38</b></div>
+         <div class="hbar"><span>orgânico</span><span class="tr"><i style="--w:22%"></i></span><b>12</b></div>
+       </div>
+       <div class="panel"><h6>Funil por status</h6>
+         <div class="hbar"><span>novo</span><span class="tr"><i class="ok" style="--w:82%"></i></span><b>47</b></div>
+         <div class="hbar"><span>qualificado</span><span class="tr"><i style="--w:55%"></i></span><b>29</b></div>
+         <div class="hbar"><span>agendado</span><span class="tr"><i class="warn" style="--w:34%"></i></span><b>16</b></div>
+         <div class="hbar"><span>fechado</span><span class="tr"><i class="ok" style="--w:20%"></i></span><b>9</b></div>
+       </div>
+     </div></div>
       </div>
       <div class="caro-slide">
         <div class="caro-txt"><span class="verb">Vender para mais pessoas</span><h3>Tráfego pago inteligente</h3><p>Meta, Google e YouTube com engenharia de funil: criativo testado toda semana e verba onde o dado mandar.</p><ul><li>Otimização contínua</li><li>Segmentação avançada</li><li>CPC médio R$ 2,14</li></ul></div>
-        <div class="mock"><div class="bar"><i></i><i></i><i></i><span>Gerenciador de campanhas</span></div>
-     <div class="body">
-     <div class="mrow"><b>[Frio] Vídeo — Prova social</b><span class="up">CPL ▼ 38%</span></div>
-     <div class="mrow"><b>[Morno] Remarketing 7d</b><span class="up">ROAS 5,2×</span></div>
-     <div class="mrow"><b>[Quente] Oferta direta</b><span class="pill">escalando</span></div>
-     <div class="mrow"><b>Orçamento hoje</b><b>R$ 1.240 / dia</b></div></div></div>
+        <div class="mock"><div class="bar"><i></i><i></i><i></i><span>Todos os canais · um funil</span></div>
+     <div class="body orbit-wrap">
+       <div class="orbit">
+         <span class="orb p1"><svg viewBox="0 0 24 24" fill="#0081FB"><path d="M6.9 4.4C4 4.4 1.5 8.2 1.5 12.9c0 3 1.4 6.7 4.4 6.7 1.9 0 3.3-1.5 5.2-4.9l1-1.7.2.3 1.5 2.6c1.6 2.6 2.9 3.7 4.7 3.7 2.9 0 4.1-3.2 4.1-6.5 0-4.9-2.5-8.7-5.5-8.7-1.9 0-3.4 1.4-5 4-.3.4-.5.8-.8 1.3l-.8-1.3c-1.7-2.7-3.2-4-5.6-4zm.3 3c.9 0 1.7.8 3.2 3.2l.4.7-1.4 2.3c-1.4 2.3-2.1 3-3 3-1 0-1.7-1.4-1.7-3.6C4.7 9.7 5.8 7.4 7.2 7.4zm10.4 0c1.4 0 2.5 2.2 2.5 5.6 0 2-.5 3.6-1.5 3.6-.8 0-1.4-.6-2.7-2.8l-1.4-2.3.7-1.2c1.2-2 1.7-2.9 2.4-2.9z"/></svg></span><span class="orb p2"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.3h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.2z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.7 1.1-2.9 0-5.3-1.9-6.2-4.6H2.1v2.9C3.9 20.5 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.8 14c-.2-.7-.4-1.4-.4-2.1s.1-1.4.4-2.1V6.9H2.1C1.4 8.4 1 10.1 1 11.9s.4 3.5 1.1 5z"/><path fill="#EA4335" d="M12 5.3c1.6 0 3.1.6 4.2 1.7l3.2-3.2C17.5 2 15 1 12 1 7.7 1 3.9 3.5 2.1 6.9l3.7 2.9c.9-2.7 3.3-4.5 6.2-4.5z"/></svg></span>
+       </div>
+       <div class="orbit o2">
+         <span class="orb p3"><svg viewBox="0 0 24 24"><path fill="#FF0000" d="M23 7.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C16.6 3.6 12 3.6 12 3.6s-4.6 0-7.8.3c-.4.1-1.4.1-2.3 1-.7.7-.9 2.3-.9 2.3S.7 9.1.7 11v1.8c0 1.9.3 3.8.3 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.6.3 7.6.3s4.6 0 7.8-.3c.4-.1 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.3-1.9.3-3.8V11c0-1.9-.3-3.8-.3-3.8z"/><path fill="#fff" d="M9.7 8.6v6.5l6-3.2z"/></svg></span><span class="orb p4"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 13.9c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-2.9-1-4.9-3-6.4-5.7-.5-1-.8-2.1-.3-3 .2-.4.7-.9 1.1-.9h.7c.2 0 .5 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.5.8c-.1.2-.2.4 0 .7.6 1.1 1.7 2.1 3 2.7.3.1.5.1.7-.1l.8-1c.2-.2.4-.3.7-.2l2.1 1c.3.1.5.2.5.4.1.1.1.4-.3.7z"/></svg></span>
+       </div>
+       <div class="phone">
+         <div class="reel"><span class="play-o">▶</span></div>
+         <div class="rfoot"><b>@trion.marketing</b>anúncio · Reels · ROAS 5,2×</div>
+       </div>
+     </div></div>
       </div>
       <div class="caro-slide">
         <div class="caro-txt"><span class="verb">Vender mais vezes</span><h3>Funis automatizados</h3><p>Do anúncio ao fechamento sem buraco: cada lead entra numa jornada guiada com nutrição e follow-up automáticos.</p><ul><li>Nutrição automática</li><li>Follow-up sem esquecimento</li><li>Jornada guiada até a venda</li></ul></div>
@@ -913,6 +994,21 @@ const bgv=document.getElementById('bgv');
     const dx=e.changedTouches[0].clientX-x0;
     if(Math.abs(dx)>40)go(cur+(dx<0?1:-1),true);x0=null;},{passive:true});
   paint();restart();
+})();
+
+
+/* abas de LPs de exemplo */
+(function(){
+  const tabs=[...document.querySelectorAll('[data-lp]')];if(!tabs.length)return;
+  const shots=[...document.querySelectorAll('.lp-shot img')];
+  const url=document.querySelector('.lp-url');
+  let cur=0,t;
+  function show(i){cur=i;
+    tabs.forEach((b,j)=>b.classList.toggle('on',j===i));
+    shots.forEach((im,j)=>im.classList.toggle('on',j===i));
+    if(url)url.textContent=shots[i].dataset.url;}
+  tabs.forEach((b,i)=>b.addEventListener('click',()=>{show(i);clearInterval(t);}));
+  if(!reduced)t=setInterval(()=>show((cur+1)%shots.length),3500);
 })();
 
 const links=[...document.querySelectorAll('.pillnav a')];
