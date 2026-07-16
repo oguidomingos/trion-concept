@@ -321,6 +321,40 @@ section.tight{padding:96px 0}
   background:linear-gradient(135deg,#25D366,#128C7E);color:#fff}
 .wa-in{margin:0 14px;background:rgba(255,255,255,.09)!important;max-width:88%}
 
+
+/* ====== formulário de lead com glow ====== */
+.leadwrap{position:relative;margin-top:56px;border-radius:30px;padding:2px;overflow:hidden}
+.leadwrap::before{content:"";position:absolute;inset:-120%;
+  background:conic-gradient(from 0deg,transparent 0 40deg,var(--acc) 80deg,#DDBDFC 100deg,var(--acc2) 130deg,transparent 180deg 220deg,var(--acc-deep) 280deg,var(--acc) 320deg,transparent 360deg);
+  animation:spin 6s linear infinite}
+.leadwrap::after{content:"";position:absolute;inset:0;border-radius:30px;pointer-events:none;
+  box-shadow:0 0 80px -10px rgba(139,61,255,.55),0 0 200px -40px rgba(123,44,191,.8)}
+@media(prefers-reduced-motion:reduce){.leadwrap::before{animation:none}}
+.lead{position:relative;border-radius:28px;background:linear-gradient(160deg,rgba(16,7,26,.96),rgba(7,3,12,.97));
+  backdrop-filter:blur(24px);display:grid;gap:36px;padding:44px 36px}
+@media(min-width:960px){.lead{grid-template-columns:1fr 1.1fr;padding:52px 56px;align-items:center}}
+.lead h3{font-family:var(--serif);font-weight:200;letter-spacing:-.03em;
+  font-size:clamp(28px,3.4vw,44px);line-height:1.06;margin:12px 0 14px}
+.lead .lp-note{display:flex;align-items:center;gap:8px;margin-top:22px;font-size:12.5px;color:var(--dim)}
+.lead .lp-note i{width:7px;height:7px;border-radius:50%;background:#37c98b;box-shadow:0 0 10px #37c98b;
+  animation:pulse-dot 1.6s ease-in-out infinite}
+@keyframes pulse-dot{50%{opacity:.4}}
+.lead form{display:flex;flex-direction:column;gap:14px}
+.lead .frow{display:grid;gap:14px}
+@media(min-width:640px){.lead .frow{grid-template-columns:1fr 1fr}}
+.lead label{display:flex;flex-direction:column;gap:7px;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--dim)}
+.lead input,.lead select{appearance:none;border:1px solid var(--line);border-radius:14px;
+  background:rgba(255,255,255,.05);color:#fff;font:300 15px/1 var(--sans);padding:15px 16px;
+  transition:border-color .25s,box-shadow .25s,background .25s}
+.lead input::placeholder{color:#5d5866}
+.lead select{color:#c9c5d4}
+.lead input:focus,.lead select:focus{outline:none;border-color:var(--acc);
+  box-shadow:0 0 0 3px rgba(168,85,247,.22),0 0 24px -6px rgba(168,85,247,.5);background:rgba(255,255,255,.08)}
+.lead .btn.big{justify-content:center;font-size:15px;padding:16px 30px;margin-top:6px;
+  box-shadow:0 0 0 1px var(--acc-deep),inset 0 1px 0 rgba(255,255,255,.25),0 0 40px -6px rgba(139,61,255,.7)}
+.lead .btn.big:hover{box-shadow:0 0 60px -4px rgba(168,85,247,.9),0 0 0 1px var(--acc2)}
+
 /* modelos (passo 02) */
 .models{display:grid;gap:24px}
 @media(min-width:900px){.models{grid-template-columns:repeat(4,1fr)}}
@@ -587,6 +621,34 @@ nav.hseq{transform:translateY(-14px)}
         <h3>Combine e comece</h3>
         <p>Preencha o formulário de diagnóstico e receba uma ligação em até 12 horas com o plano de ativação de 14 dias.</p>
         <div class="mini"><div class="row"><span>Próximo passo</span><span class="ok">ligação em 12h</span></div></div>
+      </div>
+    </div>
+
+    <div class="leadwrap rv">
+      <div class="lead">
+        <div>
+          <span class="kicker" style="margin-bottom:6px">Comece agora</span>
+          <h3>Seu diagnóstico gratuito começa <span class="em">aqui</span></h3>
+          <p class="sub" style="font-size:15.5px">Preencha e receba uma ligação em até 12 horas com o raio-X do seu funil: onde vaza, quanto custa e o plano de 14 dias para consertar.</p>
+          <div class="lp-note"><i></i> Time disponível agora · resposta em até 12h úteis</div>
+        </div>
+        <form action="https://wa.me/5561936180578" method="get" target="_blank" id="leadform">
+          <div class="frow">
+            <label>Nome<input type="text" name="nome" placeholder="Seu nome" required autocomplete="name"></label>
+            <label>WhatsApp<input type="tel" name="whats" placeholder="(61) 9 9999-9999" required autocomplete="tel"></label>
+          </div>
+          <label>Site ou Instagram<input type="text" name="site" placeholder="suaempresa.com.br ou @perfil"></label>
+          <label>Faturamento mensal
+            <select name="fat" required>
+              <option value="" selected disabled>Selecione…</option>
+              <option>Até R$ 50 mil</option>
+              <option>R$ 50–200 mil</option>
+              <option>R$ 200 mil–1 mi</option>
+              <option>Acima de R$ 1 mi</option>
+            </select>
+          </label>
+          <button class="btn big" type="submit">Receber meu diagnóstico gratuito <span class="arr">→</span></button>
+        </form>
       </div>
     </div>
   </section>
@@ -1060,6 +1122,18 @@ const bgv=document.getElementById('bgv');
   let cur=0;
   if(!reduced)setInterval(()=>{cur=(cur+1)%shots.length;
     shots.forEach((im,j)=>im.classList.toggle('on',j===cur));},4000);
+})();
+
+
+/* form de lead → abre WhatsApp com a mensagem pronta */
+(function(){
+  const f=document.getElementById('leadform');if(!f)return;
+  f.addEventListener('submit',e=>{
+    e.preventDefault();
+    const d=new FormData(f);
+    const msg=`Olá! Quero meu diagnóstico gratuito.%0A%0A*Nome:* ${encodeURIComponent(d.get('nome'))}%0A*WhatsApp:* ${encodeURIComponent(d.get('whats'))}%0A*Site/Instagram:* ${encodeURIComponent(d.get('site')||'-')}%0A*Faturamento:* ${encodeURIComponent(d.get('fat'))}`;
+    window.open('https://wa.me/5561936180578?text='+msg,'_blank');
+  });
 })();
 
 const links=[...document.querySelectorAll('.pillnav a')];
