@@ -548,9 +548,7 @@ nav.hseq{transform:translateY(-14px)}
 </defs></svg>
 
 <div class="bg-ambient"></div>
-<video id="bgv" muted playsinline preload="auto" aria-hidden="true">
-  <source src="trion-bg.mp4" type="video/mp4">
-</video>
+<video id="bgv" muted playsinline autoplay preload="auto" aria-hidden="true"></video>
 <div class="bg-veil" aria-hidden="true"></div>
 <div class="frame">
   
@@ -1042,6 +1040,10 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
 const bgv=document.getElementById('bgv');
 (function(){
   if(!bgv) return;
+  /* fonte por dispositivo: 540p no celular (6.6MB), 1080p no desktop */
+  bgv.src = matchMedia('(max-width:820px)').matches ? 'trion-bg-m.mp4' : 'trion-bg.mp4';
+  bgv.load();
+  bgv.play().catch(()=>{});   /* iOS: chuta o autoplay logo de cara */
   const SEGS=[            // [seletor, início do loop, fim do loop]
     ['.hero',0,3],
     ['#passos',6,9],['#solucoes',10,13],['#modelos',14,17],
@@ -1102,7 +1104,10 @@ const bgv=document.getElementById('bgv');
     bgv.addEventListener('timeupdate',gate);
     requestAnimationFrame(drive);
   }
-  if(bgv.readyState>=2) ignite(); else bgv.addEventListener('loadeddata',ignite,{once:true});
+  let lit=false; const tryIgnite=()=>{if(!lit){lit=true;ignite();}};
+  if(bgv.readyState>=1) tryIgnite();
+  else{bgv.addEventListener('loadedmetadata',tryIgnite,{once:true});
+       bgv.addEventListener('canplay',tryIgnite,{once:true});}
   bgv.addEventListener('error',()=>{clearTimeout(heroFallback);heroIn();},{once:true});
   addEventListener('resize',build);
   addEventListener('load',build);
