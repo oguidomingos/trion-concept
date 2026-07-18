@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>07-tabela-de-precos · EXPOENTE</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#161219}
+body{font-family:'Inter',-apple-system,sans-serif;display:flex;justify-content:center;padding:40px 0}
+.page{width:210mm;min-height:297mm;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.bar{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:flex-end;padding:10px 16px}
+.bar button{font-family:inherit;font-size:13px;color:#fff;background:linear-gradient(135deg,#7B2CBF,#A855F7);border:0;border-radius:99px;padding:8px 20px;cursor:pointer}
+@page{size:210mm 297mm;margin:0}
+@media print{body{padding:0;background:none}.bar{display:none}.page{box-shadow:none}html,body{margin:0!important}
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style></head><body>
+<div class="bar"><button onclick="window.print()">Exportar PDF</button></div>
+<div class="page" contenteditable="true" spellcheck="false">
+  <div data-dc-tpl="6" style="background: radial-gradient(880px 620px at 50% -8%, rgba(123, 44, 191, 0.28), transparent 60%), rgb(5, 2, 8); color: rgb(255, 255, 255); min-height: 297mm; padding: 50px 46px 40px; box-sizing: border-box; display: flex; flex-direction: column; font-family: Inter, sans-serif;">
+    <div data-dc-tpl="7" style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+      <img data-dc-tpl="8" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NjAgMTIwIiB3aWR0aD0iNjYwIiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJFWFBPRU5URSBjb20gc8OtbWJvbG8gY29tbyBleHBvZW50ZSI+CiAgPCEtLSBBU1NJTkFUVVJBIFBSSU5DSVBBTDogRVhQT0VOVEUgKyBzw61tYm9sbyBuYSBwb3Npw6fDo28gZGUgcG90w6puY2lhLiAtLT4KICA8IS0tIEZvbnRlICdIZWx2ZXRpY2EgTmV1ZScgVWx0cmFMaWdodCAvIEludGVyIFRoaW4gKDIwMCkuIENvbnZlcnRhIGVtIGNvbnRvcm5vcyBwLyBwcm9kdcOnw6NvOyBhanVzdGUgZmlubyBkbyB4IGRvIHPDrW1ib2xvIGFww7NzIG91dGxpbmUuIC0tPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJiYXNlIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0IxNUNGRiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzdCMkNCRiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iaGkiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRjNFNEZGIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjQzA4NEZDIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPG1hc2sgaWQ9ImJpdGUiPgogICAgICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2ZmZiIvPgogICAgICA8Y2lyY2xlIGN4PSI3MiIgY3k9IjMxIiByPSIxNCIgZmlsbD0iIzAwMCIvPgogICAgPC9tYXNrPgogIDwvZGVmcz4KICA8dGV4dCB4PSI2IiB5PSI4OCIgZm9udC1mYW1pbHk9IidIZWx2ZXRpY2EgTmV1ZScsIEludGVyLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjIwMCIKICAgICAgICBmb250LXNpemU9Ijk2IiBsZXR0ZXItc3BhY2luZz0iMTAiIGZpbGw9IiNmZmZmZmYiPkVYUE9FTlRFPC90ZXh0PgogIDwhLS0gc8OtbWJvbG8gKGJvbGluaGEgZW1lcmdpbmRvKSBjb21vIGV4cG9lbnRlLCBhbHRvIMOgIGRpcmVpdGEgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTY2LDQpIHNjYWxlKDAuNDIpIj4KICAgIDxjaXJjbGUgY3g9IjQ1IiBjeT0iNTciIHI9IjMwIiBmaWxsPSJ1cmwoI2Jhc2UpIiBtYXNrPSJ1cmwoI2JpdGUpIi8+CiAgICA8Y2lyY2xlIGN4PSI3MiIgY3k9IjMxIiByPSIxMSIgZmlsbD0idXJsKCNoaSkiLz4KICA8L2c+Cjwvc3ZnPgo=" alt="EXPOENTE" style="height: 34px;">
+      <span data-dc-tpl="9" style="font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(192, 132, 252);">Planos &amp; investimento</span>
+    </div>
+    <h1 data-dc-tpl="10" style="font-size: 42px; font-weight: 200; letter-spacing: -0.04em; line-height: 1.05; margin-top: 24px; text-align: center;">Do ponto único ao <span data-dc-tpl="11" style="color: rgb(192, 132, 252);">crescimento previsível</span>.</h1>
+
+    <div data-dc-tpl="12" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 30px;">
+      <div data-dc-tpl="13" style="background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 18px; padding: 24px 20px; display: flex; flex-direction: column;">
+        <div data-dc-tpl="14" style="font-size: 17px; font-weight: 600;">Projeto pontual</div>
+        <p data-dc-tpl="15" style="font-size: 12.5px; font-weight: 300; line-height: 1.45; color: rgb(184, 179, 194); margin-top: 8px; min-height: 66px;">Já tem estrutura rodando e precisa resolver 1 ponto: site, medição, funil ou só a qualificação de WhatsApp.</p>
+        <div data-dc-tpl="16" style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(117, 113, 126); margin-top: 6px;">Sem mensalidade</div>
+        <div data-dc-tpl="17" style="font-size: 22px; font-weight: 200; letter-spacing: -0.02em; margin-top: 6px;">Orçamento<br data-dc-tpl="18">sob medida</div>
+      </div>
+      <div data-dc-tpl="19" style="background: linear-gradient(175deg, rgba(139, 92, 246, 0.26), rgba(123, 44, 191, 0.08)); border: 1px solid rgba(168, 85, 247, 0.55); border-radius: 18px; padding: 24px 20px; display: flex; flex-direction: column; box-shadow: rgba(123, 44, 191, 0.6) 0px 0px 44px -14px; position: relative;">
+        <div data-dc-tpl="20" style="position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: linear-gradient(rgb(139, 92, 246), rgb(123, 44, 191)); border-radius: 999px; padding: 4px 14px; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(255, 255, 255); white-space: nowrap;">★ Carro-chefe</div>
+        <div data-dc-tpl="21" style="font-size: 17px; font-weight: 600; margin-top: 6px;">Plano completo</div>
+        <p data-dc-tpl="22" style="font-size: 12.5px; font-weight: 300; line-height: 1.45; color: rgb(215, 207, 230); margin-top: 8px; min-height: 66px;">A oferta base inteira, ponta a ponta: vitrine digital, anúncios, qualificação de WhatsApp e relatórios.</p>
+        <div data-dc-tpl="23" style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(201, 184, 230); margin-top: 6px;">Mensal</div>
+        <div data-dc-tpl="24" style="font-size: 34px; font-weight: 200; letter-spacing: -0.03em; margin-top: 6px; color: rgb(255, 255, 255);">R$2.500<span data-dc-tpl="25" style="font-size: 0.4em; color: rgb(192, 132, 252);">/mês</span></div>
+      </div>
+      <div data-dc-tpl="26" style="background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 18px; padding: 24px 20px; display: flex; flex-direction: column;">
+        <div data-dc-tpl="27" style="font-size: 17px; font-weight: 600;">Time de reforço</div>
+        <p data-dc-tpl="28" style="font-size: 12.5px; font-weight: 300; line-height: 1.45; color: rgb(184, 179, 194); margin-top: 8px; min-height: 66px;">Já tem time interno e precisa de execução especializada sem contratar mais gente fixa.</p>
+        <div data-dc-tpl="29" style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(117, 113, 126); margin-top: 6px;">Mensal</div>
+        <div data-dc-tpl="30" style="font-size: 34px; font-weight: 200; letter-spacing: -0.03em; margin-top: 6px;">R$1.500<span data-dc-tpl="31" style="font-size: 0.4em; color: rgb(168, 85, 247);">/mês</span></div>
+      </div>
+      <div data-dc-tpl="32" style="background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 18px; padding: 24px 20px; display: flex; flex-direction: column;">
+        <div data-dc-tpl="33" style="font-size: 17px; font-weight: 600;">Parceria por resultado</div>
+        <p data-dc-tpl="34" style="font-size: 12.5px; font-weight: 300; line-height: 1.45; color: rgb(184, 179, 194); margin-top: 8px; min-height: 66px;">Já validou o sistema e quer alinhar nosso incentivo direto ao seu crescimento.</p>
+        <div data-dc-tpl="35" style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(117, 113, 126); margin-top: 6px;">Fixo + variável</div>
+        <div data-dc-tpl="36" style="font-size: 22px; font-weight: 200; letter-spacing: -0.02em; margin-top: 6px;">a partir de<br data-dc-tpl="37">R$1.500<span data-dc-tpl="38" style="font-size: 0.6em; color: rgb(168, 85, 247);">/mês</span> + var.</div>
+      </div>
+    </div>
+
+    <div data-dc-tpl="39" style="margin-top: 32px;">
+      <div data-dc-tpl="40" style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;"><span data-dc-tpl="41" style="width: 7px; height: 7px; border-radius: 50%; background: rgb(168, 85, 247); box-shadow: rgb(168, 85, 247) 0px 0px 12px;"></span><h2 data-dc-tpl="42" style="font-size: 15px; font-weight: 500; letter-spacing: 0.02em;">O que está incluído</h2></div>
+      <table data-dc-tpl="43" style="width: 100%; border-collapse: collapse; font-size: 12.5px;">
+        <thead data-dc-tpl="44">
+          <tr data-dc-tpl="45" style="border-bottom: 1px solid rgba(255, 255, 255, 0.14);">
+            <th data-dc-tpl="46" style="text-align: left; padding: 10px 8px; font-weight: 400; color: rgb(165, 161, 173);">Frente</th>
+            <th data-dc-tpl="47" style="padding: 10px 8px; font-weight: 400; color: rgb(165, 161, 173);">Pontual</th>
+            <th data-dc-tpl="48" style="padding: 10px 8px; font-weight: 600; color: rgb(192, 132, 252);">Completo</th>
+            <th data-dc-tpl="49" style="padding: 10px 8px; font-weight: 400; color: rgb(165, 161, 173);">Reforço</th>
+            <th data-dc-tpl="50" style="padding: 10px 8px; font-weight: 400; color: rgb(165, 161, 173);">Parceria</th>
+          </tr>
+        </thead>
+        <tbody data-dc-tpl="51">
+          <tr data-dc-tpl="52" style="border-bottom: 1px solid rgba(255, 255, 255, 0.07);"><td data-dc-tpl="53" style="padding: 9px 8px; color: rgb(233, 230, 239);">Anúncios online (Meta/Google)</td><td data-dc-tpl="54" style="text-align: center; color: rgb(117, 113, 126);">opcional</td><td data-dc-tpl="55" style="text-align: center; color: rgb(192, 132, 252);">●</td><td data-dc-tpl="56" style="text-align: center; color: rgb(192, 132, 252);">●</td><td data-dc-tpl="57" style="text-align: center; color: rgb(192, 132, 252);">●</td></tr>
+          <tr data-dc-tpl="58" style="border-bottom: 1px solid rgba(255, 255, 255, 0.07);"><td data-dc-tpl="59" style="padding: 9px 8px; color: rgb(233, 230, 239);">Vitrine digital &amp; sites</td><td data-dc-tpl="60" style="text-align: center; color: rgb(117, 113, 126);">avulso</td><td data-dc-tpl="61" style="text-align: center; color: rgb(192, 132, 252);">●</td><td data-dc-tpl="62" style="text-align: center; color: rgb(117, 113, 126);">opcional</td><td data-dc-tpl="63" style="text-align: center; color: rgb(192, 132, 252);">●</td></tr>
+          <tr data-dc-tpl="64" style="border-bottom: 1px solid rgba(255, 255, 255, 0.07);"><td data-dc-tpl="65" style="padding: 9px 8px; color: rgb(233, 230, 239);">Qualificação de WhatsApp</td><td data-dc-tpl="66" style="text-align: center; color: rgb(117, 113, 126);">avulso</td><td data-dc-tpl="67" style="text-align: center; color: rgb(192, 132, 252);">●</td><td data-dc-tpl="68" style="text-align: center; color: rgb(117, 113, 126);">opcional</td><td data-dc-tpl="69" style="text-align: center; color: rgb(192, 132, 252);">●</td></tr>
+          <tr data-dc-tpl="70" style="border-bottom: 1px solid rgba(255, 255, 255, 0.07);"><td data-dc-tpl="71" style="padding: 9px 8px; color: rgb(233, 230, 239);">Funis de venda automáticos</td><td data-dc-tpl="72" style="text-align: center; color: rgb(117, 113, 126);">não incluso</td><td data-dc-tpl="73" style="text-align: center; color: rgb(192, 132, 252);">●</td><td data-dc-tpl="74" style="text-align: center; color: rgb(192, 132, 252);">●</td><td data-dc-tpl="75" style="text-align: center; color: rgb(192, 132, 252);">●</td></tr>
+          <tr data-dc-tpl="76" style="border-bottom: 1px solid rgba(255, 255, 255, 0.07);"><td data-dc-tpl="77" style="padding: 9px 8px; color: rgb(233, 230, 239);">Medição (sites, anúncios, WhatsApp)</td><td data-dc-tpl="78" style="text-align: center; color: rgb(117, 113, 126);">avulso</td><td data-dc-tpl="79" style="text-align: center; color: rgb(192, 132, 252);">●</td><td data-dc-tpl="80" style="text-align: center; color: rgb(192, 132, 252);">●</td><td data-dc-tpl="81" style="text-align: center; color: rgb(192, 132, 252);">●</td></tr>
+          <tr data-dc-tpl="82" style="border-bottom: 1px solid rgba(255, 255, 255, 0.07);"><td data-dc-tpl="83" style="padding: 9px 8px; color: rgb(233, 230, 239);">Organização dos contatos e processos</td><td data-dc-tpl="84" style="text-align: center; color: rgb(117, 113, 126);">não incluso</td><td data-dc-tpl="85" style="text-align: center; color: rgb(192, 132, 252);">●</td><td data-dc-tpl="86" style="text-align: center; color: rgb(117, 113, 126);">opcional</td><td data-dc-tpl="87" style="text-align: center; color: rgb(192, 132, 252);">●</td></tr>
+          <tr data-dc-tpl="88" style="border-bottom: 1px solid rgba(255, 255, 255, 0.07);"><td data-dc-tpl="89" style="padding: 9px 8px; color: rgb(233, 230, 239);">Reativação por email e WhatsApp</td><td data-dc-tpl="90" style="text-align: center; color: rgb(117, 113, 126);">não incluso</td><td data-dc-tpl="91" style="text-align: center; color: rgb(192, 132, 252);">●</td><td data-dc-tpl="92" style="text-align: center; color: rgb(117, 113, 126);">opcional</td><td data-dc-tpl="93" style="text-align: center; color: rgb(192, 132, 252);">●</td></tr>
+          <tr data-dc-tpl="94" style="border-bottom: 1px solid rgba(255, 255, 255, 0.07);"><td data-dc-tpl="95" style="padding: 9px 8px; color: rgb(233, 230, 239);">Conteúdo estratégico</td><td data-dc-tpl="96" style="text-align: center; color: rgb(117, 113, 126);">não incluso</td><td data-dc-tpl="97" style="text-align: center; color: rgb(117, 113, 126);">opcional</td><td data-dc-tpl="98" style="text-align: center; color: rgb(192, 132, 252);">●</td><td data-dc-tpl="99" style="text-align: center; color: rgb(117, 113, 126);">opcional</td></tr>
+          <tr data-dc-tpl="100" style="border-bottom: 1px solid rgba(255, 255, 255, 0.07);"><td data-dc-tpl="101" style="padding: 9px 8px; color: rgb(233, 230, 239);">Relatórios periódicos</td><td data-dc-tpl="102" style="text-align: center; color: rgb(117, 113, 126);">não incluso</td><td data-dc-tpl="103" style="text-align: center; color: rgb(192, 132, 252);">●</td><td data-dc-tpl="104" style="text-align: center; color: rgb(192, 132, 252);">●</td><td data-dc-tpl="105" style="text-align: center; color: rgb(192, 132, 252);">●</td></tr>
+        </tbody>
+      </table>
+      <div data-dc-tpl="106" style="font-size: 11px; color: rgb(117, 113, 126); margin-top: 10px;">● incluído · opcional = adicional sob consulta · avulso = por projeto · verba de anúncio sempre à parte da mensalidade.</div>
+    </div>
+
+    <div data-dc-tpl="107" style="display: flex; gap: 12px; margin-top: 28px;">
+      <div data-dc-tpl="108" style="flex: 1 1 0%; background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.016)); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px; padding: 16px 18px;"><div data-dc-tpl="109" style="font-size: 13px; font-weight: 600; color: rgb(255, 255, 255);">Sem fidelidade forçada</div><div data-dc-tpl="110" style="font-size: 12px; font-weight: 300; color: rgb(165, 161, 173); margin-top: 4px;">Nenhuma multa de cancelamento. R$0.</div></div>
+      <div data-dc-tpl="111" style="flex: 1 1 0%; background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.016)); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px; padding: 16px 18px;"><div data-dc-tpl="112" style="font-size: 13px; font-weight: 600; color: rgb(255, 255, 255);">Nossa garantia é resultado</div><div data-dc-tpl="113" style="font-size: 12px; font-weight: 300; color: rgb(165, 161, 173); margin-top: 4px;">Não é contrato que prende, é sistema que entrega.</div></div>
+      <div data-dc-tpl="114" style="flex: 1 1 0%; background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.016)); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px; padding: 16px 18px;"><div data-dc-tpl="115" style="font-size: 13px; font-weight: 600; color: rgb(255, 255, 255);">Verba à parte</div><div data-dc-tpl="116" style="font-size: 12px; font-weight: 300; color: rgb(165, 161, 173); margin-top: 4px;">Calculada na conversa de diagnóstico gratuita.</div></div>
+    </div>
+
+    <div data-dc-tpl="117" style="margin-top: auto; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; font-weight: 300; color: rgb(165, 161, 173);">
+      <span data-dc-tpl="118">contato@expoente.marketing · @expoente.marketing · Brasília</span>
+      <span data-dc-tpl="119" style="color: rgb(117, 113, 126);">Valores de referência · ajustados na conversa de diagnóstico.</span>
+    </div>
+  </div></div>
+</body></html>

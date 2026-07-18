@@ -1,151 +1,29 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Documentos · EXPOENTE</title>
-<style>
-  :root{
-    --bg:#050208; --ink:#EDE8F5; --muted:#9B8FB0; --dim:#6B5E7E;
-    --acc:#A855F7; --acc-deep:#7B2CBF; --acc-hi:#C084FC;
-    --glass:rgba(168,85,247,.06); --line:rgba(168,85,247,.16);
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{background:var(--bg)}
-  body{
-    background:
-      radial-gradient(1200px 600px at 80% -10%, rgba(123,44,191,.18), transparent 60%),
-      radial-gradient(900px 500px at -10% 40%, rgba(123,44,191,.10), transparent 55%),
-      var(--bg);
-    color:var(--ink);
-    font-family:'Inter',-apple-system,'Helvetica Neue',sans-serif;
-    font-weight:300; line-height:1.65; font-size:15px;
-    -webkit-font-smoothing:antialiased;
-  }
-  .toolbar{
-    position:fixed; top:0; left:0; right:0; z-index:10;
-    display:flex; justify-content:space-between; align-items:center;
-    padding:14px 28px;
-    background:rgba(5,2,8,.75); backdrop-filter:blur(14px);
-    border-bottom:1px solid var(--line);
-  }
-  .toolbar .hint{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11px;color:var(--dim);letter-spacing:.08em}
-  .toolbar button{
-    font-family:inherit; font-weight:400; font-size:13px; letter-spacing:.04em;
-    color:#fff; background:linear-gradient(135deg,var(--acc-deep),var(--acc));
-    border:0; border-radius:99px; padding:9px 22px; cursor:pointer;
-    box-shadow:0 0 24px rgba(168,85,247,.35);
-  }
-  .toolbar button:hover{filter:brightness(1.15)}
-  .page{max-width:760px; margin:0 auto; padding:120px 36px 80px}
-  .brand{display:flex; align-items:flex-start; gap:0; margin-bottom:8px}
-  .brand .wm{font-weight:200; font-size:22px; letter-spacing:.34em; color:#fff}
-  .brand svg{width:11px;height:11px;margin:1px 0 0 -2px}
-  .brand-tag{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);margin-bottom:64px}
-  .doc h1{
-    font-weight:200; font-size:clamp(34px,6vw,52px); line-height:1.08;
-    letter-spacing:-.02em; color:#fff; margin:0 0 14px;
-  }
-  .doc h1 em, .doc h1 strong{
-    font-style:normal; font-weight:200;
-    background:linear-gradient(90deg,var(--acc-hi),var(--acc));
-    -webkit-background-clip:text; background-clip:text; color:transparent;
-  }
-  .doc h2{
-    font-weight:200; font-size:26px; letter-spacing:-.01em; color:#fff;
-    margin:56px 0 14px; padding-top:28px; border-top:1px solid var(--line);
-  }
-  .doc h3{
-    font-family:ui-monospace,'SF Mono',Menlo,monospace; font-weight:500;
-    font-size:11px; letter-spacing:.24em; text-transform:uppercase;
-    color:var(--acc-hi); margin:36px 0 10px;
-  }
-  .doc p{color:var(--muted); margin:0 0 14px}
-  .doc strong{color:var(--ink); font-weight:500}
-  .doc em{color:var(--acc-hi); font-style:normal}
-  .doc a{color:var(--acc); text-decoration:none; border-bottom:1px solid rgba(168,85,247,.35)}
-  .doc ul,.doc ol{margin:0 0 16px 20px; color:var(--muted)}
-  .doc li{margin-bottom:8px}
-  .doc li::marker{color:var(--acc)}
-  .doc blockquote{
-    background:var(--glass); border:1px solid var(--line); border-left:2px solid var(--acc);
-    border-radius:12px; padding:18px 22px; margin:0 0 18px; color:var(--muted);
-  }
-  .doc blockquote p:last-child{margin:0}
-  .doc table{width:100%; border-collapse:collapse; margin:0 0 22px; font-size:13.5px}
-  .doc th{
-    font-family:ui-monospace,'SF Mono',Menlo,monospace; font-weight:500; font-size:10.5px;
-    letter-spacing:.16em; text-transform:uppercase; color:var(--acc-hi);
-    text-align:left; padding:10px 14px; border-bottom:1px solid var(--acc-deep);
-  }
-  .doc td{padding:12px 14px; border-bottom:1px solid var(--line); color:var(--muted); vertical-align:top}
-  .doc tr:hover td{background:rgba(168,85,247,.04)}
-  .doc code{font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:.9em; color:var(--acc-hi)}
-  .doc hr{border:0; border-top:1px solid var(--line); margin:40px 0}
-  .foot{
-    margin-top:80px; padding-top:24px; border-top:1px solid var(--line);
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
-    font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:10.5px;
-    letter-spacing:.12em; color:var(--dim);
-  }
-  [contenteditable]:focus{outline:1px dashed rgba(168,85,247,.35); outline-offset:8px; border-radius:4px}
-
-  @page{margin:0; size:A4}
-  @media print{
-    html,body{background:var(--bg)!important; -webkit-print-color-adjust:exact; print-color-adjust:exact}
-    .toolbar{display:none}
-    .page{padding:56px 48px}
-    .doc h2{break-after:avoid}
-    .doc blockquote,.doc table{break-inside:avoid}
-    [contenteditable]:focus{outline:none}
-  }
-</style>
-</head>
-<body>
-<div class="toolbar">
-  <span class="hint">CLIQUE NO TEXTO PRA EDITAR · CTRL+P OU O BOTÃO PRA EXPORTAR</span>
-  <button onclick="window.print()">Exportar PDF</button>
-</div>
-<div class="page">
-  <div class="brand">
-    <svg viewBox="0 0 660 120" role="img" aria-label="EXPOENTE" style="width:172px;height:auto;display:block">
-      <defs>
-        <linearGradient id="expBase" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#B15CFF"/><stop offset="1" stop-color="#7B2CBF"/>
-        </linearGradient>
-        <linearGradient id="expHi" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#F3E4FF"/><stop offset="1" stop-color="#C084FC"/>
-        </linearGradient>
-        <mask id="expBite"><rect x="0" y="0" width="100" height="100" fill="#fff"/><circle cx="72" cy="31" r="14" fill="#000"/></mask>
-      </defs>
-      <text x="6" y="88" font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-weight="200"
-            font-size="96" letter-spacing="10" fill="#ffffff">EXPOENTE</text>
-      <g transform="translate(566,4) scale(0.42)">
-        <circle cx="45" cy="57" r="30" fill="url(#expBase)" mask="url(#expBite)"/>
-        <circle cx="72" cy="31" r="11" fill="url(#expHi)"/>
-      </g>
-    </svg>
-  </div>
-  <div class="brand-tag">engenharia de crescimento</div>
-
-  <div class="doc" contenteditable="false" spellcheck="false">
-<h1>Documentos da <strong>marca</strong></h1>
-<p>Editáveis no navegador. Exportáveis em PDF. Fundo escuro sempre.</p>
-<ul>
-<li><a href="one-pager.html">One-Pager</a></li>
-<li><a href="pitch-deck.html">Pitch Deck</a></li>
-<li><a href="casos-de-sucesso.html">Casos de Sucesso</a></li>
-<li><a href="proposta-comercial.html">Proposta Comercial</a></li>
-<li><a href="tabela-de-precos.html">Tabela de Preços</a></li>
-<li><a href="carta-de-vendas.html">Carta de Vendas</a></li>
-<li><a href="proposta-vitor.html">Proposta · Vitor Guilherme</a></li>
-</ul>
-  </div>
-
-  <div class="foot">
-    <span>expoente.marketing · contato@expoente.marketing · @expoente.marketing</span>
-    <span>julho de 2026</span>
-  </div>
-</div>
-</body>
-</html>
+<title>Documentos · EXPOENTE</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:radial-gradient(900px 500px at 80% -10%,rgba(123,44,191,.2),transparent 60%),#050208;color:#EDE8F5;font-family:'Inter',-apple-system,sans-serif;font-weight:300;min-height:100vh;padding:80px 32px}
+.w{max-width:640px;margin:0 auto}
+h1{font-weight:200;font-size:40px;letter-spacing:-.02em;margin-bottom:6px}
+h1 span{background:linear-gradient(90deg,#C084FC,#A855F7);-webkit-background-clip:text;background-clip:text;color:transparent}
+p{color:#9B8FB0;margin-bottom:40px}
+ul{list-style:none}
+li a{display:block;padding:16px 20px;margin-bottom:10px;border:1px solid rgba(168,85,247,.16);border-radius:14px;color:#EDE8F5;text-decoration:none;background:rgba(168,85,247,.05)}
+li a:hover{border-color:#A855F7;background:rgba(168,85,247,.1)}
+.foot{margin-top:48px;font-size:11px;letter-spacing:.1em;color:#6B5E7E;font-family:ui-monospace,Menlo,monospace}
+</style></head><body><div class="w">
+<h1>Documentos da <span>marca</span></h1>
+<p>Folhetos comerciais editáveis no navegador e exportáveis em PDF. Fundo escuro sempre.</p>
+<ul><li><a href="01-one-pager.html">One-Pager</a></li>
+<li><a href="02-catalogo-servicos.html">Catálogo de Serviços</a></li>
+<li><a href="03-roteiro-video-pitch.html">Roteiro de Vídeo Pitch</a></li>
+<li><a href="04-pitch-deck.html">Pitch Deck (12 slides)</a></li>
+<li><a href="05-casos-de-sucesso.html">Casos de Sucesso</a></li>
+<li><a href="06-proposta-comercial.html">Proposta Comercial (modelo)</a></li>
+<li><a href="07-tabela-de-precos.html">Tabela de Preços</a></li>
+<li><a href="08-templates-whatsapp.html">Templates de WhatsApp</a></li>
+<li><a href="09-templates-email.html">Templates de Email</a></li>
+<li><a href="10-cartao-de-visitas.html">Cartão de Visitas (spec)</a></li>
+<li><a href="11-minuta-contrato.html">Minuta de Contrato</a></li></ul>
+<div class="foot">EXPOENTE · ENGENHARIA DE CRESCIMENTO · <a href="../" style="color:#A855F7;text-decoration:none">expoente.marketing</a></div>
+</div></body></html>
