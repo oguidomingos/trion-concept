@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carta de Vendas · EXPOENTE</title>
+<style>
+  :root{
+    --bg:#050208; --ink:#EDE8F5; --muted:#9B8FB0; --dim:#6B5E7E;
+    --acc:#A855F7; --acc-deep:#7B2CBF; --acc-hi:#C084FC;
+    --glass:rgba(168,85,247,.06); --line:rgba(168,85,247,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{background:var(--bg)}
+  body{
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(123,44,191,.18), transparent 60%),
+      radial-gradient(900px 500px at -10% 40%, rgba(123,44,191,.10), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,'Helvetica Neue',sans-serif;
+    font-weight:300; line-height:1.65; font-size:15px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .toolbar{
+    position:fixed; top:0; left:0; right:0; z-index:10;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 28px;
+    background:rgba(5,2,8,.75); backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .toolbar .hint{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11px;color:var(--dim);letter-spacing:.08em}
+  .toolbar button{
+    font-family:inherit; font-weight:400; font-size:13px; letter-spacing:.04em;
+    color:#fff; background:linear-gradient(135deg,var(--acc-deep),var(--acc));
+    border:0; border-radius:99px; padding:9px 22px; cursor:pointer;
+    box-shadow:0 0 24px rgba(168,85,247,.35);
+  }
+  .toolbar button:hover{filter:brightness(1.15)}
+  .page{max-width:760px; margin:0 auto; padding:120px 36px 80px}
+  .brand{display:flex; align-items:flex-start; gap:0; margin-bottom:8px}
+  .brand .wm{font-weight:200; font-size:22px; letter-spacing:.34em; color:#fff}
+  .brand svg{width:11px;height:11px;margin:1px 0 0 -2px}
+  .brand-tag{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);margin-bottom:64px}
+  .doc h1{
+    font-weight:200; font-size:clamp(34px,6vw,52px); line-height:1.08;
+    letter-spacing:-.02em; color:#fff; margin:0 0 14px;
+  }
+  .doc h1 em, .doc h1 strong{
+    font-style:normal; font-weight:200;
+    background:linear-gradient(90deg,var(--acc-hi),var(--acc));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .doc h2{
+    font-weight:200; font-size:26px; letter-spacing:-.01em; color:#fff;
+    margin:56px 0 14px; padding-top:28px; border-top:1px solid var(--line);
+  }
+  .doc h3{
+    font-family:ui-monospace,'SF Mono',Menlo,monospace; font-weight:500;
+    font-size:11px; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--acc-hi); margin:36px 0 10px;
+  }
+  .doc p{color:var(--muted); margin:0 0 14px}
+  .doc strong{color:var(--ink); font-weight:500}
+  .doc em{color:var(--acc-hi); font-style:normal}
+  .doc a{color:var(--acc); text-decoration:none; border-bottom:1px solid rgba(168,85,247,.35)}
+  .doc ul,.doc ol{margin:0 0 16px 20px; color:var(--muted)}
+  .doc li{margin-bottom:8px}
+  .doc li::marker{color:var(--acc)}
+  .doc blockquote{
+    background:var(--glass); border:1px solid var(--line); border-left:2px solid var(--acc);
+    border-radius:12px; padding:18px 22px; margin:0 0 18px; color:var(--muted);
+  }
+  .doc blockquote p:last-child{margin:0}
+  .doc table{width:100%; border-collapse:collapse; margin:0 0 22px; font-size:13.5px}
+  .doc th{
+    font-family:ui-monospace,'SF Mono',Menlo,monospace; font-weight:500; font-size:10.5px;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--acc-hi);
+    text-align:left; padding:10px 14px; border-bottom:1px solid var(--acc-deep);
+  }
+  .doc td{padding:12px 14px; border-bottom:1px solid var(--line); color:var(--muted); vertical-align:top}
+  .doc tr:hover td{background:rgba(168,85,247,.04)}
+  .doc code{font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:.9em; color:var(--acc-hi)}
+  .doc hr{border:0; border-top:1px solid var(--line); margin:40px 0}
+  .foot{
+    margin-top:80px; padding-top:24px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+    font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:10.5px;
+    letter-spacing:.12em; color:var(--dim);
+  }
+  [contenteditable]:focus{outline:1px dashed rgba(168,85,247,.35); outline-offset:8px; border-radius:4px}
+
+  @page{margin:0; size:A4}
+  @media print{
+    html,body{background:var(--bg)!important; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+    .toolbar{display:none}
+    .page{padding:56px 48px}
+    .doc h2{break-after:avoid}
+    .doc blockquote,.doc table{break-inside:avoid}
+    [contenteditable]:focus{outline:none}
+  }
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <span class="hint">CLIQUE NO TEXTO PRA EDITAR · CTRL+P OU O BOTÃO PRA EXPORTAR</span>
+  <button onclick="window.print()">Exportar PDF</button>
+</div>
+<div class="page">
+  <div class="brand">
+    <span class="wm">EXPOENTE</span>
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <linearGradient id="gB" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#7B2CBF"/><stop offset="1" stop-color="#3b2a6b"/>
+        </linearGradient>
+        <linearGradient id="gH" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#C084FC"/><stop offset="1" stop-color="#A855F7"/>
+        </linearGradient>
+        <mask id="bite"><rect width="100" height="100" fill="#fff"/><circle cx="72" cy="31" r="14" fill="#000"/></mask>
+      </defs>
+      <circle cx="45" cy="57" r="30" fill="url(#gB)" mask="url(#bite)"/>
+      <circle cx="72" cy="31" r="11" fill="url(#gH)"/>
+    </svg>
+  </div>
+  <div class="brand-tag">engenharia de crescimento</div>
+
+  <div class="doc" contenteditable="true" spellcheck="false">
+
+<h1 id="carta-de-vendas-peça-âncora-da-comunicação">Carta de Vendas
+(peça âncora da comunicação)</h1>
+
+<h2
+id="você-não-precisa-de-mais-marketing-precisa-saber-quanto-vai-vender">Você
+não precisa de mais marketing. Precisa saber quanto vai vender.</h2>
+<p>Todo mês você paga por anúncio. E todo mês fica na dúvida se aquilo
+virou cliente ou virou prejuízo.</p>
+<p>O anúncio traz gente. A pessoa chama no WhatsApp. E aí trava. Ninguém
+responde na hora, ninguém organiza, ninguém agenda. Quem chegou até você
+fecha com o concorrente que respondeu primeiro.</p>
+<p>Isso não é falta de verba. É falta de um sistema que você consiga
+prever.</p>
+<h2 id="a-expoente-vende-previsibilidade">A EXPOENTE vende
+previsibilidade.</h2>
+<p>Você para de torcer pra dar certo. Passa a saber quanto entra, de
+onde vem e quanto custa cada cliente.</p>
+<p>A gente não vende post bonito nem relatório de curtida. A gente monta
+um sistema de vendas e mede tudo pela sua receita.</p>
+<h2 id="como-funciona">Como funciona</h2>
+<p>Sua estrutura de vendas fica pronta em até 14 dias. Não é plano de
+seis meses. Em duas semanas já está rodando.</p>
+<p>Primeiro a gente prepara. Define o público certo, os canais certos e
+a medição limpa desde o primeiro clique. Você para de gastar com número
+que não vira caixa.</p>
+<p>Depois a gente estrutura. Anúncio, página de venda, atendimento no
+WhatsApp e organização dos contatos, tudo ligado. Nada solto.</p>
+<p>E toda semana a gente ajusta. Olha os números e melhora. O que vende,
+a gente amplia. O que não vende, a gente corta.</p>
+<h2 id="a-oferta-base">A oferta base</h2>
+<p>O essencial pra vender com previsibilidade.</p>
+<p><strong>Vitrine digital.</strong> 9 posts principais, Google Meu
+Negócio, landing pages e sites de alta conversão.</p>
+<p><strong>Anúncios online.</strong> Na frente de quem já está
+procurando o que você vende.</p>
+<p><strong>Qualificação de WhatsApp.</strong> A pessoa é respondida na
+hora, entendida e encaminhada. Nenhum contato esfriando porque ninguém
+viu a mensagem.</p>
+<p><strong>Relatórios periódicos.</strong> Você enxerga o que entrou, de
+onde veio e quanto custou.</p>
+<h2 id="o-que-muda-o-jogo">O que muda o jogo</h2>
+<p>Seja sincero. Hoje, quanto tempo leva pra alguém responder um contato
+seu? Se a resposta é "depende", é exatamente aí que a venda escorre.</p>
+<p>A qualificação de WhatsApp responde na hora, a qualquer hora do dia.
+Entende o que a pessoa quer, separa quem está pronto pra comprar e
+agenda. Você não perde mais ninguém por demora.</p>
+<h2 id="quando-o-básico-já-roda-a-gente-amplia">Quando o básico já roda,
+a gente amplia</h2>
+<p>Acima da base, entram os adicionais, conforme a sua operação
+pede.</p>
+<p>Funis de venda automáticos. Atendimento automático mais avançado.
+Organização dos contatos e processos comerciais. Reativação de clientes
+por email e WhatsApp. Conteúdo estratégico. Identidade visual.</p>
+<h2 id="prova">Prova</h2>
+<p><code>[R$ ]</code> em anúncio gerido. <code>[ ]</code> de retorno
+médio. Resposta ao contato em <code>[ ]</code> segundos.
+<code>[dados a validar]</code>.</p>
+<h2 id="as-perguntas-que-você-vai-fazer">As perguntas que você vai
+fazer</h2>
+<p><strong>"Já tenho equipe de marketing."</strong> A gente soma, não
+substitui.</p>
+<p><strong>"Tem multa se eu sair?"</strong> Não. Sem fidelidade forçada.
+Se não entrega, você sai. Nossa garantia é resultado, não contrato.</p>
+<p><strong>"O atendimento automático não parece robô?"</strong> Não. Ele
+fala no tom do seu negócio, responde na hora e chama uma pessoa quando
+precisa. E você acompanha tudo.</p>
+<p><strong>"Quanto preciso investir em anúncio?"</strong> É o que a
+conversa de diagnóstico calcula, antes de você gastar um real.</p>
+<h2 id="como-você-entra">Como você entra</h2>
+<p><strong>Projeto pontual.</strong> Uma entrega específica, sem
+mensalidade. Orçamento sob medida.</p>
+<p><strong>Plano completo.</strong> A estrutura inteira cuidada por nós.
+R$ 2.500 por mês.</p>
+<p><strong>Time de reforço.</strong> Nossos especialistas dentro da sua
+equipe. R$ 1.500 por mês.</p>
+<p><strong>Parceria por resultado.</strong> Valor menor mais uma parte
+ligada à meta. A partir de R$ 1.500 por mês.</p>
+<p>A verba de anúncio é à parte. A mensalidade não é gasto. É o que faz
+o cliente entrar.</p>
+<h2 id="comece-pela-conversa-de-diagnóstico">Comece pela conversa de
+diagnóstico</h2>
+<p>É de graça. Numa conversa, a gente calcula seu custo por cliente, a
+verba mínima e o tamanho da oportunidade que você deixa passar hoje. Sem
+custo. Sem compromisso.</p>
+<p>Você fala com a gente. A gente responde em até 12 horas. Em 14 dias a
+estrutura está no ar.</p>
+<p><strong>Quero minha conversa de diagnóstico.</strong></p>
+<p>expoente.marketing · <a
+href="mailto:contato@expoente.marketing">contato@expoente.marketing</a>
+· @expoente.marketing · <code>[WhatsApp]</code></p>
+<blockquote>
+<p>P.S. Cada semana parada é mais gente que você pagou pra atrair e
+perdeu por falta de resposta. A conversa é de graça e leva 15 minutos.
+Cara mesmo é a conta do que você perde enquanto pensa.</p>
+</blockquote>
+
+  </div>
+
+  <div class="foot">
+    <span>expoente.marketing · contato@expoente.marketing · @expoente.marketing</span>
+    <span>julho de 2026</span>
+  </div>
+</div>
+</body>
+</html>

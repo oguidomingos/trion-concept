@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Comercial · EXPOENTE</title>
+<style>
+  :root{
+    --bg:#050208; --ink:#EDE8F5; --muted:#9B8FB0; --dim:#6B5E7E;
+    --acc:#A855F7; --acc-deep:#7B2CBF; --acc-hi:#C084FC;
+    --glass:rgba(168,85,247,.06); --line:rgba(168,85,247,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{background:var(--bg)}
+  body{
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(123,44,191,.18), transparent 60%),
+      radial-gradient(900px 500px at -10% 40%, rgba(123,44,191,.10), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,'Helvetica Neue',sans-serif;
+    font-weight:300; line-height:1.65; font-size:15px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .toolbar{
+    position:fixed; top:0; left:0; right:0; z-index:10;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 28px;
+    background:rgba(5,2,8,.75); backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .toolbar .hint{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11px;color:var(--dim);letter-spacing:.08em}
+  .toolbar button{
+    font-family:inherit; font-weight:400; font-size:13px; letter-spacing:.04em;
+    color:#fff; background:linear-gradient(135deg,var(--acc-deep),var(--acc));
+    border:0; border-radius:99px; padding:9px 22px; cursor:pointer;
+    box-shadow:0 0 24px rgba(168,85,247,.35);
+  }
+  .toolbar button:hover{filter:brightness(1.15)}
+  .page{max-width:760px; margin:0 auto; padding:120px 36px 80px}
+  .brand{display:flex; align-items:flex-start; gap:0; margin-bottom:8px}
+  .brand .wm{font-weight:200; font-size:22px; letter-spacing:.34em; color:#fff}
+  .brand svg{width:11px;height:11px;margin:1px 0 0 -2px}
+  .brand-tag{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);margin-bottom:64px}
+  .doc h1{
+    font-weight:200; font-size:clamp(34px,6vw,52px); line-height:1.08;
+    letter-spacing:-.02em; color:#fff; margin:0 0 14px;
+  }
+  .doc h1 em, .doc h1 strong{
+    font-style:normal; font-weight:200;
+    background:linear-gradient(90deg,var(--acc-hi),var(--acc));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .doc h2{
+    font-weight:200; font-size:26px; letter-spacing:-.01em; color:#fff;
+    margin:56px 0 14px; padding-top:28px; border-top:1px solid var(--line);
+  }
+  .doc h3{
+    font-family:ui-monospace,'SF Mono',Menlo,monospace; font-weight:500;
+    font-size:11px; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--acc-hi); margin:36px 0 10px;
+  }
+  .doc p{color:var(--muted); margin:0 0 14px}
+  .doc strong{color:var(--ink); font-weight:500}
+  .doc em{color:var(--acc-hi); font-style:normal}
+  .doc a{color:var(--acc); text-decoration:none; border-bottom:1px solid rgba(168,85,247,.35)}
+  .doc ul,.doc ol{margin:0 0 16px 20px; color:var(--muted)}
+  .doc li{margin-bottom:8px}
+  .doc li::marker{color:var(--acc)}
+  .doc blockquote{
+    background:var(--glass); border:1px solid var(--line); border-left:2px solid var(--acc);
+    border-radius:12px; padding:18px 22px; margin:0 0 18px; color:var(--muted);
+  }
+  .doc blockquote p:last-child{margin:0}
+  .doc table{width:100%; border-collapse:collapse; margin:0 0 22px; font-size:13.5px}
+  .doc th{
+    font-family:ui-monospace,'SF Mono',Menlo,monospace; font-weight:500; font-size:10.5px;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--acc-hi);
+    text-align:left; padding:10px 14px; border-bottom:1px solid var(--acc-deep);
+  }
+  .doc td{padding:12px 14px; border-bottom:1px solid var(--line); color:var(--muted); vertical-align:top}
+  .doc tr:hover td{background:rgba(168,85,247,.04)}
+  .doc code{font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:.9em; color:var(--acc-hi)}
+  .doc hr{border:0; border-top:1px solid var(--line); margin:40px 0}
+  .foot{
+    margin-top:80px; padding-top:24px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+    font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:10.5px;
+    letter-spacing:.12em; color:var(--dim);
+  }
+  [contenteditable]:focus{outline:1px dashed rgba(168,85,247,.35); outline-offset:8px; border-radius:4px}
+
+  @page{margin:0; size:A4}
+  @media print{
+    html,body{background:var(--bg)!important; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+    .toolbar{display:none}
+    .page{padding:56px 48px}
+    .doc h2{break-after:avoid}
+    .doc blockquote,.doc table{break-inside:avoid}
+    [contenteditable]:focus{outline:none}
+  }
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <span class="hint">CLIQUE NO TEXTO PRA EDITAR · CTRL+P OU O BOTÃO PRA EXPORTAR</span>
+  <button onclick="window.print()">Exportar PDF</button>
+</div>
+<div class="page">
+  <div class="brand">
+    <span class="wm">EXPOENTE</span>
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <linearGradient id="gB" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#7B2CBF"/><stop offset="1" stop-color="#3b2a6b"/>
+        </linearGradient>
+        <linearGradient id="gH" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#C084FC"/><stop offset="1" stop-color="#A855F7"/>
+        </linearGradient>
+        <mask id="bite"><rect width="100" height="100" fill="#fff"/><circle cx="72" cy="31" r="14" fill="#000"/></mask>
+      </defs>
+      <circle cx="45" cy="57" r="30" fill="url(#gB)" mask="url(#bite)"/>
+      <circle cx="72" cy="31" r="11" fill="url(#gH)"/>
+    </svg>
+  </div>
+  <div class="brand-tag">engenharia de crescimento</div>
+
+  <div class="doc" contenteditable="true" spellcheck="false">
+
+<h1 id="proposta-comercial">Proposta Comercial</h1>
+<p><strong>Cliente:</strong> [ ] <strong>Segmento:</strong> [ ]
+<strong>Data:</strong> [ ] <strong>Responsável EXPOENTE:</strong> [ ]
+<strong>Validade da proposta:</strong> [ ] dias</p>
+<hr />
+<h2 id="1-diagnóstico-do-cenário-atual">1. Diagnóstico do cenário
+atual</h2>
+<p>Hoje, [nome do cliente] enfrenta:</p>
+<ul class="task-list">
+<li><label><input type="checkbox" />(ex.: contato chega no WhatsApp e
+ninguém responde a tempo)</label></li>
+<li><label><input type="checkbox" />(ex.: anúncio rodando sem relatório
+confiável, sem saber o que converte)</label></li>
+<li><label><input type="checkbox" />(ex.: contatos sem organização, sem
+prazo de resposta definido)</label></li>
+<li><label><input type="checkbox" />(ex.: dependência de indicação, sem
+sistema de atração previsível)</label></li>
+</ul>
+<p>Custo de manter esse cenário: [ ] em receita perdida por mês,
+estimado a partir de [ ].</p>
+<p>Isso não é falta de esforço. É falta de sistema.</p>
+<hr />
+<h2 id="2-o-que-propomos">2. O que propomos</h2>
+<p>A EXPOENTE vende previsibilidade. Você para de torcer pra dar certo e
+passa a saber quanto entra, de onde vem e quanto custa cada cliente.</p>
+<p>A estrutura fica pronta em até 14 dias. Primeiro a gente prepara:
+público certo, canais certos e medição limpa desde o primeiro clique.
+Depois a gente estrutura: anúncio, página de venda, atendimento no
+WhatsApp e organização dos contatos, tudo ligado. E toda semana a gente
+ajusta, olhando os números pra ampliar o que vende e cortar o que não
+vende.</p>
+<p>Aplicado ao caso de [nome do cliente]: [ ] (uma frase conectando a
+dor descrita acima ao sistema).</p>
+<hr />
+<h2 id="3-escopo-detalhado">3. Escopo detalhado</h2>
+<h3 id="oferta-base">Oferta base</h3>
+<p>O essencial pra vender com previsibilidade.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>O que entrega</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vitrine digital</td>
+<td>9 posts principais, Google Meu Negócio, landing pages e sites de
+alta conversão.</td>
+</tr>
+<tr>
+<td>Anúncios online</td>
+<td>Campanhas na frente de quem já está procurando o que você
+vende.</td>
+</tr>
+<tr>
+<td>Qualificação de WhatsApp</td>
+<td>A pessoa é respondida na hora, entendida e encaminhada. Nenhum
+contato esfriando por demora.</td>
+</tr>
+<tr>
+<td>Relatórios periódicos</td>
+<td>Você enxerga o que entrou, de onde veio e quanto custou.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="adicionais-conforme-a-operação-pede">Adicionais (conforme a
+operação pede)</h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>O que entrega</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Funis de venda automáticos</td>
+<td>Caminho do anúncio até o fechamento, desenhado e medido.</td>
+</tr>
+<tr>
+<td>Atendimento automático avançado</td>
+<td>Vai além da qualificação, resolvendo etapas mais complexas do
+atendimento.</td>
+</tr>
+<tr>
+<td>Organização dos contatos e processos</td>
+<td>Estrutura comercial com prazo de resposta definido, não
+informal.</td>
+</tr>
+<tr>
+<td>Reativação por email e WhatsApp</td>
+<td>Quem não comprou ainda não é descartado.</td>
+</tr>
+<tr>
+<td>Conteúdo estratégico</td>
+<td>[ ]</td>
+</tr>
+<tr>
+<td>Identidade visual</td>
+<td>[ ]</td>
+</tr>
+</tbody>
+</table>
+<p>Os itens marcados acima como escolhidos para [nome do cliente] estão
+incluídos no valor da seção 5.</p>
+<hr />
+<h2 id="4-cronograma-de-14-dias">4. Cronograma de 14 dias</h2>
+<p><strong>Semana 1 — Preparação</strong></p>
+<ul>
+<li>Definição de público, canais e oferta</li>
+<li>Medição implementada e validada desde o primeiro clique</li>
+<li>Estrutura de contas de anúncio configurada</li>
+</ul>
+<p><strong>Semana 2 — Estruturação</strong></p>
+<ul>
+<li>Landing pages e vitrine digital no ar</li>
+<li>Qualificação de WhatsApp treinada com o tom do negócio</li>
+<li>Primeiros anúncios ativos e ajuste inicial</li>
+</ul>
+<p>A partir do dia 15: <strong>ajuste contínuo</strong> — toda semana a
+gente olha os números, amplia o que vende e corta o que não vende.</p>
+<hr />
+<h2 id="5-investimento">5. Investimento</h2>
+<p><strong>Modalidade escolhida:</strong> [ ]
+<strong>Mensalidade:</strong> R$ [ ] /mês <strong>Verba de
+anúncio:</strong> à parte da mensalidade, definida na conversa de
+diagnóstico <strong>Setup inicial (se houver):</strong> [ ]</p>
+<p>A mensalidade não é gasto. É o que faz o cliente entrar.</p>
+<hr />
+<h2 id="6-garantia-e-sem-fidelidade-forçada">6. Garantia e sem
+fidelidade forçada</h2>
+<p>Não trabalhamos com multa de cancelamento. Nossa garantia é
+resultado, não contrato.</p>
+<p>Se não entrega, você sai. Sem burocracia.</p>
+<p>[ ] (detalhar garantia específica acordada, se houver, por exemplo
+prazo de ajuste ou marco de revisão em X dias)</p>
+<hr />
+<h2 id="7-próximo-passo">7. Próximo passo</h2>
+<p>Essa proposta é válida até <strong>[ ]</strong>.</p>
+<p>Pra avançar:</p>
+<ol type="1">
+<li>Confirme aceite por email ou assinatura abaixo</li>
+<li>Agendamos o início em até [ ] dias úteis</li>
+<li>O prazo de 14 dias começa a contar</li>
+</ol>
+<p><strong>Quero ativar minha estrutura EXPOENTE.</strong></p>
+<p>Assinatura cliente: _______________________ Data:
+<em><strong>/</strong></em>/___ Assinatura EXPOENTE:
+_____________________ Data: <em><strong>/</strong></em>/___</p>
+
+  </div>
+
+  <div class="foot">
+    <span>expoente.marketing · contato@expoente.marketing · @expoente.marketing</span>
+    <span>julho de 2026</span>
+  </div>
+</div>
+</body>
+</html>

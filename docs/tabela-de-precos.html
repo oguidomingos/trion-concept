@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabela de Preços · EXPOENTE</title>
+<style>
+  :root{
+    --bg:#050208; --ink:#EDE8F5; --muted:#9B8FB0; --dim:#6B5E7E;
+    --acc:#A855F7; --acc-deep:#7B2CBF; --acc-hi:#C084FC;
+    --glass:rgba(168,85,247,.06); --line:rgba(168,85,247,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{background:var(--bg)}
+  body{
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(123,44,191,.18), transparent 60%),
+      radial-gradient(900px 500px at -10% 40%, rgba(123,44,191,.10), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,'Helvetica Neue',sans-serif;
+    font-weight:300; line-height:1.65; font-size:15px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .toolbar{
+    position:fixed; top:0; left:0; right:0; z-index:10;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 28px;
+    background:rgba(5,2,8,.75); backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .toolbar .hint{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11px;color:var(--dim);letter-spacing:.08em}
+  .toolbar button{
+    font-family:inherit; font-weight:400; font-size:13px; letter-spacing:.04em;
+    color:#fff; background:linear-gradient(135deg,var(--acc-deep),var(--acc));
+    border:0; border-radius:99px; padding:9px 22px; cursor:pointer;
+    box-shadow:0 0 24px rgba(168,85,247,.35);
+  }
+  .toolbar button:hover{filter:brightness(1.15)}
+  .page{max-width:760px; margin:0 auto; padding:120px 36px 80px}
+  .brand{display:flex; align-items:flex-start; gap:0; margin-bottom:8px}
+  .brand .wm{font-weight:200; font-size:22px; letter-spacing:.34em; color:#fff}
+  .brand svg{width:11px;height:11px;margin:1px 0 0 -2px}
+  .brand-tag{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);margin-bottom:64px}
+  .doc h1{
+    font-weight:200; font-size:clamp(34px,6vw,52px); line-height:1.08;
+    letter-spacing:-.02em; color:#fff; margin:0 0 14px;
+  }
+  .doc h1 em, .doc h1 strong{
+    font-style:normal; font-weight:200;
+    background:linear-gradient(90deg,var(--acc-hi),var(--acc));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .doc h2{
+    font-weight:200; font-size:26px; letter-spacing:-.01em; color:#fff;
+    margin:56px 0 14px; padding-top:28px; border-top:1px solid var(--line);
+  }
+  .doc h3{
+    font-family:ui-monospace,'SF Mono',Menlo,monospace; font-weight:500;
+    font-size:11px; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--acc-hi); margin:36px 0 10px;
+  }
+  .doc p{color:var(--muted); margin:0 0 14px}
+  .doc strong{color:var(--ink); font-weight:500}
+  .doc em{color:var(--acc-hi); font-style:normal}
+  .doc a{color:var(--acc); text-decoration:none; border-bottom:1px solid rgba(168,85,247,.35)}
+  .doc ul,.doc ol{margin:0 0 16px 20px; color:var(--muted)}
+  .doc li{margin-bottom:8px}
+  .doc li::marker{color:var(--acc)}
+  .doc blockquote{
+    background:var(--glass); border:1px solid var(--line); border-left:2px solid var(--acc);
+    border-radius:12px; padding:18px 22px; margin:0 0 18px; color:var(--muted);
+  }
+  .doc blockquote p:last-child{margin:0}
+  .doc table{width:100%; border-collapse:collapse; margin:0 0 22px; font-size:13.5px}
+  .doc th{
+    font-family:ui-monospace,'SF Mono',Menlo,monospace; font-weight:500; font-size:10.5px;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--acc-hi);
+    text-align:left; padding:10px 14px; border-bottom:1px solid var(--acc-deep);
+  }
+  .doc td{padding:12px 14px; border-bottom:1px solid var(--line); color:var(--muted); vertical-align:top}
+  .doc tr:hover td{background:rgba(168,85,247,.04)}
+  .doc code{font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:.9em; color:var(--acc-hi)}
+  .doc hr{border:0; border-top:1px solid var(--line); margin:40px 0}
+  .foot{
+    margin-top:80px; padding-top:24px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+    font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:10.5px;
+    letter-spacing:.12em; color:var(--dim);
+  }
+  [contenteditable]:focus{outline:1px dashed rgba(168,85,247,.35); outline-offset:8px; border-radius:4px}
+
+  @page{margin:0; size:A4}
+  @media print{
+    html,body{background:var(--bg)!important; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+    .toolbar{display:none}
+    .page{padding:56px 48px}
+    .doc h2{break-after:avoid}
+    .doc blockquote,.doc table{break-inside:avoid}
+    [contenteditable]:focus{outline:none}
+  }
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <span class="hint">CLIQUE NO TEXTO PRA EDITAR · CTRL+P OU O BOTÃO PRA EXPORTAR</span>
+  <button onclick="window.print()">Exportar PDF</button>
+</div>
+<div class="page">
+  <div class="brand">
+    <span class="wm">EXPOENTE</span>
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <linearGradient id="gB" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#7B2CBF"/><stop offset="1" stop-color="#3b2a6b"/>
+        </linearGradient>
+        <linearGradient id="gH" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#C084FC"/><stop offset="1" stop-color="#A855F7"/>
+        </linearGradient>
+        <mask id="bite"><rect width="100" height="100" fill="#fff"/><circle cx="72" cy="31" r="14" fill="#000"/></mask>
+      </defs>
+      <circle cx="45" cy="57" r="30" fill="url(#gB)" mask="url(#bite)"/>
+      <circle cx="72" cy="31" r="11" fill="url(#gH)"/>
+    </svg>
+  </div>
+  <div class="brand-tag">engenharia de crescimento</div>
+
+  <div class="doc" contenteditable="true" spellcheck="false">
+
+<h1 id="tabela-de-preços-e-planos">Tabela de Preços e Planos</h1>
+<p>Quatro formas de trabalhar com a gente. Escolha pela dor que você
+tem, não pelo nome do plano.</p>
+<table>
+<thead>
+<tr>
+<th>Plano</th>
+<th>O que inclui</th>
+<th>Pra quem é</th>
+<th>Investimento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Projeto pontual</strong></td>
+<td>Uma entrega específica, sem mensalidade. Ex.: landing page, vitrine
+digital, qualificação de WhatsApp sozinha.</td>
+<td>Quem já tem estrutura rodando e precisa resolver um ponto
+específico, sem contratar o sistema inteiro.</td>
+<td><strong>Orçamento sob medida</strong></td>
+</tr>
+<tr>
+<td><strong>★ Plano completo</strong></td>
+<td>A oferta base inteira, cuidada por nós: vitrine digital (9 posts,
+Google Meu Negócio, landing pages e sites), anúncios online,
+qualificação de WhatsApp e relatórios periódicos. Adicionais entram
+conforme a operação pede.</td>
+<td>Quem quer parar de apagar incêndio e ter um sistema de vendas
+rodando de ponta a ponta. <strong>Nosso plano principal.</strong></td>
+<td><strong>R$ 2.500 /mês</strong></td>
+</tr>
+<tr>
+<td><strong>Time de reforço</strong></td>
+<td>Nossos especialistas dentro da sua equipe. Você mantém o time, a
+gente entra como força extra.</td>
+<td>Empresas que já têm marketing interno e precisam de execução
+especializada sem contratar mais gente fixa.</td>
+<td><strong>R$ 1.500 /mês</strong></td>
+</tr>
+<tr>
+<td><strong>Parceria por resultado</strong></td>
+<td>Valor menor mais uma parte ligada à meta (contatos, vendas ou
+receita, a combinar). Acompanhamento contínuo.</td>
+<td>Quem já validou o sistema e quer alinhar nosso incentivo direto ao
+seu crescimento.</td>
+<td><strong>A partir de R$ 1.500 /mês + variável</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="adicionais-acima-da-base">Adicionais (acima da base)</h2>
+<p>Entram conforme a operação do cliente pede, em qualquer
+modalidade:</p>
+<ul>
+<li>Funis de venda automáticos</li>
+<li>Atendimento automático avançado</li>
+<li>Organização dos contatos e processos comerciais</li>
+<li>Reativação de clientes por email e WhatsApp</li>
+<li>Conteúdo estratégico</li>
+<li>Identidade visual</li>
+</ul>
+<hr />
+<h2 id="notas">Notas</h2>
+<ul>
+<li><strong>Verba de anúncio é sempre à parte da mensalidade.</strong> O
+valor é calculado na conversa de diagnóstico gratuita, não é chute.</li>
+<li><strong>A mensalidade não é gasto, é o que faz o cliente
+entrar.</strong></li>
+<li><strong>Sem fidelidade forçada</strong> em nenhum plano. Nossa
+garantia é resultado, não contrato.</li>
+<li>Setup inicial, quando houver, é cobrado à parte da mensalidade: R$ [
+].</li>
+<li>Valores variam conforme escopo, segmento e volume de anúncio. Os
+números acima são referência, ajustados na conversa de diagnóstico.</li>
+</ul>
+<hr />
+<h2 id="próximo-passo">Próximo passo</h2>
+<p>Não dá pra escolher plano no escuro. A conversa de diagnóstico mostra
+qual estrutura faz sentido pro seu caso, sua verba mínima e o retorno
+esperado.</p>
+<p><strong>Quero minha conversa de diagnóstico.</strong></p>
+
+  </div>
+
+  <div class="foot">
+    <span>expoente.marketing · contato@expoente.marketing · @expoente.marketing</span>
+    <span>julho de 2026</span>
+  </div>
+</div>
+</body>
+</html>
