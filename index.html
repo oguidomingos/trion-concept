@@ -1,7 +1,20 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
 <title>EXPOENTE — Engenharia de Crescimento</title>
+<meta name="description" content="A EXPOENTE monta a estrutura de vendas da sua empresa em 14 dias: tráfego, WhatsApp, funil e medição. Diagnóstico gratuito, com retorno em até 12 horas.">
+<link rel="canonical" href="https://expoente.marketing/">
+<meta name="theme-color" content="#050208">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="EXPOENTE">
+<meta property="og:title" content="EXPOENTE — Marketing que você consegue prever">
+<meta property="og:description" content="Estrutura de vendas no ar em 14 dias. Você passa a saber quanto vende, de onde vem e quanto custa cada cliente.">
+<meta property="og:url" content="https://expoente.marketing/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EXPOENTE — Marketing que você consegue prever">
+<meta name="twitter:description" content="Estrutura de vendas no ar em 14 dias. Diagnóstico gratuito, resposta em até 12 horas.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='22'%20fill='%237B2CBF'/%3E%3Ccircle%20cx='45'%20cy='57'%20r='30'%20fill='%23fff'/%3E%3Ccircle%20cx='72'%20cy='31'%20r='14'%20fill='%237B2CBF'/%3E%3Ccircle%20cx='72'%20cy='31'%20r='11'%20fill='%23fff'/%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"EXPOENTE","url":"https://expoente.marketing/","description":"Engenharia de crescimento: estrutura de vendas, tráfego, qualificação no WhatsApp e medição.","areaServed":"BR","telephone":"+55-61-93618-0578"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300&display=swap" rel="stylesheet"></head><body>
 <style>
@@ -16,11 +29,12 @@
   --sans:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
 }
 *{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;color-scheme:dark}
 html,body{overflow-x:clip}
+:target,section[id],#diagnostico{scroll-margin-top:92px}
 body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);
   -webkit-font-smoothing:antialiased;padding:0;min-height:100vh}
-@media(min-width:1024px){body{display:flex;justify-content:center}}
+
 ::selection{background:rgba(168,85,247,.35);color:#EDDCFF}
 a{text-decoration:none;color:inherit}
 img{max-width:100%}
@@ -42,7 +56,8 @@ img{max-width:100%}
   radial-gradient(80% 70% at 50% 45%,transparent 30%,rgba(5,2,8,.82) 100%),
   linear-gradient(rgba(5,2,8,.35),rgba(5,2,8,.55))}
 
-.frame{width:100%;max-width:1400px;position:relative;overflow:hidden;background:rgba(3,1,6,.30)}
+.frame{width:min(1400px,100%);margin-inline:auto;min-width:0;position:relative;overflow:hidden;background:rgba(3,1,6,.30);padding-top:84px}
+@media(min-width:768px){.frame{padding-top:96px}}
 
 .inner{position:relative;z-index:1;padding-inline:24px}
 @media(min-width:768px){.inner{padding-inline:48px}}
@@ -72,13 +87,24 @@ h3.serif{font-size:clamp(24px,3vw,34px);line-height:1.05}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 20px 50px -20px rgba(0,0,0,.6)}
 
 /* ============ nav ============ */
-nav{position:relative;z-index:50;display:flex;align-items:center;
-  justify-content:space-between;padding:24px;gap:12px}
-@media(min-width:768px){nav{padding:32px 48px}}
+nav{position:fixed;z-index:80;top:0;left:0;right:0;margin-inline:auto;
+  width:min(1400px,100%);display:flex;align-items:center;
+  justify-content:space-between;padding:14px 16px 22px;gap:10px;
+  background:linear-gradient(180deg,rgba(5,2,8,.94) 0%,rgba(5,2,8,.72) 62%,transparent)}
+@media(min-width:768px){nav{padding:18px 48px 28px}}
 .logo{display:inline-flex;align-items:flex-start;gap:0;font-weight:200;letter-spacing:.17em;
   font-size:19px;text-transform:uppercase;line-height:1}
+.logo .lockup{width:124px;height:auto;display:block}
+@media(min-width:768px){.logo .lockup{width:168px}}
+@media(max-width:420px){
+  .logo .lockup{width:104px}
+  .nav-cta{padding:8px 12px;font-size:13px}
+}
 .logo .wm{line-height:1}
 .logo .mark{filter:drop-shadow(0 0 8px var(--glow))}
+.nav-cta .long{display:none}
+.nav-cta .short{display:inline}
+@media(min-width:520px){.nav-cta .long{display:inline}.nav-cta .short{display:none}}
 .pillnav{display:none;border-radius:999px;padding:4px;gap:4px;align-items:center;
   background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,0));
   backdrop-filter:blur(12px);box-shadow:0 10px 30px rgba(0,0,0,.2)}
@@ -100,7 +126,8 @@ nav{position:relative;z-index:50;display:flex;align-items:center;
 a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
 
 /* ============ hero ============ */
-.hero{display:grid;gap:64px;padding-block:64px 110px;align-items:center}
+.hero{display:grid;gap:64px;padding-block:64px 110px;align-items:center;min-width:0}
+.hero>*{min-width:0}
 @media(min-width:1024px){.hero{grid-template-columns:1.05fr .95fr;padding-block:88px 140px}}
 .badge{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:#E3CCFB;
   border-radius:999px;padding:6px 14px;background:rgba(123,44,191,.14);margin-bottom:26px}
@@ -110,7 +137,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .trust{margin-top:52px}
 .trust .lab{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:16px}
 .trust .logos{display:flex;gap:28px;flex-wrap:wrap;align-items:center;
-  font-family:var(--serif);font-style:italic;font-size:17px;color:#5d5866}
+  font-family:var(--serif);font-style:italic;font-size:17px;color:#b7b1c0}
 
 .viz{position:relative;min-height:420px}
 .viz svg.noodles{position:absolute;inset:0;width:100%;height:100%}
@@ -364,6 +391,9 @@ section.tight{padding-block:72px}
 .lead .btn.big{justify-content:center;font-size:15px;padding:16px 30px;margin-top:6px;
   box-shadow:0 0 0 1px var(--acc-deep),inset 0 1px 0 rgba(255,255,255,.25),0 0 40px -6px rgba(139,61,255,.7)}
 .lead .btn.big:hover{box-shadow:0 0 60px -4px rgba(168,85,247,.9),0 0 0 1px var(--acc2)}
+.form-status{font-size:13.5px;line-height:1.5;color:var(--muted);min-height:0}
+.form-status:not(:empty){margin-top:4px}
+.form-status a{color:var(--acc-hi);text-decoration:underline}
 
 /* modelos (passo 02) */
 .models{display:grid;gap:24px}
@@ -521,21 +551,19 @@ footer{border-top:1px solid var(--line-soft);padding-block:72px 44px;color:var(-
   transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none}
 
-/* abertura da hero: espera o filme rodar 1.5s (body.ready) */
-.hseq{opacity:0;transform:translateY(26px);
-  transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
-body.ready .hseq{opacity:1;transform:none}
-body.ready .hseq.h2{transition-delay:.18s}
-body.ready .hseq.h3{transition-delay:.36s}
-body.ready .hseq.h4{transition-delay:.54s}
-body.ready .hseq.h5{transition-delay:.78s}
-nav.hseq{transform:translateY(-14px)}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.hseq{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.hseq.h2{animation-delay:.06s}
+.hseq.h3{animation-delay:.14s}
+.hseq.h4{animation-delay:.24s}
+.hseq.h5{animation-delay:.36s}
 
 @media(prefers-reduced-motion:reduce){
-  .rv,.float,.beam,.node .bar i{animation:none;transition:none;opacity:1;transform:none}
+  .rv,.hseq,.float,.beam,.node .bar i,.leadwrap::before{animation:none;transition:none;opacity:1;transform:none}
   html{scroll-behavior:auto}
 }
 </style>
+<noscript><style>.rv,.hseq{opacity:1!important;transform:none!important;animation:none!important}</style></noscript>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
   <linearGradient id="expBase" x1="0" y1="0" x2="1" y2="1">
@@ -559,24 +587,22 @@ nav.hseq{transform:translateY(-14px)}
 </defs></svg>
 
 <div class="bg-ambient"></div>
-<video id="bgv" muted playsinline autoplay preload="auto" aria-hidden="true"></video>
+<video id="bgv" muted playsinline preload="none" aria-hidden="true"></video>
 <div class="bg-veil" aria-hidden="true"></div>
+<nav class="inner" id="topo">
+  <a class="logo" href="#topo" aria-label="Expoente, início"><svg class="lockup" viewBox="0 0 660 120"><use href="#expLockup"/></svg></a>
+  <div class="pillnav gb" style="border-radius:999px">
+    <a class="on" href="#solucoes">Soluções</a>
+    <a href="#modelos">Modelos</a>
+    <a href="#setores">Setores</a>
+    <a href="#numeros">Resultados</a>
+    <a href="#cases">Cases</a>
+    <a href="#conteudo">Conteúdo</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <a class="btn nav-cta" href="#diagnostico"><span class="long">Diagnóstico gratuito</span><span class="short">Diagnóstico</span> <span class="arr">→</span></a>
+</nav>
 <div class="frame">
-  
-  <!-- 0 · NAV + CTA -->
-  <nav class="inner hseq">
-    <a class="logo" href="#" aria-label="Expoente"><svg class="lockup" viewBox="0 0 660 120" style="width:168px;height:auto;display:block"><use href="#expLockup"/></svg></a>
-    <div class="pillnav gb" style="border-radius:999px">
-      <a class="on" href="#solucoes">Soluções</a>
-      <a href="#modelos">Modelos</a>
-      <a href="#setores">Setores</a>
-      <a href="#numeros">Resultados</a>
-      <a href="#cases">Cases</a>
-      <a href="#conteudo">Conteúdo</a>
-      <a href="#faq">FAQ</a>
-    </div>
-    <a class="btn" href="#diagnostico">Diagnóstico gratuito <span class="arr">→</span></a>
-  </nav>
 
   <!-- 1 · HERO STATEMENT -->
   <div class="inner hero">
@@ -589,7 +615,7 @@ nav.hseq{transform:translateY(-14px)}
         <a class="btn ghost" href="#passos">Ver metodologia</a>
       </div>
       <div class="trust hseq h5">
-        <div class="lab">Empresas que já usaram inteligência Trion</div>
+        <div class="lab">Empresas que já operam com a Expoente</div>
         <div class="logos"><span>Fruto da Videira</span><span>Clínica Vitalis</span><span>Nordeste Log</span><span>Casa&amp;Cor Imob</span></div>
       </div>
     </div>
@@ -653,7 +679,7 @@ nav.hseq{transform:translateY(-14px)}
       </div>
     </div>
 
-    <div class="leadwrap rv">
+    <div class="leadwrap rv" id="diagnostico">
       <div class="lead">
         <div>
           <span class="kicker" style="margin-bottom:6px">Comece agora</span>
@@ -661,12 +687,12 @@ nav.hseq{transform:translateY(-14px)}
           <p class="sub" style="font-size:15.5px">Preencha e receba uma ligação em até 12 horas com o raio-X do seu funil: onde vaza, quanto custa e o plano de 14 dias para consertar.</p>
           <div class="lp-note"><i></i> Time disponível agora · resposta em até 12h úteis</div>
         </div>
-        <form action="https://wa.me/5561936180578" method="get" target="_blank" id="leadform">
+        <form id="leadform">
           <div class="frow">
             <label>Nome<input type="text" name="nome" placeholder="Seu nome" required autocomplete="name"></label>
-            <label>WhatsApp<input type="tel" name="whats" placeholder="(61) 9 9999-9999" required autocomplete="tel"></label>
+            <label>WhatsApp<input type="tel" name="whats" placeholder="(61) 9 9999-9999" required autocomplete="tel" inputmode="tel"></label>
           </div>
-          <label>Site ou Instagram<input type="text" name="site" placeholder="suaempresa.com.br ou @perfil"></label>
+          <label>Site ou Instagram<input type="text" name="site" placeholder="suaempresa.com.br ou @perfil" autocomplete="url"></label>
           <label>Faturamento mensal
             <select name="fat" required>
               <option value="" selected disabled>Selecione…</option>
@@ -677,6 +703,7 @@ nav.hseq{transform:translateY(-14px)}
             </select>
           </label>
           <button class="btn big" type="submit">Receber meu diagnóstico gratuito <span class="arr">→</span></button>
+          <p class="form-status" id="formstatus" role="status"></p>
         </form>
       </div>
     </div>
@@ -707,7 +734,7 @@ nav.hseq{transform:translateY(-14px)}
       </div>
       <div class="caro-slide">
         <div class="caro-txt"><span class="verb">Vender enquanto você dorme</span><h3>Qualificação de WhatsApp</h3><p>Responde na hora, entende o que a pessoa quer e agenda pra você, a qualquer hora do dia, com o tom da sua marca.</p><ul><li>Resposta na hora</li><li>Entende e separa quem quer comprar</li><li>Agenda pra você</li></ul></div>
-        <div class="mock"><div class="bar"><i></i><i></i><i></i><span>WhatsApp · Agente Trion</span></div>
+        <div class="mock"><div class="bar"><i></i><i></i><i></i><span>WhatsApp · Agente Expoente</span></div>
      <div class="body chat">
      <div class="msg in">Oi! Vi o anúncio de vocês, como funciona?<small>19:42</small></div>
      <div class="msg out">Oi, Marina! 👋 Te explico em 1 min. Hoje você já investe em tráfego ou está começando?<small>19:42 · IA</small></div>
@@ -784,21 +811,21 @@ nav.hseq{transform:translateY(-14px)}
      <div class="body">
        <div class="gmail">
          <div class="gm-head"><span class="gm-logo">M</span><span>Caixa de entrada</span><span class="gm-count">3 novas</span></div>
-         <div class="gm-row unread"><span class="gm-av" style="background:#7B2CBF">T</span>
-           <div class="gm-tx"><b>Trion · Sentimos sua falta 💜</b><span>Marina, separamos uma condição especial pra você voltar…</span></div>
+         <div class="gm-row unread"><span class="gm-av" style="background:#7B2CBF">E</span>
+           <div class="gm-tx"><b>Expoente · Sentimos sua falta</b><span>Marina, separamos uma condição especial pra você voltar…</span></div>
            <span class="gm-time">09:12</span></div>
-         <div class="gm-row"><span class="gm-av" style="background:#8B5CF6">T</span>
+         <div class="gm-row"><span class="gm-av" style="background:#8B5CF6">E</span>
            <div class="gm-tx"><b>Como a Clínica Vitalis dobrou a agenda</b><span>Case completo: de 40 para 92 consultas/mês com o mesmo orçamento…</span></div>
            <span class="gm-time">seg</span></div>
        </div>
        <div class="wa-card">
-         <div class="wa-head"><span class="wa-av">T</span><div><b>Trion</b><small>online</small></div></div>
+         <div class="wa-head"><span class="wa-av">E</span><div><b>Expoente</b><small>online</small></div></div>
          <div class="msg in wa-in">Oi Marina! Vi que você abriu nosso e-mail 👀 A condição especial vale até sexta. Quer que eu já reserve seu horário?<small>09:14 ✓✓</small></div>
        </div>
      </div></div>
       </div>
       <div class="caro-slide">
-        <div class="caro-txt"><span class="verb">Vender com processo</span><h3>Organização dos contatos e processos</h3><p>Contatos organizados, prazo de resposta definido, prazo de resposta entre marketing e vendas e processo que transforma lead qualificado em receita.</p><ul><li>Todo contato organizado</li><li>Prazo de resposta definido</li><li>Previsibilidade de funil de vendas</li></ul></div>
+        <div class="caro-txt"><span class="verb">Vender com processo</span><h3>Organização dos contatos e processos</h3><p>Cada contato tem dono, prazo de resposta e um caminho claro entre marketing e vendas — até virar receita.</p><ul><li>Todo contato organizado</li><li>Prazo de resposta definido</li><li>Previsibilidade de funil de vendas</li></ul></div>
         <div class="mock"><div class="bar"><i></i><i></i><i></i><span>Contatos · Funil</span></div>
      <div class="body kan">
      <div class="col"><h6>Novo</h6><div class="tick">Marina — Clínica</div><div class="tick">Paulo — Imob</div></div>
@@ -826,11 +853,11 @@ nav.hseq{transform:translateY(-14px)}
     <div class="models">
       <div class="model card gb rv"><span class="for">Para começar</span><h4>Projeto pontual</h4><p>Uma dor, uma entrega: LP, medição, auditoria de funil ou organização dos contatos.</p>
         <ul><li>Escopo fechado</li><li>Entrega em até 14 dias</li><li>Sem mensalidade</li></ul></div>
-      <div class="model card gb hot rv"><span class="for">Para crescer</span><h4>Sistema Trion completo</h4><p>A triangulação inteira gerida por nós: tráfego + IA/funis + growth contínuo.</p>
+      <div class="model card gb hot rv"><span class="for">Para crescer</span><h4>Sistema Expoente</h4><p>A operação inteira gerida por nós: tráfego, qualificação e growth contínuo.</p>
         <ul><li>Squad dedicado</li><li>Dashboard em tempo real</li><li>Otimização semanal</li></ul></div>
-      <div class="model card gb rv"><span class="for">Para quem já tem time</span><h4>Squad de performance</h4><p>Nossos especialistas acoplados à sua equipe, com prazo de resposta entre marketing e vendas.</p>
-        <ul><li>Especialistas sob demanda</li><li>Playbooks Trion</li><li>Treinamento do time</li></ul></div>
-      <div class="model card gb rv"><span class="for">Para escalar alto</span><h4>Parceria por resultado</h4><p>Valor menor mais uma parte ligada à meta. A gente cresce junto com você.</p>
+      <div class="model card gb rv"><span class="for">Para quem já tem time</span><h4>Squad de performance</h4><p>Nossos especialistas entram na sua equipe, com um prazo combinado entre marketing e vendas.</p>
+        <ul><li>Especialistas sob demanda</li><li>Playbooks Expoente</li><li>Treinamento do time</li></ul></div>
+      <div class="model card gb rv"><span class="for">Para escalar alto</span><h4>Parceria por resultado</h4><p>Um valor de entrada menor e uma parte ligada à meta. A gente cresce junto com você.</p>
         <ul><li>Fee + variável por meta</li><li>Roadmap trimestral</li><li>Conselho de growth</li></ul></div>
     </div>
   </section>
@@ -859,7 +886,7 @@ nav.hseq{transform:translateY(-14px)}
       <div class="sector card gb rv"><div class="ic">✚</div><h4>Clínicas &amp; Saúde</h4><p>Agenda cheia. A qualificação de WhatsApp responde e qualifica o paciente antes da recepção atender.</p></div>
       <div class="sector card gb rv"><div class="ic">⌂</div><h4>Imobiliário</h4><p>Contatos de alto valor filtrados por intenção real de compra, direto na mão do corretor.</p></div>
       <div class="sector card gb rv"><div class="ic">◈</div><h4>E-commerce &amp; Varejo</h4><p>Funis de recompra e recuperação de carrinho com automação de WhatsApp e e-mail.</p></div>
-      <div class="sector card gb rv"><div class="ic">⚙</div><h4>Serviços B2B</h4><p>Prospecção estruturada, com prazo de resposta definido entre marketing e vendas. Funil de vendas previsível.</p></div>
+      <div class="sector card gb rv"><div class="ic">⚙</div><h4>Serviços B2B</h4><p>Prospecção estruturada e um prazo combinado entre marketing e vendas. Funil previsível.</p></div>
       <div class="sector card gb rv"><div class="ic">✦</div><h4>Educação &amp; Cursos</h4><p>Funis de lançamento e perpétuo com nutrição automática do lead ao aluno.</p></div>
       <div class="sector card gb rv"><div class="ic">✈</div><h4>Turismo &amp; Eventos</h4><p>Campanhas sazonais com resposta imediata — o lead quente não espera.</p></div>
       <div class="sector card gb rv"><div class="ic">⚖</div><h4>Advocacia &amp; Consultorias</h4><p>Autoridade + captação qualificada dentro das regras do setor.</p></div>
@@ -876,7 +903,7 @@ nav.hseq{transform:translateY(-14px)}
       <h2 class="serif">Resultados medidos, <span class="em">não prometidos</span></h2>
     </div>
     <div class="numbers rv">
-      <div class="numb"><div class="v"><span data-count="10" data-suffix="M+">0</span></div><div class="l">Reais geridos em mídia</div></div>
+      <div class="numb"><div class="v"><span data-count="10" data-prefix="R$ " data-suffix="M+">0</span></div><div class="l">Reais geridos em mídia</div></div>
       <div class="numb"><div class="v"><span data-count="3.5" data-dec="1" data-suffix="×">0</span></div><div class="l">ROI médio</div></div>
       <div class="numb"><div class="v"><span data-count="5" data-suffix="M+">0</span></div><div class="l">Interações mensais</div></div>
       <div class="numb"><div class="v"><span data-count="98" data-suffix="%">0</span></div><div class="l">Satisfação dos clientes</div></div>
@@ -889,10 +916,10 @@ nav.hseq{transform:translateY(-14px)}
   <section class="inner" id="cases">
     <div class="sec-head rv">
       <span class="kicker">Cases</span>
-      <h2 class="serif">O método Trion em <span class="em">números específicos</span></h2>
+      <h2 class="serif">O método Expoente em <span class="em">números específicos</span></h2>
     </div>
     <div class="cases">
-      <div class="case card gb rv"><span class="sec-tag">Saúde · Clínica</span><div class="pct">+230%</div><h4>Potencialização de carga</h4><p>Do tráfego reativo ao sistema completo em 14 dias — agenda lotada com custo por lead 40% menor.</p></div>
+      <div class="case card gb rv"><span class="sec-tag">Saúde · Clínica</span><div class="pct">+230%</div><h4>Agenda lotada</h4><p>Do tráfego reativo ao sistema completo em 14 dias — agenda lotada com custo por lead 40% menor.</p></div>
       <div class="case card gb rv"><span class="sec-tag">B2B · Serviços</span><div class="pct">+320%</div><h4>Crescimento de funil de vendas</h4><p>Anúncio, página de venda, qualificação de WhatsApp e organização dos contatos, tudo ligado: 5.2k visitas viraram 567 vendas.</p></div>
       <div class="case card gb rv"><span class="sec-tag">Varejo · E-commerce</span><div class="pct">+85%</div><h4>Mais leads qualificados</h4><p>Segmentação avançada e follow-ups automáticos: CPC caiu R$ 0,45 com CTR de 3,42%.</p></div>
       <div class="case card gb rv"><span class="sec-tag">Imobiliário</span><div class="pct">+249%</div><h4>Faturamento em 6 meses</h4><p>Leads de alto ticket qualificados por IA antes de chegarem ao corretor — taxa de visita 3× maior.</p></div>
@@ -910,7 +937,7 @@ nav.hseq{transform:translateY(-14px)}
       <h2 class="serif">Gente que já operou <span class="em">na escala que você quer</span></h2>
     </div>
     <div class="people">
-      <div class="person card gb rv"><div class="avatar">g</div><h4>Guilherme Domingos</h4><div class="role">Founder · Estratégia &amp; IA</div><p>Arquiteto da triangulação Trion: engenharia de funis, agentes de IA e sistemas de aquisição ponta a ponta.</p></div>
+      <div class="person card gb rv"><div class="avatar">G</div><h4>Guilherme Domingos</h4><div class="role">Founder · Estratégia &amp; IA</div><p>Arquiteto do sistema Expoente: engenharia de funis, agentes de IA e aquisição ponta a ponta.</p></div>
       <div class="person card gb rv"><div class="avatar">p</div><h4>Head de Performance</h4><div class="role">Tráfego &amp; Mídia</div><p>Mais de R$ 10M geridos em Meta e Google Ads, com playbooks próprios de segmentação e criativo.</p></div>
       <div class="person card gb rv"><div class="avatar">c</div><h4>Head de Conversão</h4><div class="role">Vendas e organização</div><p>Organização dos contatos e processos comerciais que transformam contato qualificado em receita.</p></div>
     </div>
@@ -958,9 +985,9 @@ nav.hseq{transform:translateY(-14px)}
     </div>
     <div class="media-grid">
       <div class="med card gb rv"><span class="mtag">Podcast</span><h4>Carga Máxima</h4><p>Conversas com operadores de growth sobre tráfego, IA e vendas — sem guru, só número.</p>
-        <div class="fake-player"><span class="play">▶</span><span class="wave" aria-hidden="true"><i style="--h:.3"></i><i style="--h:.8"></i><i style="--h:.5"></i><i style="--h:1"></i><i style="--h:.4"></i><i style="--h:.7"></i><i style="--h:.2"></i><i style="--h:.9"></i><i style="--h:.5"></i><i style="--h:.6"></i><i style="--h:.3"></i><i style="--h:.8"></i></span><span style="font-size:11px;color:var(--dim)">EP 12 · 48 min</span></div></div>
+        <div class="fake-player" aria-hidden="true"><span class="play">▶</span><span class="wave"><i style="--h:.3"></i><i style="--h:.8"></i><i style="--h:.5"></i><i style="--h:1"></i><i style="--h:.4"></i><i style="--h:.7"></i><i style="--h:.2"></i><i style="--h:.9"></i><i style="--h:.5"></i><i style="--h:.6"></i><i style="--h:.3"></i><i style="--h:.8"></i></span><span style="font-size:11px;color:var(--dim)">EP 12 · 48 min</span></div></div>
       <div class="med card gb rv"><span class="mtag">Blog &amp; playbooks</span><h4>Engenharia de vendas</h4><p>Guias práticos: teto de CAC, estrutura de funil, roteiros de atendimento, auditoria de medição.</p></div>
-      <div class="med card gb rv"><span class="mtag">Social</span><h4>Bastidores em Reels</h4><p>Scripts, testes de criativo e resultados abertos — o método Trion documentado em público.</p></div>
+      <div class="med card gb rv"><span class="mtag">Social</span><h4>Bastidores em Reels</h4><p>Scripts, testes de criativo e resultados abertos — o método Expoente documentado em público.</p></div>
     </div>
   </section>
 
@@ -974,9 +1001,9 @@ nav.hseq{transform:translateY(-14px)}
     </div>
     <div class="faq rv">
       <details open><summary>Em quanto tempo vejo resultado?</summary><div class="a">A estrutura completa entra no ar em até 14 dias. Os primeiros leads qualificados costumam chegar na primeira semana de campanha ativa; previsibilidade real de funil de vendas se consolida entre 60 e 90 dias.</div></details>
-      <details><summary>Já tenho equipe de marketing. A Trion substitui?</summary><div class="a">Não — somamos. No modelo Squad de Performance, nossos especialistas acoplam à sua equipe com playbooks e prazo de resposta claros entre marketing e vendas.</div></details>
+      <details><summary>Já tenho equipe de marketing. A Expoente substitui?</summary><div class="a">Somamos. No modelo Squad de Performance, nossos especialistas entram na sua equipe com playbooks e um prazo combinado entre marketing e vendas.</div></details>
       <details><summary>Existe multa de cancelamento?</summary><div class="a">Não trabalhamos com fidelidade forçada. Se o sistema não gera valor, você encerra. Nossa retenção vem de resultado, não de contrato.</div></details>
-      <details><summary>Qual a diferença entre a Trion e uma agência?</summary><div class="a">Agência entrega peças; a Trion entrega um sistema: medição, funis, atendimento automático, organização dos contatos e anúncio operando juntos, com meta de receita — não de impressões.</div></details>
+      <details><summary>Qual a diferença entre a Expoente e uma agência?</summary><div class="a">Agência entrega peças. A Expoente entrega um sistema: medição, funis, atendimento automático, organização dos contatos e anúncio operando juntos, com meta de receita.</div></details>
       <details><summary>O agente de IA parece robô?</summary><div class="a">Não. Ele é treinado com dados e tom de voz do seu negócio, responde em ~2 segundos e sabe quando escalar para um humano. Você audita todas as conversas.</div></details>
       <details><summary>Quanto preciso investir em mídia?</summary><div class="a">Depende do setor e da meta — é exatamente o que o diagnóstico gratuito calcula: teto de CAC, verba mínima viável e projeção de retorno antes de você gastar R$ 1.</div></details>
       <details><summary>Vocês atendem meu nicho?</summary><div class="a">O sistema é o mesmo em qualquer setor: atrair, qualificar, converter. Já operamos em saúde, imobiliário, e-commerce, educação, B2B e serviços locais — veja a seção de setores.</div></details>
@@ -986,11 +1013,11 @@ nav.hseq{transform:translateY(-14px)}
   </section>
 
   <!-- CTA FINAL -->
-  <section class="inner cta-final" id="diagnostico">
+  <section class="inner cta-final" id="fechar">
     <span class="kicker rv" style="justify-content:center">Próximo passo</span>
     <h2 class="serif rv">Comece pela conversa<br>de <span class="em">diagnóstico</span>.</h2>
     <p class="sub rv">É de graça. A gente calcula seu custo por cliente, a verba mínima e o tamanho da oportunidade que você deixa passar hoje. Resposta em até 12 horas.</p>
-    <a class="btn rv" style="font-size:16px;padding:14px 32px" href="https://expoente.marketing">Quero minha conversa de diagnóstico <span class="arr">→</span></a>
+    <a class="btn rv" style="font-size:16px;padding:14px 32px" href="#diagnostico">Quero minha conversa de diagnóstico <span class="arr">→</span></a>
   </section>
 
   <!-- 11 · FOOTER COMPLETO -->
@@ -998,7 +1025,7 @@ nav.hseq{transform:translateY(-14px)}
     <footer>
       <div class="foot-grid">
         <div class="foot-brand">
-          <a class="logo" href="#" aria-label="Expoente"><svg class="lockup" viewBox="0 0 660 120" style="width:168px;height:auto;display:block"><use href="#expLockup"/></svg></a>
+          <a class="logo" href="#topo" aria-label="Expoente, início"><svg class="lockup" viewBox="0 0 660 120"><use href="#expLockup"/></svg></a>
           <p>Tráfego, Inteligência e Crescimento em uma única força. A ciência por trás da sua escala.</p>
         </div>
         <div><h5>Soluções</h5><ul>
@@ -1013,8 +1040,8 @@ nav.hseq{transform:translateY(-14px)}
           <li><a href="#conteudo">Conteúdo</a></li><li><a href="#faq">FAQ</a></li></ul></div>
         <div><h5>Contato</h5><ul>
           <li><a href="#diagnostico">Diagnóstico gratuito</a></li>
-          <li><a href="https://trion.marketing">trion.marketing</a></li>
-          <li><a href="#">WhatsApp</a></li><li><a href="#">Instagram</a></li></ul></div>
+          <li><a href="https://wa.me/5561936180578?text=Ol%C3%A1%21%20Quero%20meu%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="#faq">Perguntas frequentes</a></li></ul></div>
       </div>
       <div class="foot-base">
         <span>© 2026 Expoente · Engenharia de Crescimento</span>
@@ -1033,101 +1060,80 @@ document.querySelectorAll('.rv,.viz').forEach(el=>io.observe(el));
 
 const cio=new IntersectionObserver(es=>es.forEach(e=>{
   if(!e.isIntersecting)return;cio.unobserve(e.target);
-  const el=e.target,end=parseFloat(el.dataset.count),dec=+(el.dataset.dec||0),suf=el.dataset.suffix||'';
-  if(reduced){el.innerHTML=end.toFixed(dec)+'<small>'+suf+'</small>';return;}
+  const el=e.target,end=parseFloat(el.dataset.count),dec=+(el.dataset.dec||0);
+  const pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';
+  const paint=v=>{el.innerHTML=pre+Number(v).toFixed(dec)+'<small>'+suf+'</small>';};
+  if(reduced){paint(end);return;}
   const t0=performance.now();
   (function tick(t){
-    const p=Math.min(1,(t-t0)/1500),v=end*(1-Math.pow(1-p,3));
-    el.innerHTML=v.toFixed(dec)+'<small>'+suf+'</small>';
+    const p=Math.min(1,(t-t0)/1500);
+    paint(end*(1-Math.pow(1-p,3)));
     if(p<1)requestAnimationFrame(tick);
   })(t0);
-}),{threshold:.5});
+}),{threshold:.4});
 document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+if(!('IntersectionObserver' in window)) document.querySelectorAll('.rv').forEach(el=>el.classList.add('in'));
 
-/* ===== filme de fundo: segmentos em loop por seção =====
-   Cada seção "possui" um trecho do filme e fica em loop nele.
-   Rolar até a próxima seção libera a viagem (o filme toca o meio
-   do caminho) até cair no loop do novo trecho. Voltar também volta. */
+/* filme de fundo: um trecho por seção, em loop para a frente.
+   Sem seek quadro a quadro — isso travava o celular. */
 const bgv=document.getElementById('bgv');
 (function(){
   if(!bgv) return;
-  /* fonte por dispositivo: 540p no celular (6.6MB), 1080p no desktop */
-  bgv.src = matchMedia('(max-width:820px)').matches ? 'trion-bg-m.mp4' : 'trion-bg.mp4';
-  bgv.load();
-  const unlock=()=>{bgv.classList.remove('dead');
-    bgv.play().then(()=>{bgv.classList.add('on');}).catch(()=>{bgv.classList.add('dead');});};
-  bgv.play().catch(()=>{
-    bgv.classList.add('dead');            /* autoplay bloqueado: some com o video (sem botao nativo) */
-    addEventListener('touchstart',unlock,{once:true,passive:true});
-    addEventListener('scroll',unlock,{once:true,passive:true});
-  });
-  const SEGS=[            // [seletor, início do loop, fim do loop]
+  const saveData=navigator.connection&&navigator.connection.saveData;
+  if(reduced||saveData){bgv.remove();return;}
+  bgv.preload='metadata';
+  bgv.src=matchMedia('(max-width:820px)').matches?'trion-bg-m.mp4':'trion-bg.mp4';
+  const SEGS=[
     ['.hero',0,3],
     ['#passos',6,9],['#solucoes',10,13],['#modelos',14,17],
     ['#setores',18,20.5],['#numeros',21,23.5],['#cases',24,27],
-    ['#conteudo',28,30.5],['#faq',31,33],['#diagnostico',33.5,35.0]
+    ['#conteudo',28,30.5],['#faq',31,33],['#fechar',33.5,35]
   ];
-  let map=[];             // [{y, a, b}] scroll → segmento
+  let map=[],seg={a:0,b:3};
   function build(){
     map=SEGS.map(([sel,a,b])=>{
       const el=document.querySelector(sel);
       return el?{y:el.getBoundingClientRect().top+scrollY,a,b}:null;
     }).filter(Boolean).sort((x,y)=>x.y-y.y);
   }
-  function activeSeg(){
+  function pick(){
     const y=scrollY+innerHeight*.45;
     let s=map[0];
     for(const m of map) if(y>=m.y-innerHeight*.25) s=m;
     return s||{a:0,b:3};
   }
-  let dir=1, lastTs=0;              // 1 = frente, -1 = ré (ping-pong)
-  function drive(ts){
-    const dt=Math.min(.05,(ts-lastTs)/1000||.016); lastTs=ts;
-    const s=activeSeg(), t=bgv.currentTime;
-    if(t<s.a-.05){
-      // viagem pra frente: toca acelerado até a entrada do segmento
-      dir=1;bgv.playbackRate=Math.min(2.5,1+(s.a-t)*.35);
-      if(bgv.paused)bgv.play().catch(()=>{bgv.classList.add('dead');});
-    }else if(t>s.b+.05){
-      // voltou de seção: dá ré no filme até o trecho anterior
-      if(!bgv.paused)bgv.pause();
-      try{bgv.currentTime=Math.max(s.b,t-dt*3);}catch(e){}
-    }else if(dir===1){
-      // dentro do segmento, indo: toca normal até a borda
-      bgv.playbackRate=1;
-      if(bgv.paused)bgv.play().catch(()=>{});
-      if(t>=s.b-.06)dir=-1;
-    }else{
-      // ping-pong: volta de ré quadro a quadro (all-intra deixa liso)
-      if(!bgv.paused)bgv.pause();
-      try{bgv.currentTime=Math.max(s.a,t-dt);}catch(e){}
-      if(t<=s.a+.06)dir=1;
+  function apply(){
+    const s=pick();
+    if(s.a!==seg.a){
+      seg=s;
+      const t=bgv.currentTime;
+      if(t<s.a||t>s.b){try{bgv.currentTime=s.a;}catch(e){}}
     }
     bgv.classList.toggle('boost',s.a>=33);
-    requestAnimationFrame(drive);
   }
-  /* abertura: 1.5s de filme no escuro → hero monta */
-  function heroIn(){document.body.classList.add('ready');}
-  const heroFallback=setTimeout(heroIn,2600);   // se o vídeo não carregar
-  function ignite(){
-    build();bgv.classList.add('on');
-    if(reduced){clearTimeout(heroFallback);heroIn();
-      bgv.pause();bgv.currentTime=activeSeg().a;
-      addEventListener('scroll',()=>{const s=activeSeg();bgv.currentTime=s.a;},{passive:true});
-      return;}
-    bgv.currentTime=0;bgv.play().catch(()=>{clearTimeout(heroFallback);heroIn();});
-    const gate=()=>{if(bgv.currentTime>=1.5){clearTimeout(heroFallback);heroIn();
-      bgv.removeEventListener('timeupdate',gate);}};
-    bgv.addEventListener('timeupdate',gate);
-    requestAnimationFrame(drive);
+  function kick(){
+    bgv.classList.remove('dead');
+    const p=bgv.play();
+    if(!p) return;
+    p.then(()=>bgv.classList.add('on')).catch(()=>{
+      bgv.classList.add('dead');
+      addEventListener('pointerdown',()=>{
+        bgv.classList.remove('dead');
+        bgv.play().then(()=>bgv.classList.add('on')).catch(()=>{});
+      },{once:true});
+    });
   }
-  let lit=false; const tryIgnite=()=>{if(!lit){lit=true;ignite();}};
-  if(bgv.readyState>=1) tryIgnite();
-  else{bgv.addEventListener('loadedmetadata',tryIgnite,{once:true});
-       bgv.addEventListener('canplay',tryIgnite,{once:true});}
-  bgv.addEventListener('error',()=>{clearTimeout(heroFallback);heroIn();},{once:true});
-  addEventListener('resize',build);
-  addEventListener('load',build);
+  bgv.addEventListener('timeupdate',()=>{
+    if(bgv.currentTime>=seg.b-.04){try{bgv.currentTime=seg.a;}catch(e){}}
+  });
+  bgv.addEventListener('loadedmetadata',()=>{build();apply();kick();},{once:true});
+  bgv.addEventListener('error',()=>bgv.classList.add('dead'),{once:true});
+  addEventListener('scroll',apply,{passive:true});
+  addEventListener('resize',()=>{build();apply();});
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden) bgv.pause();
+    else kick();
+  });
 })();
 
 
@@ -1137,6 +1143,7 @@ const bgv=document.getElementById('bgv');
   const slides=[...caro.querySelectorAll('.caro-slide')];
   const dots=caro.querySelector('.caro-dots');
   slides.forEach((_,i)=>{const b=document.createElement('button');
+    b.type='button';
     b.setAttribute('aria-label','Solução '+(i+1));
     b.addEventListener('click',()=>go(i,true));dots.appendChild(b);});
   let cur=0,timer;
@@ -1149,6 +1156,8 @@ const bgv=document.getElementById('bgv');
     b.addEventListener('click',()=>go(cur+ +b.dataset.caro,true)));
   caro.addEventListener('pointerenter',()=>clearInterval(timer));
   caro.addEventListener('pointerleave',restart);
+  caro.addEventListener('focusin',()=>clearInterval(timer));
+  caro.addEventListener('focusout',e=>{if(!caro.contains(e.relatedTarget))restart();});
   let x0=null;
   caro.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
   caro.addEventListener('touchend',e=>{if(x0==null)return;
@@ -1170,11 +1179,31 @@ const bgv=document.getElementById('bgv');
 /* form de lead → abre WhatsApp com a mensagem pronta */
 (function(){
   const f=document.getElementById('leadform');if(!f)return;
+  const status=document.getElementById('formstatus');
   f.addEventListener('submit',e=>{
     e.preventDefault();
     const d=new FormData(f);
-    const msg=`Olá! Quero meu diagnóstico gratuito.%0A%0A*Nome:* ${encodeURIComponent(d.get('nome'))}%0A*WhatsApp:* ${encodeURIComponent(d.get('whats'))}%0A*Site/Instagram:* ${encodeURIComponent(d.get('site')||'-')}%0A*Faturamento:* ${encodeURIComponent(d.get('fat'))}`;
-    window.open('https://wa.me/5561936180578?text='+msg,'_blank');
+    const text=[
+      'Olá! Quero meu diagnóstico gratuito.',
+      '',
+      '*Nome:* '+(d.get('nome')||'').toString().trim(),
+      '*WhatsApp:* '+(d.get('whats')||'').toString().trim(),
+      '*Site/Instagram:* '+((d.get('site')||'-').toString().trim()||'-'),
+      '*Faturamento:* '+(d.get('fat')||'').toString().trim()
+    ].join('\n');
+    const url='https://wa.me/5561936180578?text='+encodeURIComponent(text);
+    const popup=window.open(url,'_blank','noopener');
+    if(!status) return;
+    const link=document.createElement('a');
+    link.href=url; link.target='_blank'; link.rel='noopener';
+    link.textContent=popup?'toque aqui':'Abrir WhatsApp';
+    status.replaceChildren(
+      document.createTextNode(popup
+        ? 'Abrimos o WhatsApp com a sua mensagem. Se a janela não apareceu, '
+        : 'O navegador bloqueou a nova janela. '),
+      link,
+      document.createTextNode('.')
+    );
   });
 })();
 
